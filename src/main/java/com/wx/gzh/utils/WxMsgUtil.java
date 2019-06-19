@@ -1,5 +1,7 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.XStream;
+import com.wx.gzh.model.Video;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -124,6 +126,7 @@ public class WxMsgUtil {
     public final String EVENT_TYPE_TEMPLATESENDJOBFINISH="TEMPLATESENDJOBFINISH";
 
     /**
+     * ---------------------------------------------------xml转map------------------------------------------------
      * 解析微信服务器发过来的xml格式的消息将其转换为map
      * @param request
      * @return
@@ -144,7 +147,7 @@ public class WxMsgUtil {
         // 判断又没有子元素列表
         if (elementList.size()==0){
             map.put(root.getName(), root.getText());
-        }else {
+        } else {
             for (Element e : elementList)
                 map.put(e.getName(), e.getText());
         }
@@ -154,4 +157,56 @@ public class WxMsgUtil {
         // System.out.println("---------xml转换为map-----:" + map);
         return map;
     }
+
+    /**
+     * 将发送消息封装为对应的xml格式
+     * @return
+     */
+    public static String transferXml(Object object) {
+        XStream xStream = new XStream();
+        xStream.alias("xml", object.getClass());
+        return xStream.toXML(object);
+    }
+
+    /**
+     * 处理文本回复
+     * @param map
+     * @return
+     */
+    public static WxTextMessage dealTextMessgae(Map<String, String> map) {
+        WxTextMessage textMessage = new WxTextMessage(map, "text类型消息回复....");
+        return textMessage;
+    }
+
+    /**
+     * 处理图片回复
+     * @return
+     */
+    public static WxImageMessage dealImageMessage(Map<String, String> map) {
+        WxImageMessage imageMessage = new WxImageMessage(map, "123");
+        return imageMessage;
+    }
+
+    /**
+     * 处理视频回复
+     * @param map
+     * @return
+     */
+    public static WxVideoMessage dealVideoMessage(Map<String, String> map) {
+        Video video = new Video();
+        WxVideoMessage videoMessage = new WxVideoMessage(map, video);
+        return videoMessage;
+    }
+
+    /**
+     * 处理语音回复
+     * @param map
+     * @return
+     */
+    public static WxVoiceMessage dealVoiceMessage(Map<String, String> map) {
+        WxVoiceMessage voiceMessage = new WxVoiceMessage(map, "123");
+        return voiceMessage;
+    }
+
+
 }

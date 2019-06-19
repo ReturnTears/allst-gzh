@@ -4,7 +4,6 @@ import com.wx.gzh.service.WxAcceptMsgService;
 import org.dom4j.DocumentException;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgService {
      * @return
      */
     @Override
-    public String joinWxMsg(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String, String> joinWxMsg(HttpServletRequest request, HttpServletResponse response) {
         try {
             // 微信服务器POST消息时用的是UTF-8编码，在接收时也要用同样的编码，否则中文会乱码；
             request.setCharacterEncoding("UTF-8");
@@ -52,6 +51,7 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgService {
                 sb.append(new String(b, 0, len));
             }
             System.out.println(sb.toString());*/
+            return map;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -59,6 +59,6 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgService {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * 非RESTful方式
@@ -24,7 +25,7 @@ public class WxAcceptMsgController {
     @RequestMapping(value = "msg", method = RequestMethod.POST)
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("accept msg");
-        String res = wxAcceptMsgService.joinWxMsg(request, response);
-        return res;
+        Map<String, String> res = wxAcceptMsgService.joinWxMsg(request, response);
+        return null;
     }
 }

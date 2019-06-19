@@ -2,6 +2,7 @@ package com.wx.gzh.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * 程序接受微信用户发送过来的消息
@@ -15,6 +16,6 @@ public interface WxAcceptMsgService {
      * @param response
      * @return
      */
-    String joinWxMsg(HttpServletRequest request, HttpServletResponse response);
+    Map<String, String> joinWxMsg(HttpServletRequest request, HttpServletResponse response);
 
 }
