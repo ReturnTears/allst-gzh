@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 微信消息
+ * 微信消息类型以及消息内容格式转换
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
@@ -128,9 +128,9 @@ public class WxMsgUtil {
      * @param request
      * @return
      */
-    public Map<String, String> parseXml(HttpServletRequest request) throws IOException, DocumentException {
+    public static Map<String, String> parseXml(HttpServletRequest request) throws IOException, DocumentException {
         // 将解析结果存储在HashMap中
-        Map<String, String>map =new HashMap<String, String>();
+        Map<String, String>map =new HashMap<>();
         // 从request中得到输入流
         InputStream inputStream=request.getInputStream();
         // 读取输入流
@@ -150,8 +150,8 @@ public class WxMsgUtil {
         }
         // 释放资源
         inputStream.close();
-        inputStream = null;
-        System.out.println("---------xml转换为map-----:"+map);
+        // inputStream = null;
+        // System.out.println("---------xml转换为map-----:" + map);
         return map;
     }
 }
