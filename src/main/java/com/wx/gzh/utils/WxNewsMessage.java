@@ -43,4 +43,12 @@ public class WxNewsMessage extends WxBaseMessgae {
         this.articleCount = articleCount;
         this.articles = articles;
     }
+
+    @Override
+    public String toString() {
+        return "WxNewsMessage{" +
+                "articleCount='" + articleCount + '\'' +
+                ", articles=" + articles +
+                '}';
+    }
 }

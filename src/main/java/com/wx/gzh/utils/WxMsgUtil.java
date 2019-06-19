@@ -10,6 +10,7 @@ import org.dom4j.io.SAXReader;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -168,14 +169,27 @@ public class WxMsgUtil {
         return xStream.toXML(object);
     }
 
+    public String initMessage(String FromUserName, String ToUserName) {
+        WxTextMessage text = new WxTextMessage();
+        text.setToUserName(FromUserName);
+        text.setFromUserName(ToUserName);
+        text.setContent("欢迎开始微信公众号");
+        text.setCreateTime(String.valueOf(new Date().getTime()));
+        text.setMsgType("text");
+        return this.transferXml(text);
+    }
+
     /**
      * 处理文本回复
      * @param map
      * @return
      */
-    public static WxTextMessage dealTextMessgae(Map<String, String> map) {
+    public static String dealTextMessgae(Map<String, String> map) {
+        System.out.println("进入处理文本回复方法............");
         WxTextMessage textMessage = new WxTextMessage(map, "text类型消息回复....");
-        return textMessage;
+        // todo
+        System.out.println(textMessage.toString());
+        return "";
     }
 
     /**

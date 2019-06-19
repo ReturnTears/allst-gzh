@@ -72,3 +72,8 @@
     Description	    消息描述
     Url	            消息链接
     MsgId	            消息id，64位整型
+
+
+### URl
+    https://blog.csdn.net/daga_a/article/details/81511676
+

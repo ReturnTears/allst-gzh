@@ -33,8 +33,9 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
                 break;
             case "news":
                 break;
+            default:
+                return null;
         }
-
         return null;
     }
 

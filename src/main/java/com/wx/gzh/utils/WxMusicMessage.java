@@ -30,4 +30,11 @@ public class WxMusicMessage extends WxBaseMessgae {
         setMsgType("music");
         this.music = music;
     }
+
+    @Override
+    public String toString() {
+        return "WxMusicMessage{" +
+                "music=" + music +
+                '}';
+    }
 }

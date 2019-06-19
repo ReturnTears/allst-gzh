@@ -3,6 +3,7 @@ package com.wx.gzh.api;
 import com.wx.gzh.service.WxAcceptMsgService;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import com.wx.gzh.service.WxJoinService;
+import com.wx.gzh.utils.WxBaseMessgae;
 import com.wx.gzh.utils.WxTextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +83,6 @@ public class WxJoinController {
         // 消息的统一处理
         String textMessage = wxHandlerEventMsgService.handlerEventAndMsg(res);
         System.out.println("Text消息 : " + textMessage);
-        return null;
+        return "消息回复";
     }
 }

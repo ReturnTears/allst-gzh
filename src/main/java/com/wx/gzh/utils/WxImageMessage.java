@@ -26,5 +26,10 @@ public class WxImageMessage extends WxBaseMessgae {
         super(map);
         this.setMsgType("image");
         this.mediaId = mediaId;
-}
+    }
+
+    @Override
+    public String toString() {
+        return "WxImageMessage{" + "mediaId = '" + mediaId + '\'' + '}';
+    }
 }

@@ -34,4 +34,11 @@ public class WxVideoMessage extends WxBaseMessgae {
         setMsgType("video");
         this.video = video;
     }
+
+    @Override
+    public String toString() {
+        return "WxVideoMessage{" +
+                "video=" + video +
+                '}';
+    }
 }

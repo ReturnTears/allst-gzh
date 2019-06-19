@@ -53,11 +53,22 @@ public class WxBaseMessgae {
 
     // 显示定义无参构造
     public WxBaseMessgae() {
+        super();
     }
 
     public WxBaseMessgae(Map<String, String> map) {
         this.toUserName = map.get("FromUserName");
         this.fromUserName = map.get("ToUserName");
         this.createTime = String.valueOf(System.currentTimeMillis() / 1000);
+    }
+
+    @Override
+    public String toString() {
+        return "WxBaseMessgae{" +
+                "toUserName='" + toUserName + '\'' +
+                ", fromUserName='" + fromUserName + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", msgType='" + msgType + '\'' +
+                '}';
     }
 }

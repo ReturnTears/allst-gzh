@@ -11,12 +11,32 @@ public class WxTextMessage extends WxBaseMessgae {
 
     private String content;
 
+    private String msgId;
+
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public WxTextMessage() {
+
+    }
+
+    public WxTextMessage(Map<String, String> map, String content, String msgId) {
+        super(map);
+        this.content = content;
+        this.msgId = msgId;
     }
 
     public WxTextMessage(Map<String, String> map, String content) {
@@ -28,6 +48,6 @@ public class WxTextMessage extends WxBaseMessgae {
 
     @Override
     public String toString() {
-        return "WxTextMessage{" + "content = " + content + ", toUserName = " + getToUserName() + ", fromUserName = " + getFromUserName() + ", createTime = " + getCreateTime() +'}';
+        return "WxTextMessage{" + "Content = " + content + ", ToUserName = " + getToUserName() + ", FromUserName = " + getFromUserName() + ", CreateTime = " + getCreateTime() + ", MsgType = " + getMsgType() +'}';
     }
 }

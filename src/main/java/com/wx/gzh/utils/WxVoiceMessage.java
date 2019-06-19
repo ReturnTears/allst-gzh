@@ -27,4 +27,11 @@ public class WxVoiceMessage extends WxBaseMessgae {
         this.setMsgType("voice");
         this.mediaId = mediaId;
     }
+
+    @Override
+    public String toString() {
+        return "WxVoiceMessage{" +
+                "mediaId='" + mediaId + '\'' +
+                '}';
+    }
 }
