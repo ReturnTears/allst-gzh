@@ -73,16 +73,16 @@ public class WxJoinController {
         System.out.println("接受用户发送的消息");
         Map<String, String> res = wxAcceptMsgService.joinWxMsg(request, response);
         // 被动回复用户消息,准备回复的数据包
-        /*String resXml = "<xml><ToUserName><![CDATA["+ res.get("FromUserName") +"]]></ToUserName>" +
+        String resXml = "<xml><ToUserName><![CDATA["+ res.get("FromUserName") +"]]></ToUserName>" +
                             "<FromUserName><![CDATA[" + res.get("ToUserName") + "]]></FromUserName>" +
                             "<CreateTime>" + System.currentTimeMillis() / 1000 + "</CreateTime>" +
                             "<MsgType><![CDATA[text]]></MsgType>" +
                             "<Content><![CDATA[" + RESPMSG + "]]></Content></xml>";
-        System.out.println(resXml);*/
+        System.out.println(resXml);
 
         // 消息的统一处理
-        String textMessage = wxHandlerEventMsgService.handlerEventAndMsg(res);
-        System.out.println("Text消息 : " + textMessage);
-        return "消息回复";
+        /*String textMessage = wxHandlerEventMsgService.handlerEventAndMsg(res);
+        System.out.println("Text消息 : " + textMessage);*/
+        return resXml;
     }
 }

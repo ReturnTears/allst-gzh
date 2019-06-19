@@ -180,7 +180,7 @@ public class WxMsgUtil {
     }
 
     /**
-     * 处理文本回复
+     * 处理文本回复, 这里回复的格式应为<xml></xml>
      * @param map
      * @return
      */
