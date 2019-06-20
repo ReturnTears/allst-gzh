@@ -21,8 +21,7 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         switch (msgType){
             // 处理文本消息
             case "text":
-                dealTextMessgae(params);
-                break;
+                return dealTextMessgae(params);
             case "image":
                 break;
             case "voice":
@@ -34,9 +33,9 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
             case "news":
                 break;
             default:
-                return null;
+                return "123";
         }
-        return null;
+        return "456";
     }
 
 }

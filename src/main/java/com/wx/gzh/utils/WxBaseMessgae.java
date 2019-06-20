@@ -1,5 +1,8 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.annotation.XStreamCDATA;
+
 import java.util.Map;
 
 /**
@@ -12,43 +15,56 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
-public class WxBaseMessgae {
 
-    private String toUserName;
-    private String fromUserName;
-    private String createTime;
-    private String msgType;
+public class WxBaseMessgae {
+    /**
+     * 接受方微信号
+     */
+    @XStreamAlias("ToUserName")
+    @XStreamCDATA
+    private String ToUserName;
+
+    @XStreamAlias("FromUserName")
+    @XStreamCDATA
+    private String FromUserName;
+
+    @XStreamAlias("CreateTime")
+    private String CreateTime;
+
+    @XStreamAlias("MsgType")
+    @XStreamCDATA
+    private String MsgType;
 
     public String getToUserName() {
-        return toUserName;
+        return ToUserName;
     }
 
     public void setToUserName(String toUserName) {
-        this.toUserName = toUserName;
+        ToUserName = toUserName;
     }
 
     public String getFromUserName() {
-        return fromUserName;
+        return FromUserName;
     }
 
     public void setFromUserName(String fromUserName) {
-        this.fromUserName = fromUserName;
+        FromUserName = fromUserName;
     }
 
     public String getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public String getMsgType() {
-        return msgType;
+        return MsgType;
     }
 
     public void setMsgType(String msgType) {
-        this.msgType = msgType;
+        MsgType = msgType;
     }
 
     // 显示定义无参构造
@@ -57,18 +73,18 @@ public class WxBaseMessgae {
     }
 
     public WxBaseMessgae(Map<String, String> map) {
-        this.toUserName = map.get("FromUserName");
-        this.fromUserName = map.get("ToUserName");
-        this.createTime = String.valueOf(System.currentTimeMillis() / 1000);
+        this.ToUserName = map.get("FromUserName");
+        this.FromUserName = map.get("ToUserName");
+        this.CreateTime = String.valueOf(System.currentTimeMillis() / 1000);
     }
 
     @Override
     public String toString() {
         return "WxBaseMessgae{" +
-                "toUserName='" + toUserName + '\'' +
-                ", fromUserName='" + fromUserName + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", msgType='" + msgType + '\'' +
+                "toUserName='" + ToUserName + '\'' +
+                ", fromUserName='" + FromUserName + '\'' +
+                ", createTime='" + CreateTime + '\'' +
+                ", msgType='" + MsgType + '\'' +
                 '}';
     }
 }

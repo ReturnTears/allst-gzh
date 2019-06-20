@@ -23,7 +23,7 @@ public class WxJoinController {
 
     private static final String TOKEN = "hyj";
 
-    private static final String RESPMSG = "消息收到回复";
+    private static final String RESPMSG = "微信文本消息，收到回复";
 
     @Autowired
     private WxJoinService wxJoinService;
@@ -70,19 +70,19 @@ public class WxJoinController {
     @PostMapping
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         // 接受用户消息
-        System.out.println("接受用户发送的消息");
+        // System.out.println("接受用户发送的消息");
         Map<String, String> res = wxAcceptMsgService.joinWxMsg(request, response);
         // 被动回复用户消息,准备回复的数据包
-        String resXml = "<xml><ToUserName><![CDATA["+ res.get("FromUserName") +"]]></ToUserName>" +
+        /*String textXml = "<xml><ToUserName><![CDATA["+ res.get("FromUserName") +"]]></ToUserName>" +
                             "<FromUserName><![CDATA[" + res.get("ToUserName") + "]]></FromUserName>" +
                             "<CreateTime>" + System.currentTimeMillis() / 1000 + "</CreateTime>" +
                             "<MsgType><![CDATA[text]]></MsgType>" +
                             "<Content><![CDATA[" + RESPMSG + "]]></Content></xml>";
-        System.out.println(resXml);
+        System.out.println(textXml);*/
 
-        // 消息的统一处理
-        /*String textMessage = wxHandlerEventMsgService.handlerEventAndMsg(res);
-        System.out.println("Text消息 : " + textMessage);*/
-        return resXml;
+        // 消息的统一处理, 需要将回复的消息封装为上述格式的xml内容
+        String textXml = wxHandlerEventMsgService.handlerEventAndMsg(res);
+        // System.out.println("Text消息 : " + textXml);
+        return textXml;
     }
 }

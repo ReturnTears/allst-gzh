@@ -40,7 +40,7 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgService {
 
             // 解析xml消息格式为map
             Map<String, String> map = parseXml(request);
-            System.out.println("解析后的内容为 : " + map);
+            // System.out.println("解析后的内容为 : " + map);
 
             // 下面这部分内容为获取微信服务器发送过来的数据格式
             /*ServletInputStream is = request.getInputStream();
