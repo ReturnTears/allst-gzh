@@ -100,6 +100,7 @@ public class Message2Xml {
     }
 
     /**
+     * TODO 待测试
      * 回复视频消息
      * <xml>
      *   <ToUserName><![CDATA[toUser]]></ToUserName>
@@ -131,6 +132,7 @@ public class Message2Xml {
     }
 
     /**
+     * TODO 待测试
      * <xml>
      *   <ToUserName><![CDATA[toUser]]></ToUserName>
      *   <FromUserName><![CDATA[fromUser]]></FromUserName>
@@ -164,6 +166,7 @@ public class Message2Xml {
     }
 
     /**
+     * TODO 待测试
      * <xml>
      *   <ToUserName><![CDATA[toUser]]></ToUserName>
      *   <FromUserName><![CDATA[fromUser]]></FromUserName>
