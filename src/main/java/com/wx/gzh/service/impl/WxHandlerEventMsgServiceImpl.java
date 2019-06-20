@@ -1,11 +1,12 @@
 package com.wx.gzh.service.impl;
 
+import com.wx.gzh.constant.MsgTypeConstant;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-import static com.wx.gzh.utils.WxMsgUtil.dealTextMessgae;
+import static com.wx.gzh.utils.WxMsgUtil.*;
 
 /**
  * 服务端处理所有的事件和消息回复
@@ -20,22 +21,21 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         String msgType = params.get("MsgType");
         switch (msgType){
             // 处理文本消息
-            case "text":
+            case MsgTypeConstant.REQ_MESSAGE_TYPE_TEXT:
                 return dealTextMessgae(params);
             case "image":
-                break;
+                return dealImageMessage(params);
             case "voice":
-                break;
+                return dealVoiceMessage(params);
             case "video":
-                break;
+                return dealVideoMessage(params);
             case "music":
-                break;
+                return dealMusicMessage(params);
             case "news":
-                break;
+                return dealNewsMessage(params);
             default:
-                return "123";
+                return null;
         }
-        return "456";
     }
 
 }

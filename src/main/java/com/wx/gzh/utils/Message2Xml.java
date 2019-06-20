@@ -1,8 +1,8 @@
 package com.wx.gzh.utils;
 
 import com.thoughtworks.xstream.XStream;
+import com.wx.gzh.model.Image;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -24,17 +24,48 @@ public class Message2Xml {
     }
 
     /**
-     * 封装发送消息对象,封装时，需要将调换发送者和接收者的关系
+     * 封装发送text类型消息对象,封装时，需要将调换发送者和接收者的关系
+     * <xml>
+     *   <ToUserName><![CDATA[toUser]]></ToUserName>
+     *   <FromUserName><![CDATA[fromUser]]></FromUserName>
+     *   <CreateTime>12345678</CreateTime>
+     *   <MsgType><![CDATA[text]]></MsgType>
+     *   <Content><![CDATA[你好]]></Content>
+     * </xml>
      * @return
      */
-    public static String initMessage(Map<String, String> map) {
+    public static String initTextMessage(Map<String, String> map) {
         WxTextMessage text = new WxTextMessage();
         text.setToUserName(map.get("FromUserName"));
         text.setFromUserName(map.get("ToUserName"));
-        text.setContent(map.get("Content"));
         text.setCreateTime(map.get("CreateTime"));
         text.setMsgType(map.get("MsgType"));
+        text.setContent(map.get("Content"));
         return convertToXml(text);
+    }
+
+    /**
+     * <xml>
+     *   <ToUserName><![CDATA[toUser]]></ToUserName>
+     *   <FromUserName><![CDATA[fromUser]]></FromUserName>
+     *   <CreateTime>12345678</CreateTime>
+     *   <MsgType><![CDATA[image]]></MsgType>
+     *   <Image>
+     *     <MediaId><![CDATA[media_id]]></MediaId>
+     *   </Image>
+     * </xml>
+     * @param map
+     * @return
+     */
+    public static String initImageMessage(Map<String, String> map) {
+        Image pic = new Image();
+        WxImageMessage image = new WxImageMessage();
+        image.setMediaId(map.get(""));
+        image.setToUserName(map.get("FromUserName"));
+        image.setFromUserName(map.get("ToUserName"));
+        image.setCreateTime(map.get("CreateTime"));
+        image.setToUserName(map.get("FromUserName"));
+        return "";
     }
 
 }

@@ -1,5 +1,9 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.annotation.XStreamCDATA;
+import com.wx.gzh.model.Image;
+
 import java.util.Map;
 
 /**
@@ -7,16 +11,23 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("xml")
 public class WxImageMessage extends WxBaseMessgae {
 
-    private String mediaId;
+    @XStreamAlias("MediaId")
+    @XStreamCDATA
+    private String MediaId;
+
+    @XStreamAlias("Image")
+    @XStreamCDATA
+    private Image Image;
 
     public String getMediaId() {
-        return mediaId;
+        return MediaId;
     }
 
     public void setMediaId(String mediaId) {
-        this.mediaId = mediaId;
+        this.MediaId = mediaId;
     }
 
     public WxImageMessage() {
@@ -25,11 +36,11 @@ public class WxImageMessage extends WxBaseMessgae {
     public WxImageMessage(Map<String, String> map, String mediaId) {
         super(map);
         this.setMsgType("image");
-        this.mediaId = mediaId;
+        this.MediaId = mediaId;
     }
 
     @Override
     public String toString() {
-        return "WxImageMessage{" + "mediaId = '" + mediaId + '\'' + '}';
+        return "WxImageMessage{" + "mediaId = '" + MediaId + '\'' + '}';
     }
 }
