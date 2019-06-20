@@ -82,7 +82,7 @@ public class WxJoinController {
 
         // 消息的统一处理, 需要将回复的消息封装为上述格式的xml内容
         String textXml = wxHandlerEventMsgService.handlerEventAndMsg(res);
-        // System.out.println("Text消息 : " + textXml);
+        System.out.println("回复消息 >> : " + textXml);
         return textXml;
     }
 }

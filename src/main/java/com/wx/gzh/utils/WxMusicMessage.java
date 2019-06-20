@@ -1,5 +1,6 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.model.Music;
 
 import java.util.Map;
@@ -9,32 +10,31 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("xml")
 public class WxMusicMessage extends WxBaseMessgae {
 
-    private Music music;
+    @XStreamAlias("Music")
+    private Music Music;
 
     public Music getMusic() {
-        return music;
+        return Music;
     }
 
     public void setMusic(Music music) {
-        this.music = music;
+        this.Music = music;
     }
 
-    public WxMusicMessage(Music music) {
-        this.music = music;
-    }
+    public WxMusicMessage() {}
 
-    public WxMusicMessage(Map<String, String> map, Music music) {
+    public WxMusicMessage(Map<String, String> map) {
         super(map);
         setMsgType("music");
-        this.music = music;
     }
 
     @Override
     public String toString() {
         return "WxMusicMessage{" +
-                "music=" + music +
+                "Music=" + Music +
                 '}';
     }
 }

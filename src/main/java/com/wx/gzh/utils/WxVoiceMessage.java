@@ -1,5 +1,8 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.model.Voice;
+
 import java.util.Map;
 
 /**
@@ -7,31 +10,32 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("xml")
 public class WxVoiceMessage extends WxBaseMessgae {
 
-    private String mediaId;
+    @XStreamAlias("Voice")
+    private Voice Voice;
 
-    public String getMediaId() {
-        return mediaId;
+    public com.wx.gzh.model.Voice getVoice() {
+        return Voice;
     }
 
-    public void setMediaId(String mediaId) {
-        this.mediaId = mediaId;
+    public void setVoice(com.wx.gzh.model.Voice voice) {
+        Voice = voice;
     }
 
     public WxVoiceMessage() {
     }
 
-    public WxVoiceMessage(Map<String, String> map, String mediaId) {
+    public WxVoiceMessage(Map<String, String> map) {
         super(map);
         this.setMsgType("voice");
-        this.mediaId = mediaId;
     }
 
     @Override
     public String toString() {
         return "WxVoiceMessage{" +
-                "mediaId='" + mediaId + '\'' +
+                "Voice='" + Voice + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.annotation.XStreamCDATA;
 import com.wx.gzh.model.Articles;
 
 import java.util.ArrayList;
@@ -11,17 +13,22 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("xml")
 public class WxNewsMessage extends WxBaseMessgae {
 
-    private String articleCount;
+    @XStreamAlias("ArticleCount")
+    private String ArticleCount;
+
+    @XStreamAlias("Articles")
+    @XStreamCDATA
     private List<Articles> articles = new ArrayList<>();
 
     public String getArticleCount() {
-        return articleCount;
+        return ArticleCount;
     }
 
     public void setArticleCount(String articleCount) {
-        this.articleCount = articleCount;
+        this.ArticleCount = articleCount;
     }
 
     public List<Articles> getArticles() {
@@ -32,22 +39,24 @@ public class WxNewsMessage extends WxBaseMessgae {
         this.articles = articles;
     }
 
+    public WxNewsMessage() {}
+
     public WxNewsMessage(String articleCount, List<Articles> articles) {
-        this.articleCount = articleCount;
+        this.ArticleCount = articleCount;
         this.articles = articles;
     }
 
     public WxNewsMessage(Map<String, String> map, String articleCount, List<Articles> articles) {
         super(map);
         setMsgType("news");
-        this.articleCount = articleCount;
+        this.ArticleCount = articleCount;
         this.articles = articles;
     }
 
     @Override
     public String toString() {
         return "WxNewsMessage{" +
-                "articleCount='" + articleCount + '\'' +
+                "ArticleCount='" + ArticleCount + '\'' +
                 ", articles=" + articles +
                 '}';
     }

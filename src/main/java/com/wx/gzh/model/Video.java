@@ -1,5 +1,8 @@
 package com.wx.gzh.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.annotation.XStreamCDATA;
+
 /**
  * Video Model类型
  * @Auther Junn
@@ -7,37 +10,57 @@ package com.wx.gzh.model;
  */
 public class Video {
     /**
-     * <Video>
-     *     <MediaId><![CDATA[media_id]]></MediaId>
-     *     <Title><![CDATA[title]]></Title>
-     *     <Description><![CDATA[description]]></Description>
-     *   </Video>
+     * 通过素材管理中的接口上传多媒体文件，得到的id
      */
-    private String mediaId;
-    private String title;
-    private String description;
+    @XStreamAlias("MediaId")
+    @XStreamCDATA
+    private String MediaId;
+    /**
+     * 视频消息的标题
+     */
+    @XStreamAlias("Title")
+    @XStreamCDATA
+    private String Title;
+    /**
+     * 视频消息的描述
+     */
+    @XStreamAlias("Description")
+    @XStreamCDATA
+    private String Description;
+
+    @XStreamAlias("ThumbMediaId")
+    @XStreamCDATA
+    private String ThumbMediaId;
+
+    public String getThumbMediaId() {
+        return ThumbMediaId;
+    }
+
+    public void setThumbMediaId(String thumbMediaId) {
+        ThumbMediaId = thumbMediaId;
+    }
 
     public String getMediaId() {
-        return mediaId;
+        return MediaId;
     }
 
     public void setMediaId(String mediaId) {
-        this.mediaId = mediaId;
+        MediaId = mediaId;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        Description = description;
     }
 }

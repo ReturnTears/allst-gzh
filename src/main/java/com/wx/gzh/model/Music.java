@@ -1,5 +1,8 @@
 package com.wx.gzh.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wx.gzh.annotation.XStreamCDATA;
+
 /**
  * Music Model类
  * @Auther Junn
@@ -7,55 +10,76 @@ package com.wx.gzh.model;
  */
 public class Music {
     /**
+     * <Music>
+     *    <Title><![CDATA[TITLE]]></Title>
+     *    <Description><![CDATA[DESCRIPTION]]></Description>
+     *    <MusicUrl><![CDATA[MUSIC_Url]]></MusicUrl>
+     *    <HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl>
+     *    <ThumbMediaId><![CDATA[media_id]]></ThumbMediaId>
+     * </Music>
      * Title	否	音乐标题
      * Description	否	音乐描述
      * MusicURL	否	音乐链接
      * HQMusicUrl	否	高质量音乐链接，WIFI环境优先使用该链接播放音乐
      * ThumbMediaId	是	缩略图的媒体id，通过素材管理中的接口上传多媒体文件，得到的id
      */
-    private String title;
-    private String description;
-    private String musicURL;
-    private String hQMusicUrl;
-    private String thumbMediaId;
+    @XStreamAlias("Title")
+    @XStreamCDATA
+    private String Title;
+
+    @XStreamAlias("Description")
+    @XStreamCDATA
+    private String Description;
+
+    @XStreamAlias("MusicURL")
+    @XStreamCDATA
+    private String MusicURL;
+
+    @XStreamAlias("HQMusicUrl")
+    @XStreamCDATA
+    private String HQMusicUrl;
+
+    @XStreamAlias("ThumbMediaId")
+    @XStreamCDATA
+    private String ThumbMediaId;
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        Description = description;
     }
 
     public String getMusicURL() {
-        return musicURL;
+        return MusicURL;
     }
 
     public void setMusicURL(String musicURL) {
-        this.musicURL = musicURL;
+        MusicURL = musicURL;
     }
 
-    public String gethQMusicUrl() {
-        return hQMusicUrl;
+    public String getHQMusicUrl() {
+        return HQMusicUrl;
     }
 
-    public void sethQMusicUrl(String hQMusicUrl) {
-        this.hQMusicUrl = hQMusicUrl;
+    public void setHQMusicUrl(String HQMusicUrl) {
+        this.HQMusicUrl = HQMusicUrl;
     }
 
     public String getThumbMediaId() {
-        return thumbMediaId;
+        return ThumbMediaId;
     }
 
     public void setThumbMediaId(String thumbMediaId) {
-        this.thumbMediaId = thumbMediaId;
+        ThumbMediaId = thumbMediaId;
     }
 }

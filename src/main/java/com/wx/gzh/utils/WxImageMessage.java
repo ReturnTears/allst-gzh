@@ -14,33 +14,27 @@ import java.util.Map;
 @XStreamAlias("xml")
 public class WxImageMessage extends WxBaseMessgae {
 
-    @XStreamAlias("MediaId")
-    @XStreamCDATA
-    private String MediaId;
-
     @XStreamAlias("Image")
-    @XStreamCDATA
     private Image Image;
 
-    public String getMediaId() {
-        return MediaId;
+    public Image getImage() {
+        return Image;
     }
 
-    public void setMediaId(String mediaId) {
-        this.MediaId = mediaId;
+    public void setImage(Image image) {
+        Image = image;
     }
 
     public WxImageMessage() {
     }
 
-    public WxImageMessage(Map<String, String> map, String mediaId) {
+    public WxImageMessage(Map<String, String> map) {
         super(map);
         this.setMsgType("image");
-        this.MediaId = mediaId;
     }
 
     @Override
     public String toString() {
-        return "WxImageMessage{" + "mediaId = '" + MediaId + '\'' + '}';
+        return "WxImageMessage{" + "Image = '" + Image + '\'' + '}';
     }
 }

@@ -18,19 +18,25 @@ import java.util.Map;
 
 public class WxBaseMessgae {
     /**
-     * 接受方微信号
+     * 接收方帐号（收到的OpenID）
      */
     @XStreamAlias("ToUserName")
     @XStreamCDATA
     private String ToUserName;
-
+    /**
+     * 开发者微信号
+     */
     @XStreamAlias("FromUserName")
     @XStreamCDATA
     private String FromUserName;
-
+    /**
+     * 消息创建时间 （整型）
+     */
     @XStreamAlias("CreateTime")
     private String CreateTime;
-
+    /**
+     *  消息类型
+     */
     @XStreamAlias("MsgType")
     @XStreamCDATA
     private String MsgType;

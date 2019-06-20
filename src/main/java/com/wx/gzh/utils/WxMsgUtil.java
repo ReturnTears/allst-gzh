@@ -13,8 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.wx.gzh.utils.Message2Xml.initImageMessage;
-import static com.wx.gzh.utils.Message2Xml.initTextMessage;
+import static com.wx.gzh.utils.Message2Xml.*;
 
 /**
  * 微信消息类型以及消息内容格式转换
@@ -77,7 +76,7 @@ public class WxMsgUtil {
      */
     public static String dealImageMessage(Map<String, String> map) {
         WxImageMessage imageMessage = new WxImageMessage();
-        map.put("MediaId", "");
+        // map.put("MediaId", "");
         String imageXml = initImageMessage(map);
         return imageXml;
     }
@@ -88,9 +87,8 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealVideoMessage(Map<String, String> map) {
-        Video video = new Video();
-        WxVideoMessage videoMessage = new WxVideoMessage(map, video);
-        return "";
+        String videoXml = initVideoMessage(map);
+        return videoXml;
     }
 
     /**
@@ -99,8 +97,8 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealVoiceMessage(Map<String, String> map) {
-        WxVoiceMessage voiceMessage = new WxVoiceMessage(map, "123");
-        return "";
+        String voiceXml = initVoiceMessage(map);
+        return voiceXml;
     }
 
     /**
@@ -109,7 +107,8 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealMusicMessage(Map<String, String> map) {
-        return "";
+        String musicXml = initMusicMessage(map);
+        return musicXml;
     }
 
     /**
@@ -118,7 +117,8 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealNewsMessage(Map<String, String> map) {
-        return "";
+        String newsXml = initNewsMessage(map);
+        return newsXml;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.wx.gzh.utils;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.model.Video;
 
 import java.util.Map;
@@ -9,36 +10,35 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("xml")
 public class WxVideoMessage extends WxBaseMessgae {
     /**
      * MediaId	是	通过素材管理中的接口上传多媒体文件，得到的id
      * Title	否	视频消息的标题
      * Description
      */
-    private Video video;
+    @XStreamAlias("Video")
+    private Video Video;
 
     public Video getVideo() {
-        return video;
+        return Video;
     }
 
     public void setVideo(Video video) {
-        this.video = video;
+        Video = video;
     }
 
-    public WxVideoMessage(Video video) {
-        this.video = video;
-    }
+    public WxVideoMessage() {}
 
-    public WxVideoMessage(Map<String, String> map, Video video) {
+    public WxVideoMessage(Map<String, String> map) {
         super(map);
         setMsgType("video");
-        this.video = video;
     }
 
     @Override
     public String toString() {
         return "WxVideoMessage{" +
-                "video=" + video +
+                "Video=" + Video +
                 '}';
     }
 }

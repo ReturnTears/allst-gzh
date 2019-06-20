@@ -21,17 +21,17 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         String msgType = params.get("MsgType");
         switch (msgType){
             // 处理文本消息
-            case MsgTypeConstant.REQ_MESSAGE_TYPE_TEXT:
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_TEXT:
                 return dealTextMessgae(params);
-            case "image":
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_IMAGE:
                 return dealImageMessage(params);
-            case "voice":
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_VOICE:
                 return dealVoiceMessage(params);
-            case "video":
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_VIDEO:
                 return dealVideoMessage(params);
-            case "music":
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_MUSIC:
                 return dealMusicMessage(params);
-            case "news":
+            case MsgTypeConstant.RESP_MESSAGE_TYPE_NEWS:
                 return dealNewsMessage(params);
             default:
                 return null;
