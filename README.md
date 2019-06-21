@@ -78,11 +78,15 @@
     https://image.baidu.com/search/index?tn=baiduimage&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;ie=gb18030&amp;word=jerry&amp;fr=ala&amp;ala=1&amp;alatpl=adress&amp;pos=0&amp;hs=2&amp;xthttps=111111
 
 
+### robot
+    聊天机器人采用集合数据的api接口
+
 ### 项目结构指南
     annotation  注解包
     api         与微信服务器的链接URL所在包
     constant    所有常量包
     model       model类
+    robot       聊天机器人
     service     服务层
     tools       工具包(包括：消息、事件...)
     utils       所有工具类(包括: 工具类、公共类、公共方法...)

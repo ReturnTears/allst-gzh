@@ -20,7 +20,9 @@ import java.util.Map;
  */
 @XStreamAlias("xml")
 public class WxTextMessage extends WxBaseMessgae {
-
+    /**
+     * @XStreamAlias 注解是将属性变成Content形式，所以属性可以写成小写或者任意的形式
+     */
     @XStreamAlias("Content")
     @XStreamCDATA
     private String Content;
