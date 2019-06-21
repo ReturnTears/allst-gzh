@@ -33,6 +33,9 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
                 return dealMusicMessage(params);
             case MsgTypeConstant.RESP_MESSAGE_TYPE_NEWS:
                 return dealNewsMessage(params);
+            case MsgTypeConstant.REQ_MESSAGE_TYPE_LOCATION:
+                // TODO 处理位置消息以及事件处理
+                return "";
             default:
                 return null;
         }

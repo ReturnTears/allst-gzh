@@ -20,8 +20,8 @@ public class Sha1Util {
             StringBuilder sb = new StringBuilder();
             // 处理加密结果
             for (byte b : digest) {
-                sb.append(chars[(b >>> 4) & 15]);
-                sb.append(chars[b & 15]);
+                sb.append(chars[(b >>> 4) & 0X0F]);
+                sb.append(chars[b & 0X0F]);
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {

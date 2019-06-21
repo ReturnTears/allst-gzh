@@ -27,8 +27,8 @@ public class WxJoinServiceImpl implements WxJoinService {
         // 1
         String[] strs = new String[]{TOKEN, timestamp, nonce};
         Arrays.sort(strs);
-        // 2
-        String str = strs[0] + strs[1] + strs[2];
+        // 2 将拍下后的结果拼成一个字符串
+        String str = strs[0].concat(strs[1]).concat(strs[2]);
         String mySign = Sha1Util.sha1(str);
         // 3
         return mySign.equalsIgnoreCase(signature);

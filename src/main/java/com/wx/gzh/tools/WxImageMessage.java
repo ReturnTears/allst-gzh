@@ -1,7 +1,6 @@
-package com.wx.gzh.utils;
+package com.wx.gzh.tools;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wx.gzh.annotation.XStreamCDATA;
 import com.wx.gzh.model.Image;
 
 import java.util.Map;

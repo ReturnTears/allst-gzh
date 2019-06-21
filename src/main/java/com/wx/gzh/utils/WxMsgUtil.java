@@ -1,6 +1,6 @@
 package com.wx.gzh.utils;
 
-import com.wx.gzh.model.Video;
+import com.wx.gzh.tools.WxImageMessage;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -64,9 +64,8 @@ public class WxMsgUtil {
         // System.out.println("进入处理文本回复方法............");
         // WxTextMessage textMessage = new WxTextMessage(map, "欢迎使用微信公众号");
         map.put("Content", "欢迎使用微信接口测试号，这是一条文本类型消息回复");
-        String textXml = initTextMessage(map);
         // System.out.println(textXml);
-        return textXml;
+        return initTextMessage(map);
     }
 
     /**
@@ -77,8 +76,7 @@ public class WxMsgUtil {
     public static String dealImageMessage(Map<String, String> map) {
         WxImageMessage imageMessage = new WxImageMessage();
         // map.put("MediaId", "");
-        String imageXml = initImageMessage(map);
-        return imageXml;
+        return initImageMessage(map);
     }
 
     /**
@@ -87,8 +85,7 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealVideoMessage(Map<String, String> map) {
-        String videoXml = initVideoMessage(map);
-        return videoXml;
+        return initVideoMessage(map);
     }
 
     /**
@@ -97,8 +94,7 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealVoiceMessage(Map<String, String> map) {
-        String voiceXml = initVoiceMessage(map);
-        return voiceXml;
+        return initVoiceMessage(map);
     }
 
     /**
@@ -107,8 +103,7 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealMusicMessage(Map<String, String> map) {
-        String musicXml = initMusicMessage(map);
-        return musicXml;
+        return initMusicMessage(map);
     }
 
     /**
@@ -117,8 +112,7 @@ public class WxMsgUtil {
      * @return
      */
     public static String dealNewsMessage(Map<String, String> map) {
-        String newsXml = initNewsMessage(map);
-        return newsXml;
+        return initNewsMessage(map);
     }
 
 }

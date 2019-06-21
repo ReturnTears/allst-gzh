@@ -7,6 +7,9 @@ package com.wx.gzh.constant;
  */
 public class MsgTypeConstant {
     /**
+     * -------------------------------------------------消息 Message-----------------------------------------------------
+     */
+    /**
      * 请求消息类型：文本
      */
     public static final String REQ_MESSAGE_TYPE_TEXT = "text";
@@ -76,6 +79,9 @@ public class MsgTypeConstant {
      */
     public static final String RESP_MESSAGE_TYPE_VIDEO="video";
 
+    /**
+     * --------------------------------------------------------事件 Event------------------------------------------------
+     */
     /**
      * 事件类型:订阅
      */
