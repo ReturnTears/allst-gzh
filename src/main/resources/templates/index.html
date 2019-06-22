@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>index</title>
 </head>
-    <!--<script src="js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" type="text/javascript"></script>
-    <script th:src="@{/webjars/jquery/3.4.1/jquery.slim.min.js}" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.slim.min.js}"></script>
     <style>
         .content {
             width:800px;
@@ -14,10 +14,10 @@
         .content p {
             height:15px;
             position:relative;
-            left:-140%;
+            /*left:-140%;*/
             top:0
         }
-    </style>-->
+    </style>
 <body>
     <div class="content">
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
@@ -33,10 +33,10 @@
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
     </div>
 
-    <script>
-        /*for (var i = 0; i < $(".content p").length; i++) {
+    <!--<script>
+        for (var i = 0; i < $(".content p").length; i++) {
             $(".content p").eq(i).animate({"left":"0"}, 100*i);
-        }*/
-    </script>
+        }
+    </script>-->
 </body>
 </html>
