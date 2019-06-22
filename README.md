@@ -79,7 +79,17 @@
 
 
 ### robot
-    聊天机器人采用集合数据的api接口
+    聊天机器人采用图灵机器人的api接口
+    **使用说明**
+    编码方式
+    UTF-8（调用图灵API的各个环节的编码方式均为UTF-8）
+    接口地址
+    http://openapi.tuling123.com/openapi/api/v2
+    请求方式
+    HTTP	POST
+    请求参数
+    请求参数格式为 json
+    
 
 ### 项目结构指南
     annotation  注解包
