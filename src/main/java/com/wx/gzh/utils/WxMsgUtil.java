@@ -1,5 +1,6 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.TuiLingConstant;
 import com.wx.gzh.tools.WxImageMessage;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.wx.gzh.robot.TuLingRobot.*;
 import static com.wx.gzh.utils.Message2Xml.*;
 
 /**
@@ -63,7 +65,14 @@ public class WxMsgUtil {
     public static String dealTextMessgae(Map<String, String> map) {
         // System.out.println("进入处理文本回复方法............");
         // WxTextMessage textMessage = new WxTextMessage(map, "欢迎使用微信公众号");
-        map.put("Content", "欢迎使用微信接口测试号，这是一条文本类型消息回复");
+        // map.put("Content", "欢迎使用微信接口测试号，这是一条文本类型消息回复");
+        // 将自定义消息改为机器人回复
+        String question = map.get("Content");
+        String reqStr = getRequestParams(question);
+        String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
+        String talk = getResultMes(respStr);
+        map.put("Content", talk);
+
         // System.out.println(textXml);
         return initTextMessage(map);
     }

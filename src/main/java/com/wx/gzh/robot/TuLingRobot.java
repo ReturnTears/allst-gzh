@@ -1,12 +1,11 @@
 package com.wx.gzh.robot;
 
-import com.alibaba.fastjson.JSONObject;
+import com.wx.gzh.constant.TuiLingConstant;
+import net.sf.json.JSONObject;
 
 import java.io.*;
 import java.net.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -22,12 +21,12 @@ public class TuLingRobot {
     public static final int DEF_READ_TIMEOUT = 30000;
     public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
 
-    // 配置您申请的KEY
-    public static final String APIKEY = "6ad46dd0a00a400282a8d70b2b0faba9";
+   /* // 配置您申请的KEY
+    public static final String APIKEY = "xxx";
     // 接口地址
     public static final String APIURL = "http://openapi.tuling123.com/openapi/api/v2";
     // 用户id
-    public static final String USERID = "469240";
+    public static final String USERID = "xxx";*/
 
     /**
      * 获取请求参数的JSON字符串
@@ -82,13 +81,13 @@ public class TuLingRobot {
 
         // 用户信息
         JSONObject userInfo = new JSONObject();
-        userInfo.put("apiKey", APIKEY);
-        userInfo.put("userId", USERID);
+        userInfo.put("apiKey", TuiLingConstant.APIKEY);
+        userInfo.put("userId", TuiLingConstant.USERID);
 
         jsonObject.put("perception", perception);
         jsonObject.put("userInfo", userInfo);
 
-        return jsonObject.toJSONString();
+        return jsonObject.toString();
     }
 
     public static String tulinPost(String url, String reqMes) {
@@ -148,10 +147,10 @@ public class TuLingRobot {
      * @return
      */
     public static String getResultMes(String tuilinPostStr) {
-        JSONObject theRes = JSONObject.parseObject(tuilinPostStr);
+        JSONObject theRes = JSONObject.fromObject(tuilinPostStr);
         List<Object> results = (List<Object>) theRes.get("results");
-        JSONObject resultObj = JSONObject.parseObject((String) results.get(0));
-        JSONObject values = JSONObject.parseObject((String) resultObj.get("values"));
+        JSONObject resultObj = JSONObject.fromObject(results.get(0));
+        JSONObject values = JSONObject.fromObject(resultObj.get("values"));
         return values.get("text").toString();
     }
 
@@ -161,7 +160,7 @@ public class TuLingRobot {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String reqStr = getRequestParams(scanner.next());
-            String respStr = tulinPost(APIURL, reqStr);
+            String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
             String talk = getResultMes(respStr);
             System.out.println("TA > 你说 : " + talk);
         }
