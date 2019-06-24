@@ -20,40 +20,14 @@ import java.net.ConnectException;
 import java.net.URL;
 
 /**
- * 微信菜单工具类
+ * 微信AccessToken工具类
  * @Auther Junn
  * @Date 2019/6/24 0024下午 14:55
  */
-public class WxMenuUtils {
+public class WxAccessTokenUtils {
 
-    private static Logger log = LoggerFactory.getLogger(WxMenuUtils.class);
+    private static Logger log = LoggerFactory.getLogger(WxAccessTokenUtils.class);
 
-    /**
-     *
-     * @param menu
-     *                      菜单实例
-     * @param accessToken
-     *                      获取Token
-     * @return
-     *                      0成功
-     */
-    public static int createMenus(WxMenu menu, String accessToken) {
-        int result = 0;
-        // 拼装创建菜单的URL
-        String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", accessToken);
-        // 将菜单对象转换成json字符串
-        String jsonMenu = JSONObject.fromObject(menu).toString();
-        // 调用接口创建菜单
-        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
-
-        if (null != jsonObject) {
-            if (0 != jsonObject.getInt("errcode")) {
-                result = jsonObject.getInt("errcode");
-                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
-            }
-        }
-        return result;
-    }
 
     /**
      * 获取ACCESS_TOKEN
@@ -95,7 +69,7 @@ public class WxMenuUtils {
      *                          返回结果
      * @return
      */
-    private static JSONObject httpRequest(String requestURL, String requestMethod, String outPutStr) {
+    public static JSONObject httpRequest(String requestURL, String requestMethod, String outPutStr) {
         JSONObject jsonObject = null;
         StringBuffer buffer = new StringBuffer();
         try {

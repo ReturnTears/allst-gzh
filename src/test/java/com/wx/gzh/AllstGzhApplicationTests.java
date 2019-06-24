@@ -2,7 +2,7 @@ package com.wx.gzh;
 
 import com.wx.gzh.model.AccessToken;
 import com.wx.gzh.utils.WxMenuManager;
-import com.wx.gzh.utils.WxMenuUtils;
+import com.wx.gzh.utils.WxAccessTokenUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,9 +28,9 @@ public class AllstGzhApplicationTests {
     public void testMenu() {
         String appId = "wxd8dc984917fefba0";
         String appSecret = "3950c17dacd4db2dbfc7bc7c06957cae";
-        AccessToken token = WxMenuUtils.getAccessToken(appId, appSecret);
+        AccessToken token = WxAccessTokenUtils.getAccessToken(appId, appSecret);
         if (token != null) {
-            int result = WxMenuUtils.createMenus(WxMenuManager.getMenu(), token.getAccess_token());
+            int result = WxMenuManager.createMenus(WxMenuManager.getMenu(), token.getAccess_token());
             // 判断菜单创建结果
             if (0 == result)
                 System.out.println("菜单创建成功！");

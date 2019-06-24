@@ -8,6 +8,7 @@ import com.wx.gzh.annotation.XStreamCDATA;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
+@XStreamAlias("item")
 public class Articles {
     /**
      * 图文消息标题

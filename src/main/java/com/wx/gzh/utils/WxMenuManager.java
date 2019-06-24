@@ -1,9 +1,15 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.Button;
 import com.wx.gzh.model.WxMenu;
 import com.wx.gzh.tools.WxCommonButton;
 import com.wx.gzh.tools.WxComplexButton;
+import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static com.wx.gzh.utils.WxAccessTokenUtils.httpRequest;
 
 /**
  * 微信菜单管理器
@@ -11,6 +17,33 @@ import com.wx.gzh.tools.WxComplexButton;
  * @Date 2019/6/24 0024下午 15:22
  */
 public class WxMenuManager {
+    private static Logger log = LoggerFactory.getLogger(WxMenuManager.class);
+    /**
+     * 创建菜单， 移动到WxMenuManager类中
+     * @param menu
+     *                      菜单实例
+     * @param accessToken
+     *                      获取Token
+     * @return
+     *                      0成功
+     */
+    public static int createMenus(WxMenu menu, String accessToken) {
+        int result = 0;
+        // 拼装创建菜单的URL
+        String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", accessToken);
+        // 将菜单对象转换成json字符串
+        String jsonMenu = JSONObject.fromObject(menu).toString();
+        // 调用接口创建菜单
+        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
+
+        if (null != jsonObject) {
+            if (0 != jsonObject.getInt("errcode")) {
+                result = jsonObject.getInt("errcode");
+                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+            }
+        }
+        return result;
+    }
 
     /**
      * 组装菜单数据
