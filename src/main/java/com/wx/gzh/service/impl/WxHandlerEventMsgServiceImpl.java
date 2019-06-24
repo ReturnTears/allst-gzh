@@ -41,4 +41,13 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         }
     }
 
+    /**
+     * 自定义创建菜单
+     * @return
+     */
+    @Override
+    public String createMenu() {
+        return "";
+    }
+
 }

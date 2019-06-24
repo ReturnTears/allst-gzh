@@ -10,4 +10,6 @@ import java.util.Map;
 public interface WxHandlerEventMsgService {
 
     String handlerEventAndMsg(Map<String, String> params);
+
+    String createMenu();
 }
