@@ -9,13 +9,13 @@ import com.wx.gzh.model.Button;
  */
 public class WxComplexButton extends Button {
 
-    private Button[] subButton;
+    private Button[] sub_button;
 
     public Button[] getSubButton() {
-        return subButton;
+        return sub_button;
     }
 
     public void setSubButton(Button[] subButton) {
-        this.subButton = subButton;
+        this.sub_button = subButton;
     }
 }

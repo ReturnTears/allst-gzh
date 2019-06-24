@@ -16,4 +16,11 @@ public class Button {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Button{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

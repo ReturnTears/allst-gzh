@@ -1,10 +1,12 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.model.WxAccessToken;
+import com.wx.gzh.model.AccessToken;
 import com.wx.gzh.model.WxMenu;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -24,6 +26,17 @@ import java.net.URL;
  */
 public class WxMenuUtils {
 
+    private static Logger log = LoggerFactory.getLogger(WxMenuUtils.class);
+
+    /**
+     *
+     * @param menu
+     *                      菜单实例
+     * @param accessToken
+     *                      获取Token
+     * @return
+     *                      0成功
+     */
     public static int createMenus(WxMenu menu, String accessToken) {
         int result = 0;
         // 拼装创建菜单的URL
@@ -36,8 +49,7 @@ public class WxMenuUtils {
         if (null != jsonObject) {
             if (0 != jsonObject.getInt("errcode")) {
                 result = jsonObject.getInt("errcode");
-                // log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
-                System.out.println("result >>> " + result);
+                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
             }
         }
         return result;
@@ -51,21 +63,22 @@ public class WxMenuUtils {
      *                      密钥
      * @return
      */
-    public static WxAccessToken getAccessToken(String appid, String appsecret) {
-        WxAccessToken accessToken = null;
+    public static AccessToken getAccessToken(String appid, String appsecret) {
+        AccessToken accessToken = null;
 
         String requestUrl = Constant.ACCESS_TOKEN_URL.replace("APPID", appid).replace("APPSECRET", appsecret);
         JSONObject jsonObject = httpRequest(requestUrl, "GET", null);
+        System.out.println("-------------------------" + jsonObject.toString());
         // 如果请求成功
         if (null != jsonObject) {
             try {
-                accessToken = new WxAccessToken();
-                accessToken.setToken(jsonObject.getString("access_token"));
-                accessToken.setExpiresIn(jsonObject.getInt("expires_in"));
+                accessToken = new AccessToken();
+                accessToken.setAccess_token(jsonObject.getString("access_token"));
+                accessToken.setExpires_in(jsonObject.getInt("expires_in"));
             } catch (JSONException e) {
                 accessToken = null;
                 // 获取token失败
-                // log.error("获取token失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+                log.error("获取token失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
             }
         }
         return accessToken;
@@ -104,9 +117,9 @@ public class WxMenuUtils {
             // 设置请求方式（GET/POST）
             httpUrlConn.setRequestMethod(requestMethod);
 
-            if ("GET".equalsIgnoreCase(requestMethod))
+            if ("GET".equalsIgnoreCase(requestMethod)) {
                 httpUrlConn.connect();
-
+            }
             // 当有数据需要提交时
             if (null != outPutStr) {
                 OutputStream outputStream = httpUrlConn.getOutputStream();
@@ -131,12 +144,11 @@ public class WxMenuUtils {
             inputStream = null;
             httpUrlConn.disconnect();
             jsonObject = JSONObject.fromObject(buffer.toString());
+            System.out.println("++++++++++++++++" + jsonObject);
         } catch (ConnectException ce) {
-            // log.error("Weixin server connection timed out.");
-            ce.printStackTrace();
+            log.error("Weixin server connection timed out.");
         } catch (Exception e) {
-            // log.error("https request error:{}", e);
-            e.printStackTrace();
+            log.error("https request error:{}", e);
         }
         return jsonObject;
     }

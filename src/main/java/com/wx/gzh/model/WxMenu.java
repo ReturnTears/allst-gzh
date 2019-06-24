@@ -1,5 +1,7 @@
 package com.wx.gzh.model;
 
+import java.util.Arrays;
+
 /**
  * 微信公众号菜单项
  * @Auther Junn
@@ -14,5 +16,12 @@ public class WxMenu {
 
     public void setButton(Button[] button) {
         this.button = button;
+    }
+
+    @Override
+    public String toString() {
+        return "WxMenu{" +
+                "button=" + Arrays.toString(button) +
+                '}';
     }
 }
