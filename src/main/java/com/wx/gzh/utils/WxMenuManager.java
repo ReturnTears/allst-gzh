@@ -2,7 +2,7 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.Button;
-import com.wx.gzh.model.WxMenu;
+import com.wx.gzh.model.Menu;
 import com.wx.gzh.tools.WxCommonButton;
 import com.wx.gzh.tools.WxComplexButton;
 import net.sf.json.JSONObject;
@@ -27,7 +27,7 @@ public class WxMenuManager {
      * @return
      *                      0成功
      */
-    public static int createMenus(WxMenu menu, String accessToken) {
+    public static int createMenus(Menu menu, String accessToken) {
         int result = 0;
         // 拼装创建菜单的URL
         String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", accessToken);
@@ -49,7 +49,7 @@ public class WxMenuManager {
      * 组装菜单数据
      * @return
      */
-    public static WxMenu getMenu() {
+    public static Menu getMenu() {
         WxCommonButton button11 = new WxCommonButton();
         button11.setName("公司简介1");
         button11.setType("click");
@@ -92,7 +92,7 @@ public class WxMenuManager {
         mainButton3.setName("后台应用");
         mainButton3.setSubButton(new WxCommonButton[]{button31, button32});
 
-        WxMenu menu = new WxMenu();
+        Menu menu = new Menu();
         menu.setButton(new Button[]{mainButton1, mainButton2, mainButton3});
         System.out.println("menu: >>>>>> " + menu.toString());
         return menu;

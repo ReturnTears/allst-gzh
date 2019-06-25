@@ -12,6 +12,7 @@ public class WxCommonButton extends Button {
     private String name;
     private String key;
 
+
     public String getType() {
         return type;
     }

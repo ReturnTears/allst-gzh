@@ -1,7 +1,7 @@
 package com.wx.gzh.constant;
 
 /**
- * 消息类型常量
+ * 消息事件类型常量
  * @Auther Junn
  * @Date 2019/6/20 0020上午 11:37
  */

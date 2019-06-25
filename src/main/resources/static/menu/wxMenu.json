@@ -3,16 +3,16 @@
     {
       "type":"view",
       "name":"公司简介",
-      "url":"http://Scanhandle?Page=1"
+      "url":"http://xxx?Page=1"
     },
     {
       "type":"view",
       "name":"项目案例",
-      "url":"http://Scanhandle?Page=2"
+      "url":"http://xxx?Page=2"
     },
     {
       "type":"view",
       "name":"后台应用",
-      "url":"http://Scanhandle?Page=3"
+      "url":"http://xxx?Page=3"
     }]
 }

@@ -3,6 +3,8 @@ package com.wx.gzh.api;
 import com.wx.gzh.service.WxAcceptMsgService;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import com.wx.gzh.service.WxJoinService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,7 @@ import java.util.Map;
 @RequestMapping("/api/join")
 public class WxJoinController {
 
-    private static final String TOKEN = "hyj";
-
-    private static final String RESPMSG = "微信文本消息，收到回复";
+    private static final Logger logger = LoggerFactory.getLogger(WxJoinController.class);
 
     @Autowired
     private WxJoinService wxJoinService;
@@ -45,15 +45,17 @@ public class WxJoinController {
                                     @RequestParam("timestamp") String timestamp,
                                     @RequestParam("nonce") String nonce,
                                     @RequestParam("echostr") String echostr) {
-        System.out.println("进入到API joinWxInterface方法");
+        /*System.out.println("进入到API joinWxInterface方法");
         System.out.println(signature);
         System.out.println(timestamp);
         System.out.println(nonce);
-        System.out.println(echostr);
+        System.out.println(echostr);*/
         if (wxJoinService.check(timestamp, nonce, signature)) {
-            System.out.println("Wx接入成功");
+            //System.out.println("Wx接入成功");
+            logger.info("WeiXin接入成功");
         } else {
-            System.out.println("Wx接入失败");
+            // System.out.println("Wx接入失败");
+            logger.error("WeiXin接入失败");
         }
         return echostr;
     }
@@ -80,7 +82,7 @@ public class WxJoinController {
 
         // 消息的统一处理, 需要将回复的消息封装为上述格式的xml内容
         String textXml = wxHandlerEventMsgService.handlerEventAndMsg(res);
-        System.out.println("回复消息 >> : " + textXml);
+        // System.out.println("回复消息 >> : " + textXml);
         return textXml;
     }
 }

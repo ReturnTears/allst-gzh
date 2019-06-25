@@ -7,14 +7,6 @@ import java.util.Map;
 
 /**
  * 微信文本类型消息
- * 官方回复文本消息格式：
- * <xml>
- *   <ToUserName><![CDATA[toUser]]></ToUserName>
- *   <FromUserName><![CDATA[fromUser]]></FromUserName>
- *   <CreateTime>12345678</CreateTime>
- *   <MsgType><![CDATA[text]]></MsgType>
- *   <Content><![CDATA[你好]]></Content>
- * </xml>
  * @Auther Junn
  * @Date 2019/6/19 0019
  */

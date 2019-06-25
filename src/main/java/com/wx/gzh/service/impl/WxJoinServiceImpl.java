@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+import static com.wx.gzh.constant.Constant.TOKEN;
+
 /**
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
 @Service
 public class WxJoinServiceImpl implements WxJoinService {
-
-    private static final String TOKEN = "hyj";
 
     /**
      * 接入验证， 验证消息确实来自微信服务器

@@ -2,7 +2,6 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.AccessToken;
-import com.wx.gzh.model.WxMenu;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -12,14 +11,17 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ConnectException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+
+import static com.wx.gzh.constant.Constant.APPID;
+import static com.wx.gzh.constant.Constant.APPSECRET;
 
 /**
+ * access_token是公众号的全局唯一接口调用凭据，公众号调用各接口时都需使用access_token。
  * 微信AccessToken工具类
  * @Auther Junn
  * @Date 2019/6/24 0024下午 14:55
@@ -27,8 +29,10 @@ import java.net.URL;
 public class WxAccessTokenUtils {
 
     private static Logger log = LoggerFactory.getLogger(WxAccessTokenUtils.class);
-
-
+    /**
+     * 声明一个token对象
+     */
+    private static AccessToken token;
     /**
      * 获取ACCESS_TOKEN
      * @param appid
@@ -60,11 +64,12 @@ public class WxAccessTokenUtils {
 
 
     /**
+     * 方式2
      * 发起https请求并获取结果
      * @param requestURL
      *                          请求地址
      * @param requestMethod
-     *                          请求方式
+     *                          请求方式(GET / POST)
      * @param outPutStr
      *                          返回结果
      * @return
@@ -118,12 +123,68 @@ public class WxAccessTokenUtils {
             inputStream = null;
             httpUrlConn.disconnect();
             jsonObject = JSONObject.fromObject(buffer.toString());
-            System.out.println("++++++++++++++++" + jsonObject);
+            System.out.println("菜单创建返回结果 : " + jsonObject);
         } catch (ConnectException ce) {
             log.error("Weixin server connection timed out.");
         } catch (Exception e) {
             log.error("https request error:{}", e);
         }
         return jsonObject;
+    }
+
+    /**
+     * 获取
+     * @return
+     */
+    public static String getAccessToken() {
+        if (token == null || token.isExpired()) {
+            getToken();
+        }
+        return token.getAccess_token();
+    }
+
+    /**
+     * 通过APPID和APPSECRET获取AccessToken，并存储起来
+     * {
+     *    "access_token":"22_Yq7sMrhkkr0FHcWQA11pZQVPTJ5zTgZMxkaezmDhOby03_PQVsFtaD46VOsoTr4sk8z4vG1UU3v2j_EOdZ4dkPZ31qSff4R4sO_jAVMq3XIQtBmDrHulcmsp5L0qttn-0A564OGv4Dkb7Et7CQRiADATHI",
+     *    "expires_in":7200
+     * }
+     */
+    public static void getToken(){
+        String url = Constant.ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
+        String tokenStr = WxAccessTokenUtils.getOrPost(url);
+        JSONObject jsonObject = JSONObject.fromObject(tokenStr);
+        String accessToken = jsonObject.getString("access_token");
+        String expiresIn = jsonObject.getString("expires_in");
+        // 创建token对象，并存起来
+        token = new AccessToken(accessToken, expiresIn);
+        System.out.println(token);
+    }
+
+    /**
+     * 向指定的地址发送Get请求
+     * @param url
+     *               指定URL
+     * @return
+     */
+    public static String getOrPost(String url) {
+        try {
+            URL urlObj = new URL(url);
+            // 打开链接
+            URLConnection connection = urlObj.openConnection();
+            InputStream is = connection.getInputStream();
+            byte[] b = new byte[1024];
+            int len;
+            StringBuilder builder = new StringBuilder();
+            while ((len = is.read(b)) != -1) {
+                builder.append(new String(b, 0, len));
+            }
+            return builder.toString();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

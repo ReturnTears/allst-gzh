@@ -12,4 +12,14 @@ public class TuiLingConstant {
     public static final String APIURL = "http://openapi.tuling123.com/openapi/api/v2";
     // 用户id
     public static final String USERID = "469240";
+
+
+    /**
+     * -----------------------------------------------------------------------------------------------------------------------------------
+     * 访问聚合数据机器人的接口参数
+     */
+    public static final String DEF_CHATSET = "UTF-8";
+    public static final int DEF_CONN_TIMEOUT = 30000;
+    public static final int DEF_READ_TIMEOUT = 30000;
+    public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
 }

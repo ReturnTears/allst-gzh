@@ -10,23 +10,10 @@ import java.util.Scanner;
 
 /**
  * 图灵机器人
- * 接口地址: http://openapi.tuling123.com/openapi/api/v2
  * @Auther JUNN
  * @Date 2019-06-21 下午 11:50
  */
 public class TuLingRobot {
-
-    public static final String DEF_CHATSET = "UTF-8";
-    public static final int DEF_CONN_TIMEOUT = 30000;
-    public static final int DEF_READ_TIMEOUT = 30000;
-    public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
-
-   /* // 配置您申请的KEY
-    public static final String APIKEY = "xxx";
-    // 接口地址
-    public static final String APIURL = "http://openapi.tuling123.com/openapi/api/v2";
-    // 用户id
-    public static final String USERID = "xxx";*/
 
     /**
      * 获取请求参数的JSON字符串
@@ -118,10 +105,9 @@ public class TuLingRobot {
             while ((line = in.readLine()) != null) {
                 responseStr += line;
             }
-            status = new Integer(httpUrl.getResponseCode()).toString();
+            /*status = new Integer(httpUrl.getResponseCode()).toString();
             System.out.println("status = " + status);
-            System.out.println("response = " + responseStr);
-
+            System.out.println("response = " + responseStr);*/
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -142,7 +128,7 @@ public class TuLingRobot {
     }
 
     /**
-     *
+     * 解析返回内容， 回去机器人回复的文本
      * @param tuilinPostStr
      * @return
      */
@@ -154,6 +140,10 @@ public class TuLingRobot {
         return values.get("text").toString();
     }
 
+    /**
+     * 测试图灵机器人
+     * @param args
+     */
     public static void main(String[] args) {
 
         System.out.println("输入：");
