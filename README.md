@@ -73,6 +73,8 @@
     Url	            消息链接
     MsgId	            消息id，64位整型
 
+### 图文消息
+    
 
 ### URL
     https://image.baidu.com/search/index?tn=baiduimage&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;ie=gb18030&amp;word=jerry&amp;fr=ala&amp;ala=1&amp;alatpl=adress&amp;pos=0&amp;hs=2&amp;xthttps=111111
@@ -104,3 +106,12 @@
     static      静态资源
     templates   页面模板
 
+### importance
+    页面路径的配置放在配置文件中  或者存放在数据库中，再写一个页面来维护数据， 更倾向于第一种方式，（也可以将配置放在微信公众号中权限交由管理员来完成）
+    先实现第一种，后面完成数据库维护的方式
+    
+    
+    
+    
+    
+    
