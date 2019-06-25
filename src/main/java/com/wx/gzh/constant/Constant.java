@@ -28,6 +28,9 @@ public class Constant {
      * 通过ACCESS_TOKEN创建公众号菜单的接口地址
      */
     public static final String MENU_CREATE_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-
+    /**
+     * 微信二维码 (临时二维码可以生成较多数量 / 永久二维码可以生成最多10W个)
+     */
+    public static final String WX_QRCODE = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
 
 }

@@ -191,8 +191,8 @@ public class Message2Xml {
         ar.setTitle("猫和老鼠");
         ar.setDescription("《猫和老鼠》以闹剧为特色，描绘了一对水火不容的冤家：汤姆和杰瑞猫鼠之间的战争，片中的汤姆经常使用狡诈的诡计来对付杰瑞，而杰瑞则时常利用汤姆诡计中的漏洞逃脱他的迫害并给予报复");
         // 图片链接
-        ar.setPicUrl("https://mp.weixin.qq.com/s?_");
-        ar.setUrl("https://image.baidu.com/search/index?tn=baiduimage&ct=201326592&lm=-1&cl=2&ie=gb18030&word=jerry&fr=ala&ala=1&alatpl=adress&pos=0&hs=2&xthttps=111111");
+        ar.setPicUrl("https://www.baidu.com");
+        ar.setUrl("https://mp.weixin.qq.com/s?__biz=MzU2NTgwMDIzOQ==&mid=2247483678&idx=1&sn=089f9c71ad561c6ac385af06359f800c&chksm=fcb77d5ecbc0f4482ac6250131e28abc83cabf4fdf35e166aab8fb524ffa24c0f4e5f07cde75&token=2053393448&lang=zh_CN#rd");
         List<Articles> articles = new ArrayList<>();
         articles.add(ar);
         WxNewsMessage news = new WxNewsMessage();
