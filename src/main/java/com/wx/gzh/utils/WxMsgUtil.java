@@ -1,7 +1,9 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.Constant;
 import com.wx.gzh.constant.TuiLingConstant;
 import com.wx.gzh.tools.WxImageMessage;
+import com.wx.gzh.tools.WxTextMessage;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -68,11 +70,19 @@ public class WxMsgUtil {
         // map.put("Content", "欢迎使用微信接口测试号，这是一条文本类型消息回复");
         // 将自定义消息改为机器人回复
         String question = map.get("Content");
-        String reqStr = getRequestParams(question);
-        String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
-        String talk = getResultMes(respStr);
-        map.put("Content", talk);
-
+        if ("登陆".equals(question)) {
+            String url = Constant.OAuth2_Code.replace("APPID", Constant.APPID)
+                                            .replace("REDIRECT_URI", Constant.URL)      // 这里的URI应为项目下的重定向地址，需要和网页授权的 授权回调页面域名一致
+                                            .replace("SCOPE", Constant.SNSAPI_USERINFO);
+            String cont = "点击<a href='" + url + "'>这里</a>登陆";
+            // todo 未完待处理
+            map.put("Content", cont);
+        } else {
+            String reqStr = getRequestParams(question);
+            String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
+            String talk = getResultMes(respStr);
+            map.put("Content", talk);
+        }
         // System.out.println(textXml);
         return initTextMessage(map);
     }
