@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -21,10 +22,11 @@ public class WxQRCodeUtil {
     public static String getQrCodeTempTicket() {
         // 获取ACCESSTOKEN
         String accessToken = WxAccessTokenUtils.getAccessToken();
-        String url = Constant.WX_QRCODE.replace("TOKEN", accessToken);
+        String url = Constant.WX_QRCODE_URL.replace("TOKEN", accessToken);
         // 生成临时字符二维码POST数据
         String jsonTempData = "{\"expire_seconds\": 600, \"action_name\": \"QR_STR_SCENE\", \"action_info\": {\"scene\": {\"scene_str\": \"test\"}}}";
         JSONObject object = WeiXinUtil.doPostStr(url, jsonTempData);
+        // System.out.println(object);
         String ticket = object.getString("ticket");
         // System.out.println("获取的ticket为 : " + ticket);
         return ticket;
@@ -37,12 +39,13 @@ public class WxQRCodeUtil {
     public static String getQrCodePermTicket() {
         // 获取ACCESSTOKEN
         String accessToken = WxAccessTokenUtils.getAccessToken();
-        String url = Constant.WX_QRCODE.replace("TOKEN", accessToken);
+        String url = Constant.WX_QRCODE_URL.replace("TOKEN", accessToken);
         // 生成永久字符串二维码POST数据
         String jsonPermData= "{\"action_name\": \"QR_LIMIT_STR_SCENE\", \"action_info\": {\"scene\": {\"scene_str\": \"test\"}}}";
         JSONObject object = WeiXinUtil.doPostStr(url, jsonPermData);
         String ticket = object.getString("ticket");
         System.out.println("perm ticket : " + ticket);
+        getQrCode(ticket);
         return ticket;
     }
 
@@ -77,7 +80,7 @@ public class WxQRCodeUtil {
             // 二维码存放路径+二维码名称
             String path = "";
             try {
-                String wxTicketUrl = Constant.WX_TICKET.replace("TICKET", URLTools.encodeUTF8Url(ticket));
+                String wxTicketUrl = Constant.WX_TICKET_URL.replace("TICKET", URLTools.encodeUTF8Url(ticket));
                 URL url = new URL(wxTicketUrl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
@@ -102,6 +105,36 @@ public class WxQRCodeUtil {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    /**
+     * 扫描二维码事件 : 获取用户信息
+     *                          获取已经关注了公众号的用户信息
+     *                          获取未关注公众号的用户信息
+     */
+    public static void scanQRCode() {
+        String ACCESS_TIKEN = WxAccessTokenUtils.getAccessToken();
+        String OPENID = "o_Ag01ZEmXLI2gCkgSaCmn6FYbmI";
+        String wxUserUrl = Constant.WX_USER_URL.replace("ACCESS_TOKEN", ACCESS_TIKEN).replace("OPENID", OPENID);
+        StringBuffer buffer = new StringBuffer();
+        try {
+            URL url = new URL(wxUserUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod(Constant.GET_METHOD);
+            InputStreamReader isr = new InputStreamReader(conn.getInputStream());
+            BufferedReader br = new BufferedReader(isr);
+            String str = null;
+            while ((str = br.readLine()) != null) {
+                buffer.append(str);
+            }
+            conn.disconnect();
+            isr.close();
+            br.close();
+            JSONObject jsonObject = JSONObject.fromObject(buffer.toString());
+            System.out.println(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

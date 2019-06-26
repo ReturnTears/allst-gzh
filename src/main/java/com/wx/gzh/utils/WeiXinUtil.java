@@ -87,7 +87,7 @@ public class WeiXinUtil {
     public static int createMenu(String token, String menu) {
         int result = 0;
         String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
-        JSONObject jsonObject = httpRequest(url, "POST",menu);
+        JSONObject jsonObject = httpRequest(url, Constant.POST_METHOD,menu);
         if (jsonObject != null) {
             result = jsonObject.getInt("errcode");
             System.out.println(result);
@@ -114,7 +114,7 @@ public class WeiXinUtil {
             urlConnection.setDoInput(true);
             urlConnection.setUseCaches(false);
             // 设置请求方式（GET/POST）
-            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestMethod(Constant.POST_METHOD);
 
             if (outPutStr != null) {
                 OutputStream outputStream = urlConnection.getOutputStream();

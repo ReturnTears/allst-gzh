@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 
 import static com.wx.gzh.constant.Constant.*;
+import static com.wx.gzh.utils.WxQRCodeUtil.scanQRCode;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -66,6 +67,11 @@ public class AllstGzhApplicationTests {
         // 永久带参数二维码
         String ticketPerm = WxQRCodeUtil.getQrCodePermTicket();
         System.out.println(ticketPerm);
+    }
+
+    @Test
+    public void testScanQrCode() {
+        scanQRCode();
     }
 
     @Test

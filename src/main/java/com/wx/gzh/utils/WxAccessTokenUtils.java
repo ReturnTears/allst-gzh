@@ -159,7 +159,7 @@ public class WxAccessTokenUtils {
         String expiresIn = jsonObject.getString("expires_in");
         // 创建token对象，并存起来
         token = new AccessToken(accessToken, expiresIn);
-        System.out.println(token);
+        // System.out.println(token);
     }
 
     /**
@@ -186,6 +186,6 @@ public class WxAccessTokenUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 }
