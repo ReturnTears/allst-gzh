@@ -4,6 +4,7 @@ import com.wx.gzh.model.AccessToken;
 import com.wx.gzh.utils.WeiXinUtil;
 import com.wx.gzh.utils.WxMenuManager;
 import com.wx.gzh.utils.WxAccessTokenUtils;
+import com.wx.gzh.utils.WxQRCodeUtil;
 import net.sf.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 
-import static com.wx.gzh.constant.Constant.APPID;
-import static com.wx.gzh.constant.Constant.APPSECRET;
+import static com.wx.gzh.constant.Constant.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,7 +22,7 @@ public class AllstGzhApplicationTests {
     @Test
     public void contextLoads() {
         // 1
-        String[] strs = new String[]{"TOKEN", "1230125487", "hhh"};
+        String[] strs = new String[]{"TOKEN--", "1230125487", "--hhh"};
         Arrays.sort(strs);
         // 2 将拍下后的结果拼成一个字符串
         String str = strs[0].concat(strs[1]).concat(strs[2]);
@@ -59,4 +59,17 @@ public class AllstGzhApplicationTests {
         WxAccessTokenUtils.getToken();
     }
 
+    @Test
+    public void testQRCode() {
+        // 临时带参数二维码
+        // String ticketTemp = WxQRCodeUtil.getQrCodeTempTicket();
+        // 永久带参数二维码
+        String ticketPerm = WxQRCodeUtil.getQrCodePermTicket();
+        System.out.println(ticketPerm);
+    }
+
+    @Test
+    public void testTempDir() {
+        System.out.println(TMPDIR);
+    }
 }

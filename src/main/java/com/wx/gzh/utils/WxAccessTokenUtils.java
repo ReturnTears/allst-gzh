@@ -16,6 +16,7 @@ import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 import static com.wx.gzh.constant.Constant.APPID;
 import static com.wx.gzh.constant.Constant.APPSECRET;
@@ -103,13 +104,13 @@ public class WxAccessTokenUtils {
             if (null != outPutStr) {
                 OutputStream outputStream = httpUrlConn.getOutputStream();
                 // 注意编码格式，防止中文乱码
-                outputStream.write(outPutStr.getBytes("UTF-8"));
+                outputStream.write(outPutStr.getBytes(StandardCharsets.UTF_8 ));
                 outputStream.close();
             }
 
             // 将返回的输入流转换成字符串
             InputStream inputStream = httpUrlConn.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8 );
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
             String str = null;
@@ -123,7 +124,7 @@ public class WxAccessTokenUtils {
             inputStream = null;
             httpUrlConn.disconnect();
             jsonObject = JSONObject.fromObject(buffer.toString());
-            System.out.println("菜单创建返回结果 : " + jsonObject);
+            System.out.println("返回结果 : " + jsonObject);
         } catch (ConnectException ce) {
             log.error("Weixin server connection timed out.");
         } catch (Exception e) {

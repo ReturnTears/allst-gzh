@@ -3,6 +3,7 @@ package com.wx.gzh.api;
 import com.wx.gzh.service.WxAcceptMsgService;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import com.wx.gzh.service.WxJoinService;
+import com.wx.gzh.utils.WxQRCodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -84,5 +86,12 @@ public class WxJoinController {
         String textXml = wxHandlerEventMsgService.handlerEventAndMsg(res);
         // System.out.println("回复消息 >> : " + textXml);
         return textXml;
+    }
+
+    @GetMapping("ticket")
+    public String getQRCodeTicket(HttpServletRequest request, HttpServletResponse response) {
+
+        String ticket = WxQRCodeUtil.getQrCodeTempTicket();
+        return ticket;
     }
 }

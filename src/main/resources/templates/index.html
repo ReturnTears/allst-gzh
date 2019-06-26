@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <title>index</title>
 </head>
-    <script type="text/javascript" src="js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.slim.min.js}"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" src="/js/vue.js" th:src="@{/webjars/vue/2.6.10/dist/vue.js}"></script>
+
+    <script type="text/javascript">
+        // jQuery方式行不通
+        $("button").click(function () {
+            console.log("--------进入-----");
+            var url = "ticket";
+            $.get(url, function (ticket) {
+                console.log('------come in get---------');
+                var src = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + ticket;
+                $("img").attr("src", src);
+            });
+        });
+        // Vue
+        const vue = new Vue({
+            el: '#content',
+            data() {
+                return {
+
+                }
+            },
+            method: {
+
+            }
+        });
+    </script>
     <style>
         .content {
             width:800px;
@@ -20,6 +45,8 @@
     </style>
 <body>
     <div class="content">
+        <button>生成二维码</button>
+        <img alt="" src="">
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
@@ -32,11 +59,5 @@
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
     </div>
-
-    <!--<script>
-        for (var i = 0; i < $(".content p").length; i++) {
-            $(".content p").eq(i).animate({"left":"0"}, 100*i);
-        }
-    </script>-->
 </body>
 </html>

@@ -11,6 +11,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import static com.wx.gzh.utils.WxAccessTokenUtils.httpRequest;
 
@@ -103,7 +104,7 @@ public class WeiXinUtil {
      *                      返回结果
      * @return
      */
-    private static JSONObject doPostStr(String requestURL, String outPutStr) {
+    public static JSONObject doPostStr(String requestURL, String outPutStr) {
         JSONObject jsonObject = null;
         StringBuilder builder = new StringBuilder();
         try {
@@ -118,12 +119,12 @@ public class WeiXinUtil {
             if (outPutStr != null) {
                 OutputStream outputStream = urlConnection.getOutputStream();
                 // 注意编码格式，防止中文乱码
-                outputStream.write(outPutStr.getBytes("UTF-8"));
+                outputStream.write(outPutStr.getBytes(StandardCharsets.UTF_8 ));
                 outputStream.close();
             }
 
             InputStream inputStream = urlConnection.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8 );
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
             String res = null;
