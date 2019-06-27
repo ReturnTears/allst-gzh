@@ -1,5 +1,6 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.tools.URLTools;
 import net.sf.json.JSONObject;
@@ -85,7 +86,7 @@ public class WxQRCodeUtil {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                conn.setRequestMethod(Constant.GET_METHOD);
+                conn.setRequestMethod(CommEnum.RequestMode.GET请求.getValue());
                 if (tickets.length > 1) {
                     path = tickets[1].endsWith("/") ? (tickets[1] + ticket + ".jpg") : (tickets[1] + "/" + ticket + ".jpg");
                 } else {
@@ -121,7 +122,7 @@ public class WxQRCodeUtil {
         try {
             URL url = new URL(wxUserUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod(Constant.GET_METHOD);
+            conn.setRequestMethod(CommEnum.RequestMode.GET请求.getValue());
             InputStreamReader isr = new InputStreamReader(conn.getInputStream());
             BufferedReader br = new BufferedReader(isr);
             String str = null;

@@ -1,6 +1,6 @@
 package com.wx.gzh.robot;
 
-import com.wx.gzh.constant.TuiLingConstant;
+import com.wx.gzh.constant.Constant;
 import net.sf.json.JSONObject;
 
 import java.io.*;
@@ -68,8 +68,8 @@ public class TuLingRobot {
 
         // 用户信息
         JSONObject userInfo = new JSONObject();
-        userInfo.put("apiKey", TuiLingConstant.APIKEY);
-        userInfo.put("userId", TuiLingConstant.USERID);
+        userInfo.put("apiKey", Constant.APIKEY);
+        userInfo.put("userId", Constant.USERID);
 
         jsonObject.put("perception", perception);
         jsonObject.put("userInfo", userInfo);
@@ -150,7 +150,7 @@ public class TuLingRobot {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             String reqStr = getRequestParams(scanner.next());
-            String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
+            String respStr = tulinPost(Constant.APIURL, reqStr);
             String talk = getResultMes(respStr);
             System.out.println("TA > 你说 : " + talk);
         }

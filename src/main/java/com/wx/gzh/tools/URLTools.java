@@ -1,7 +1,6 @@
 package com.wx.gzh.tools;
 
-import com.wx.gzh.constant.Constant;
-
+import com.wx.gzh.constant.CommEnum;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -19,7 +18,7 @@ public class URLTools {
      * @return
      */
     public static String encodeUTF8Url(String url) throws UnsupportedEncodingException {
-        return URLEncoder.encode(url, Constant.UTF8Code);
+        return URLEncoder.encode(url, CommEnum.EncodingMode.UTF8编码.getValue());
     }
 
     /**
@@ -28,6 +27,6 @@ public class URLTools {
      * @return
      */
     public static String decodeUTF8Url(String url) throws UnsupportedEncodingException {
-        return URLDecoder.decode(url, Constant.UTF8Code);
+        return URLDecoder.decode(url, CommEnum.EncodingMode.UTF8编码.getValue());
     }
 }

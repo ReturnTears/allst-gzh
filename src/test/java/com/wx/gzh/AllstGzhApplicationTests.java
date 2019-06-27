@@ -1,6 +1,6 @@
 package com.wx.gzh;
 
-import com.wx.gzh.constant.CommEnumType;
+import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.model.AccessToken;
 import com.wx.gzh.utils.*;
 import net.sf.json.JSONObject;
@@ -75,13 +75,13 @@ public class AllstGzhApplicationTests {
     @Test
     public void testTempDir() {
         System.out.println(TMPDIR);
-        System.out.println(CommEnumType.MatterType.图片.getValue());
+        System.out.println(CommEnum.MatterType.图片.getValue());
     }
 
     @Test
     public void testMatter() {
         String file = "C:/Users/June/Pictures/Saved Pictures/huge.jpg";
-        String result = WxMatterUtil.uploadTempMatter(file, CommEnumType.MatterType.图片.getValue());
+        String result = WxMatterUtil.uploadTempMatter(file, CommEnum.MatterType.图片.getValue());
         System.out.println("upload matter : " + result);
     }
 }

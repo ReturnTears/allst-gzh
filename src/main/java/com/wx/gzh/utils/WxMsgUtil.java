@@ -1,9 +1,7 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.constant.TuiLingConstant;
 import com.wx.gzh.tools.WxImageMessage;
-import com.wx.gzh.tools.WxTextMessage;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -79,7 +77,7 @@ public class WxMsgUtil {
             map.put("Content", cont);
         } else {
             String reqStr = getRequestParams(question);
-            String respStr = tulinPost(TuiLingConstant.APIURL, reqStr);
+            String respStr = tulinPost(Constant.APIURL, reqStr);
             String talk = getResultMes(respStr);
             map.put("Content", talk);
         }

@@ -1,11 +1,10 @@
 package com.wx.gzh.utils;
 
-import com.wx.gzh.constant.CommEnumType;
+import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -25,7 +24,7 @@ public class WxMatterUtil {
     public static String uploadTempMatter(String path, String type) {
         File file = new File(path);
         String access_token = WxAccessTokenUtils.getAccessToken();
-        String matterType = CommEnumType.MatterType.图片.getValue();
+        String matterType = CommEnum.MatterType.图片.getValue();
         // 地址
         String url = Constant.MATTER_ADD_TEMP.replace("ACCESS_TOKEN", access_token).replace("TYPE", type);
         try {
@@ -37,7 +36,7 @@ public class WxMatterUtil {
             conn.setUseCaches(false);
             // 设置请求头信息
             conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Charset", Constant.UTF8Code);
+            conn.setRequestProperty("Charset", CommEnum.EncodingMode.UTF8编码.getValue());
             // 设置边界
             String boundary = "--" + System.currentTimeMillis();
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);

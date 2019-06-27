@@ -1,6 +1,6 @@
 package com.wx.gzh.service.impl;
 
-import com.wx.gzh.constant.MsgTypeConstant;
+import com.wx.gzh.constant.Constant;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import org.springframework.stereotype.Service;
 
@@ -21,19 +21,19 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         String msgType = params.get("MsgType");
         switch (msgType){
             // 处理文本消息
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_TEXT:
+            case Constant.RESP_MESSAGE_TYPE_TEXT:
                 return dealTextMessgae(params);
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_IMAGE:
+            case Constant.RESP_MESSAGE_TYPE_IMAGE:
                 return dealImageMessage(params);
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_VOICE:
+            case Constant.RESP_MESSAGE_TYPE_VOICE:
                 return dealVoiceMessage(params);
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_VIDEO:
+            case Constant.RESP_MESSAGE_TYPE_VIDEO:
                 return dealVideoMessage(params);
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_MUSIC:
+            case Constant.RESP_MESSAGE_TYPE_MUSIC:
                 return dealMusicMessage(params);
-            case MsgTypeConstant.RESP_MESSAGE_TYPE_NEWS:
+            case Constant.RESP_MESSAGE_TYPE_NEWS:
                 return dealNewsMessage(params);
-            case MsgTypeConstant.REQ_MESSAGE_TYPE_LOCATION:
+            case Constant.REQ_MESSAGE_TYPE_LOCATION:
                 // TODO 处理位置消息以及事件处理
                 return "";
             default:

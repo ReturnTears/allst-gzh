@@ -1,5 +1,6 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.Button;
 import com.wx.gzh.model.ClickButton;
@@ -87,7 +88,7 @@ public class WeiXinUtil {
     public static int createMenu(String token, String menu) {
         int result = 0;
         String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
-        JSONObject jsonObject = httpRequest(url, Constant.POST_METHOD,menu);
+        JSONObject jsonObject = httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), menu);
         if (jsonObject != null) {
             result = jsonObject.getInt("errcode");
             System.out.println(result);
@@ -114,7 +115,7 @@ public class WeiXinUtil {
             urlConnection.setDoInput(true);
             urlConnection.setUseCaches(false);
             // 设置请求方式（GET/POST）
-            urlConnection.setRequestMethod(Constant.POST_METHOD);
+            urlConnection.setRequestMethod(CommEnum.RequestMode.POST请求.getValue());
 
             if (outPutStr != null) {
                 OutputStream outputStream = urlConnection.getOutputStream();
