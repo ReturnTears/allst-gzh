@@ -84,7 +84,7 @@ public class AllstGzhApplicationTests {
     @Test
     public void testMatter() {
         String file = "C:\\Users\\Administrator\\Pictures\\111.PNG";
-        String result = WxMatterUtil.addTempMatter(file, CommEnum.MatterType.图片.getValue());
+        JSONObject result = WxMatterUtil.uploadTempMaterial();
         System.out.println("upload matter : " + result);
     }
 }

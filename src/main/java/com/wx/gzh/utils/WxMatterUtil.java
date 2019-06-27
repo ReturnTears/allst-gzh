@@ -2,6 +2,7 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
+import net.sf.json.JSONObject;
 import org.apache.tomcat.jni.SSL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -102,6 +103,33 @@ public class WxMatterUtil {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    public static JSONObject uploadTempMaterial() {
+        String accessToken = WxAccessTokenUtils.getAccessToken();
+        System.out.println("accesstoken : " + accessToken);
+        String type = CommEnum.MatterType.图片.getValue();
+        String fileUrl = "C:\\Users\\Administrator\\Pictures\\111.PNG";
+        // 1、创建本地文件
+        File file = new File(fileUrl);
+        // 2、拼接请求URL
+        String URL = Constant.MATTER_ADD_TEMP.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
+        // 3、调用接口，发送请求，上传文件到微信服务器
+        String result = WxBaseUtil.httpRequest(URL, file);
+        // 4、json字符串转对象，解析返回值，json反序列化
+        result = result.replaceAll("[\\\\]]", "");
+        System.out.println("result : " + result);
+        JSONObject resultJson = JSONObject.fromObject(result);
+        // 5、返回参数判断
+        if (resultJson != null) {
+            if (resultJson.get("media_id") != null) {
+                System.out.println("上传" + type + "永久素材成功");
+                return resultJson;
+            } else {
+                System.out.println("上传" + type + "永久素材失败");
+            }
+        }
         return null;
     }
 

@@ -10,7 +10,6 @@ import net.sf.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
