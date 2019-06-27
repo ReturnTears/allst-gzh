@@ -2,8 +2,12 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
+import org.apache.tomcat.jni.SSL;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import java.io.*;
 import java.net.URL;
 
@@ -21,12 +25,22 @@ public class WxMatterUtil {
      *                  上传文件的类型
      * @return
      */
-    public static String uploadTempMatter(String path, String type) {
+    public static String addTempMatter(String path, String type) {
+        StringBuffer buffer = new StringBuffer();
         File file = new File(path);
+        if (!file.exists() || !file.isFile()) {
+            try {
+                throw new IOException("文件不存在！");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        // 获取Access_Token
         String access_token = WxAccessTokenUtils.getAccessToken();
         String matterType = CommEnum.MatterType.图片.getValue();
         // 地址
         String url = Constant.MATTER_ADD_TEMP.replace("ACCESS_TOKEN", access_token).replace("TYPE", type);
+        System.out.println("新增素材时的url : " + url);
         try {
             URL urlObj = new URL(url);
             HttpsURLConnection conn = (HttpsURLConnection) urlObj.openConnection();
@@ -34,47 +48,79 @@ public class WxMatterUtil {
             conn.setDoInput(true);
             conn.setDoOutput(true);
             conn.setUseCaches(false);
+            conn.setRequestMethod(CommEnum.RequestMode.POST请求.getValue());
             // 设置请求头信息
             conn.setRequestProperty("Connection", "Keep-Alive");
             conn.setRequestProperty("Charset", CommEnum.EncodingMode.UTF8编码.getValue());
             // 设置边界
-            String boundary = "--" + System.currentTimeMillis();
+            String boundary = "----------" + System.currentTimeMillis();
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             // 获取输出流
-            OutputStream out = conn.getOutputStream();
+            OutputStream out = new DataOutputStream(conn.getOutputStream());
             // 文件输入流
-            InputStream in = new FileInputStream(file);
+            InputStream in = new DataInputStream(new FileInputStream(file));
             // 1、头部信息
             StringBuilder builder = new StringBuilder();
             builder.append("--");
             builder.append(boundary);
             builder.append("\r\n");
-            builder.append("Content-Disposition;form-data;name=\"media\";filename=\"" + file.getName() + "\"\r\n\r\n");
-            builder.append("Content-Type;application/octet-stream\r\n\r\n");
-            out.write(builder.toString().getBytes());
+            builder.append("Content-Disposition:form-data;name=\"media\";filename=\"" + file.getName() + "\";filelength=\"" + file.length() + "\"\r\n\r\n");
+            builder.append("Content-Type:application/octet-stream\r\n\r\n");
+            out.write(builder.toString().getBytes(CommEnum.EncodingMode.UTF8编码.getValue()));
             // 2、文件内容
-            byte[] b = new byte[1024];
+            byte[] b = new byte[1024 * 1024 * 10];
             int len;
             while ((len = in.read(b)) != -1) {
                 out.write(b, 0, len);
             }
+            in.close();
             // 3、尾部信息
-            String footer = "\r\n--" + boundary + "--\r\n";
-            out.write(footer.getBytes());
+            byte[] footer = ("\r\n--" + boundary + "--\r\n").getBytes(CommEnum.EncodingMode.UTF8编码.getValue());
+            out.write(footer);
             out.flush();
             out.close();
-            // 读取数据
-            InputStream is = conn.getInputStream();
-            StringBuilder sb = new StringBuilder();
-            while ((len = is.read(b)) != -1) {
-                sb.append(new String(b, 0, len));
+
+            // 读取数据, 获取响应
+            // StringBuffer buffer = new StringBuffer();
+            BufferedReader reader = null;
+            try {
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (reader != null) {
+                    reader.close();
+                }
             }
-            return sb.toString();
+            conn.disconnect();
+            return buffer.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "";
+        return null;
+    }
+
+    /**
+     * 下载临时文件
+     * @param media_id
+     *                  mediaId
+     * @return
+     */
+    public static String downloadTempMatter(String media_id) {
+        return null;
+    }
+
+    /**
+     * 新增永久文件
+     * @return
+     */
+    public static String addPermMatter() {
+        return null;
     }
 
 }

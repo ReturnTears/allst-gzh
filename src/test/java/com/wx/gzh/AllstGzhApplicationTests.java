@@ -78,10 +78,13 @@ public class AllstGzhApplicationTests {
         System.out.println(CommEnum.MatterType.图片.getValue());
     }
 
+    /**
+     * 素材类型
+     */
     @Test
     public void testMatter() {
-        String file = "C:/Users/June/Pictures/Saved Pictures/huge.jpg";
-        String result = WxMatterUtil.uploadTempMatter(file, CommEnum.MatterType.图片.getValue());
+        String file = "C:\\Users\\Administrator\\Pictures\\111.PNG";
+        String result = WxMatterUtil.addTempMatter(file, CommEnum.MatterType.图片.getValue());
         System.out.println("upload matter : " + result);
     }
 }

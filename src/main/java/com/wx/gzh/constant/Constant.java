@@ -149,6 +149,34 @@ public class Constant {
      * 新增临时素材
      */
     public static final String MATTER_ADD_TEMP = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
+    /**
+     * 获取临时文件
+     */
+    public static final String MATTER_GET_TEMP = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID";
+    /**
+     * 新增永久文件
+     */
+    public static final String MATTER_ADD_PERM = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=ACCESS_TOKEN";
+    /**
+     * 获取永久文件
+     */
+    public static final String MATTER_GET_PERM = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=ACCESS_TOKEN";
+    /**
+     * 删除永久文件
+     */
+    public static final String MATTER_DEL_PERM = "https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=ACCESS_TOKEN";
+    /**
+     * 修改永久文件
+     */
+    public static final String MATTER_UPDATE_PERM= "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token=ACCESS_TOKEN";
+    /**
+     * 获取素材总数
+     */
+    public static final String MATTER_NUMS = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=ACCESS_TOKEN";
+    /**
+     * 获取素材列表
+     */
+    public static final String MATTER_LIST = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=ACCESS_TOKEN";
 
     /**
      * -----------------------------------------------图灵机器人---------------------------------------------------------

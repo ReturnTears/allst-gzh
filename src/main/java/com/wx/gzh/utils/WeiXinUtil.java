@@ -137,9 +137,7 @@ public class WeiXinUtil {
             bufferedReader.close();
             urlConnection.disconnect();
             return JSONObject.fromObject(builder.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return jsonObject;
