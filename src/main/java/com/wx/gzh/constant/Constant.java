@@ -39,6 +39,10 @@ public class Constant {
      */
     public static final String MENU_CREATE_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
     /**
+     * 通过ACCESS_TOKEN删除公众号接口地址
+     */
+    public static final String MENU_DELETE_URL = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN";
+    /**
      * --------------------------------------------------二维码信息------------------------------------------------------
      */
     /**

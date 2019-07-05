@@ -46,17 +46,17 @@ public class WeiXinUtil {
         ViewButton button21 = new ViewButton();
         button21.setName("进入项目");
         button21.setType("view");
-        button21.setUrl("http://47.101.154.109:9999/admin/web/login");
+        button21.setUrl("https://www.baidu.com");
 
         ViewButton button22 = new ViewButton();
         button22.setName("图标预览");
         button22.setType("view");
-        button22.setUrl("http://47.101.154.109:10004/screen/mobile/pages/index");
+        button22.setUrl("https://www.baidu.com");
 
         ViewButton button23 = new ViewButton();
         button23.setName("APP下载");
         button23.setType("view");
-        button23.setUrl("http://47.101.154.109:10001/mobile/api/app/appUpgradeInfo/downloadApk?newVersion=19");
+        button23.setUrl("https://www.baidu.com");
 
         ViewButton button24 = new ViewButton();
         button24.setName("其他");
@@ -77,7 +77,7 @@ public class WeiXinUtil {
     }
 
     /**
-     * 生成菜单
+     * 创建菜单
      * @param token
      *                  ACCESS_TOKEN
      * @param menu
@@ -140,6 +140,16 @@ public class WeiXinUtil {
             e.printStackTrace();
         }
         return jsonObject;
+    }
+
+    /**
+     * 删除菜单
+     * @param token
+     *                  ACCESS_TOKEN
+     */
+    public static void deleteMenu(String token) {
+        String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
+        String result = "";
     }
 
 }
