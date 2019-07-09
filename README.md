@@ -121,7 +121,9 @@
     
 
 ### 收集用户信息数据
-    
+
+### 整合MyBatis框架
+    Mybatis1.3.1 + MySQL8.0
 
 ### 公众号的视图结构
     一级菜单    二级菜单
@@ -133,4 +135,15 @@
 ### 项目案例页面
 
 
+### 备注
+```
+$xslt
+Navicat连接MySQL Server8.0版本时出现Client does not support authentication protocol requested  by server；解决如下：
+1、use mysql;
 
+2、alter user 'root'@'localhost' identified with mysql_native_password by 'your password';
+
+3、flush privileges;
+
+```
+        
