@@ -124,27 +124,27 @@ public class Constant {
     /**
      * 用户同意授权，获取Code
      */
-    public static final String OAuth2_Code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
+    public static final String WX_OAuth2_Code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
     /**
      * 通过code换取网页授权access_token, 此access_token与基础支持的access_token不同
      */
-    public static final String OAuth2_ACCESS_TOKEN = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
+    public static final String WX_OAuth2_ACCESS_TOKEN = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
     /**
      * 刷新access_token（如果需要）
      */
-    public static final String OAuth2_REFRESH_TOKEN = "https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";
+    public static final String WX_OAuth2_REFRESH_TOKEN = "https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";
     /**
      * 检验授权凭证（access_token）是否有效, GET请求
      */
-    public static final String OAuth2_CHECK_TOKEN = "https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
+    public static final String WX_OAuth2_CHECK_TOKEN = "https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
     /**
      * 以snsapi_base为scope发起的网页授权，是用来获取进入页面的用户的openid的，并且是静默授权并自动跳转到回调页的。
      */
-    public static final String SNSAPI_BASE = "snsapi_base";
+    public static final String WX_SNSAPI_BASE = "snsapi_base";
     /**
      * 以snsapi_userinfo为scope发起的网页授权，是用来获取用户的基本信息的
      */
-    public static final String SNSAPI_USERINFO = "snsapi_userinfo";
+    public static final String WX_SNSAPI_USERINFO = "snsapi_userinfo";
 
     /**
      * -----------------------------------------------素材管理-----------------------------------------------------------

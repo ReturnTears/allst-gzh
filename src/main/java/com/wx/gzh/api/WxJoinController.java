@@ -1,5 +1,7 @@
 package com.wx.gzh.api;
 
+import com.wx.gzh.constant.CommEnum;
+import com.wx.gzh.constant.Constant;
 import com.wx.gzh.service.WxAcceptMsgService;
 import com.wx.gzh.service.WxHandlerEventMsgService;
 import com.wx.gzh.service.WxJoinService;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 /**
@@ -41,8 +45,8 @@ public class WxJoinController {
      * @param echostr	    随机字符串
      * @return
      */
-    // @RequestMapping(value = "wx", method = RequestMethod.GET)
-    @GetMapping
+    @RequestMapping(value = "wx", method = RequestMethod.GET)
+    //@GetMapping
     public String joinWxInterface(@RequestParam("signature") String signature,
                                     @RequestParam("timestamp") String timestamp,
                                     @RequestParam("nonce") String nonce,
