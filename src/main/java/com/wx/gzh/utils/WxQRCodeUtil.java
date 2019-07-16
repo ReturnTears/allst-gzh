@@ -25,7 +25,7 @@ public class WxQRCodeUtil {
         String url = Constant.WX_QRCODE_URL.replace("TOKEN", accessToken);
         // 生成临时字符二维码POST数据
         String jsonTempData = "{\"expire_seconds\": 600, \"action_name\": \"QR_STR_SCENE\", \"action_info\": {\"scene\": {\"scene_str\": \"test\"}}}";
-        JSONObject object = WeiXinUtil.doPostStr(url, jsonTempData);
+        JSONObject object = WxHttpUtil.doPostStr(url, jsonTempData);
         // System.out.println(object);
         String ticket = object.getString("ticket");
         // System.out.println("获取的ticket为 : " + ticket);
@@ -42,7 +42,7 @@ public class WxQRCodeUtil {
         String url = Constant.WX_QRCODE_URL.replace("TOKEN", accessToken);
         // 生成永久字符串二维码POST数据
         String jsonPermData= "{\"action_name\": \"QR_LIMIT_STR_SCENE\", \"action_info\": {\"scene\": {\"scene_str\": \"test\"}}}";
-        JSONObject object = WeiXinUtil.doPostStr(url, jsonPermData);
+        JSONObject object = WxHttpUtil.doPostStr(url, jsonPermData);
         String ticket = object.getString("ticket");
         System.out.println("perm ticket : " + ticket);
         getQrCode(ticket);

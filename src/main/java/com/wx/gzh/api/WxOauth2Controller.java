@@ -26,7 +26,8 @@ public class WxOauth2Controller {
     @RequestMapping("code")
     public void oauth(HttpServletResponse response) {
 
-        String path = Constant.URL + "/ticket";
+//        String path = Constant.URL + "/ticket";
+        String path = "http://huwx.free.idcfengye.com/web/conn/index";
         try {
             path = URLEncoder.encode(path, CommEnum.EncodingMode.UTF8编码.getValue());
         } catch (UnsupportedEncodingException e) {

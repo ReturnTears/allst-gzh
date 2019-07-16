@@ -7,20 +7,12 @@ import com.wx.gzh.entity.ClickButton;
 import com.wx.gzh.entity.Menu;
 import com.wx.gzh.entity.ViewButton;
 import net.sf.json.JSONObject;
-
-import javax.net.ssl.HttpsURLConnection;
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-
-import static com.wx.gzh.utils.WxAccessTokenUtils.httpRequest;
-
 /**
  * WeiXinUtil工具类
  * @Auther Junn
  * @Date 2019/6/25 0025下午 14:51
  */
-public class WeiXinUtil {
+public class WxMenuUtil {
     /**
      * 组装菜单
      * @return
@@ -92,59 +84,12 @@ public class WeiXinUtil {
     public static int createMenu(String token, String menu) {
         int result = 0;
         String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
-        JSONObject jsonObject = httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), menu);
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), menu);
         if (jsonObject != null) {
             result = jsonObject.getInt("errcode");
             System.out.println(result);
         }
         return result;
-    }
-
-    /**
-     * 方式1，推荐使用方式2--> httpRequest
-     * 发送POST请求返回JSON对象结果
-     * @param requestURL
-     *                      微信公众号菜单创建HTTPS接口
-     * @param outPutStr
-     *                      返回结果
-     * @return
-     */
-    public static JSONObject doPostStr(String requestURL, String outPutStr) {
-        JSONObject jsonObject = null;
-        StringBuilder builder = new StringBuilder();
-        try {
-            URL url = new URL(requestURL);
-            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-            urlConnection.setDoOutput(true);
-            urlConnection.setDoInput(true);
-            urlConnection.setUseCaches(false);
-            // 设置请求方式（GET/POST）
-            urlConnection.setRequestMethod(CommEnum.RequestMode.POST请求.getValue());
-
-            if (outPutStr != null) {
-                OutputStream outputStream = urlConnection.getOutputStream();
-                // 注意编码格式，防止中文乱码
-                outputStream.write(outPutStr.getBytes(StandardCharsets.UTF_8 ));
-                outputStream.close();
-            }
-
-            InputStream inputStream = urlConnection.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8 );
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-            String res = null;
-            while ((res = bufferedReader.readLine()) != null) {
-                builder.append(res);
-            }
-            inputStream.close();
-            inputStreamReader.close();
-            bufferedReader.close();
-            urlConnection.disconnect();
-            return JSONObject.fromObject(builder.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonObject;
     }
 
     /**
@@ -155,7 +100,7 @@ public class WeiXinUtil {
     public static void deleteMenu(String token) {
         String url = Constant.MENU_DELETE_URL.replace("ACCESS_TOKEN", token);
         int result;
-        JSONObject jsonObject = httpRequest(url, CommEnum.RequestMode.GET请求.getValue(), "");
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, CommEnum.RequestMode.GET请求.getValue(), "");
         if (jsonObject != null) {
             result = jsonObject.getInt("errcode");
             System.out.println(result);

@@ -9,8 +9,6 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.wx.gzh.utils.WxAccessTokenUtils.httpRequest;
-
 /**
  * 微信菜单管理器
  * @Auther Junn
@@ -34,7 +32,7 @@ public class WxMenuManager {
         // 将菜单对象转换成json字符串
         String jsonMenu = JSONObject.fromObject(menu).toString();
         // 调用接口创建菜单
-        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, "POST", jsonMenu);
 
         if (null != jsonObject) {
             if (0 != jsonObject.getInt("errcode")) {
