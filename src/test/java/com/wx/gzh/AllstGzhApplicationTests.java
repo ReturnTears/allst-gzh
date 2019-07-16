@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 
 import static com.wx.gzh.constant.Constant.*;
+import static com.wx.gzh.utils.WeiXinUtil.deleteMenu;
 import static com.wx.gzh.utils.WxQRCodeUtil.scanQRCode;
 
 @RunWith(SpringRunner.class)
@@ -51,6 +52,12 @@ public class AllstGzhApplicationTests {
         } else {
             System.out.println("菜单创建失败");
         }
+    }
+
+    @Test
+    public void testDeleteMenu() {
+        String token = WxAccessTokenUtils.getAccessToken();
+        deleteMenu(token);
     }
 
     @Test

@@ -153,8 +153,13 @@ public class WeiXinUtil {
      *                  ACCESS_TOKEN
      */
     public static void deleteMenu(String token) {
-        String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
-        String result = "";
+        String url = Constant.MENU_DELETE_URL.replace("ACCESS_TOKEN", token);
+        int result;
+        JSONObject jsonObject = httpRequest(url, CommEnum.RequestMode.GET请求.getValue(), "");
+        if (jsonObject != null) {
+            result = jsonObject.getInt("errcode");
+            System.out.println(result);
+        }
     }
 
 }
