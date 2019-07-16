@@ -2,41 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>微信后台管理首页</title>
 </head>
     <script type="text/javascript" src="/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script type="text/javascript" src="/js/vue.js" th:src="@{/webjars/vue/2.6.10/dist/vue.js}"></script>
-
-    <script type="text/javascript">
-        // jQuery方式行不通
-        $("button").click(function () {
-            console.log("--------进入-----");
-            var url = "ticket";
-            $.get(url, function (ticket) {
-                console.log('------come in get---------');
-                var src = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + ticket;
-                $("img").attr("src", src);
-            });
-        });
-        // Vue
-        const vue = new Vue({
-            el: '#content',
-            data() {
-                return {
-                    msg: "微信菜单栏模板页面"
-                }
-            },
-            method: {
-
-            }
-        });
-    </script>
+    <script type="text/javascript" src="/js/vue.js" th:src="@{/webjars/vue/2.6.10/dist/vue.min.js}"></script>
     <style>
-        .content {
+        #content {
             width:800px;
             margin:0 auto;
         }
-        .content p {
+        #content p {
             height:15px;
             position:relative;
             /*left:-140%;*/
@@ -44,9 +19,9 @@
         }
     </style>
 <body>
-    <div class="content">
-        <button>生成二维码</button>
-        <img alt="" src="">
+    <div id="content">
+        <button id="btn">生成二维码</button>
+        <img id="img1" alt="" src="">
         <div>
             <h3>{{ msg }}</h3>
         </div>
@@ -62,5 +37,45 @@
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
     </div>
+
+    <script type="text/javascript">
+        // Ajax
+        $("#btn").on('click', function () {
+            /*let url = "/wx/get/tickets";
+            let tick = "gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybWZSRGQ1WThjUWwxMDAwMGcwNzQAAgTpIBNdAwQAAAAA";
+            $.get(url, function () {
+                console.log('------come in get---------');
+                let src = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + tick;
+                $("#img1").attr("src", src);
+            });*/
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url:"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybWZSRGQ1WThjUWwxMDAwMGcwNzQAAgTpIBNdAwQAAAAA",
+                async: true,
+                success: function(data) {
+                   if (data != null) {
+                       console.log("获取数据");
+                       $("#img1").attr("src", src);
+                   }
+                }
+            });
+
+
+        });
+        // Vue
+        const vue = new Vue({
+            el: '#content',
+            data() {
+                return {
+                    msg: "微信菜单栏模板页面"
+                }
+            },
+            method: {
+
+            }
+        });
+    </script>
 </body>
 </html>

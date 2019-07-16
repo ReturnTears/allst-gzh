@@ -1,4 +1,4 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 /**
  * 上报地理位置事件

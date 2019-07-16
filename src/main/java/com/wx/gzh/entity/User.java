@@ -1,4 +1,4 @@
-package com.wx.gzh.model;
+package com.wx.gzh.entity;
 
 /**
  * 用户的基本信息

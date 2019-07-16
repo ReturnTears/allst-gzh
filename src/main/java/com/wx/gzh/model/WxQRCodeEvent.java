@@ -1,4 +1,4 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 /**
  * 扫描参数带二维码事件

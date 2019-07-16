@@ -2,12 +2,11 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.tools.URLTools;
+import com.wx.gzh.model.URLTools;
 import net.sf.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -116,7 +115,7 @@ public class WxQRCodeUtil {
      */
     public static void scanQRCode() {
         String ACCESS_TIKEN = WxAccessTokenUtils.getAccessToken();
-        String OPENID = "o_Ag01ZEmXLI2gCkgSaCmn6FYbmI";
+        String OPENID = "o_Ag01Zeej4vTtuvn8mEdYGEY4l0";
         String wxUserUrl = Constant.WX_USER_URL.replace("ACCESS_TOKEN", ACCESS_TIKEN).replace("OPENID", OPENID);
         StringBuffer buffer = new StringBuffer();
         try {

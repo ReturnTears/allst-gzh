@@ -2,10 +2,10 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.model.Button;
-import com.wx.gzh.model.ClickButton;
-import com.wx.gzh.model.Menu;
-import com.wx.gzh.model.ViewButton;
+import com.wx.gzh.entity.Button;
+import com.wx.gzh.entity.ClickButton;
+import com.wx.gzh.entity.Menu;
+import com.wx.gzh.entity.ViewButton;
 import net.sf.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -39,9 +39,14 @@ public class WeiXinUtil {
         button12.setKey("12");
 
         ClickButton button13 = new ClickButton();
-        button13.setName("其他");
+        button13.setName("招聘信息");
         button13.setType("click");
         button13.setKey("13");
+
+        ClickButton button14 = new ClickButton();
+        button13.setName("其他");
+        button13.setType("click");
+        button13.setKey("14");
 
         ViewButton button21 = new ViewButton();
         button21.setName("进入项目");
@@ -64,11 +69,11 @@ public class WeiXinUtil {
         button24.setUrl("https://www.baidu.com");
 
         Button button1 = new Button();
-        button1.setName("菜单一");
+        button1.setName("关于公司");
         button1.setSub_button(new Button[]{button11, button12, button13});
 
         Button button2 = new Button();
-        button2.setName("菜单二");
+        button2.setName("关于项目");
         button2.setSub_button(new Button[]{button21, button22, button23, button24});
 
         menu.setButton(new Button[]{button1, button2});

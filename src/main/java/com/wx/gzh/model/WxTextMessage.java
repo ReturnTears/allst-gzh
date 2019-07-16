@@ -1,4 +1,4 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.annotation.XStreamCDATA;

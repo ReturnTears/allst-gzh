@@ -1,7 +1,7 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wx.gzh.model.Video;
+import com.wx.gzh.entity.Video;
 
 import java.util.Map;
 

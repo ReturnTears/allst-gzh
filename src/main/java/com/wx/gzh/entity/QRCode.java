@@ -1,4 +1,4 @@
-package com.wx.gzh.model;
+package com.wx.gzh.entity;
 
 /**
  * 微信二维码，关注用

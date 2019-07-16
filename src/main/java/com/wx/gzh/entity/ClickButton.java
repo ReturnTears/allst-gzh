@@ -1,4 +1,4 @@
-package com.wx.gzh.model;
+package com.wx.gzh.entity;
 
 /**
  * click类型按钮

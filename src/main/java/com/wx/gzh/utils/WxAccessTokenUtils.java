@@ -1,7 +1,7 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.model.AccessToken;
+import com.wx.gzh.entity.AccessToken;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;

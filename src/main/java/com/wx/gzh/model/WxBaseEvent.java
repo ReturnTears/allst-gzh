@@ -1,4 +1,4 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 /**
  * 事件base类

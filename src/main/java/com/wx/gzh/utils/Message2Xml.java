@@ -1,8 +1,8 @@
 package com.wx.gzh.utils;
 
 import com.thoughtworks.xstream.XStream;
+import com.wx.gzh.entity.*;
 import com.wx.gzh.model.*;
-import com.wx.gzh.tools.*;
 
 import java.util.ArrayList;
 import java.util.List;

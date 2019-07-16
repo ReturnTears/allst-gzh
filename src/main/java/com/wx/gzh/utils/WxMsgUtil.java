@@ -1,7 +1,7 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.tools.WxImageMessage;
+import com.wx.gzh.model.WxImageMessage;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;

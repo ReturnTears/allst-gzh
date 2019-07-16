@@ -1,4 +1,4 @@
-package com.wx.gzh.tools;
+package com.wx.gzh.model;
 
 /**
  * 关注事件和取消关注事件的消息类型都是Event

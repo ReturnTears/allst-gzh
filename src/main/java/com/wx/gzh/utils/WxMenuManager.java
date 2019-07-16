@@ -1,10 +1,10 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.model.Button;
-import com.wx.gzh.model.Menu;
-import com.wx.gzh.tools.WxCommonButton;
-import com.wx.gzh.tools.WxComplexButton;
+import com.wx.gzh.entity.Button;
+import com.wx.gzh.entity.Menu;
+import com.wx.gzh.model.WxCommonButton;
+import com.wx.gzh.model.WxComplexButton;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

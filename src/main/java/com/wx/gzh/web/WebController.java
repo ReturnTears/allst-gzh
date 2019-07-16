@@ -20,6 +20,7 @@ public class WebController {
     @RequestMapping("index")
     public ModelAndView webIndex() {
         ModelAndView view = new ModelAndView();
+        view.addObject("ticket", "");
         view.setViewName("index");
         return view;
     }
