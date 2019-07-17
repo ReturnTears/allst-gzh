@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.gzh.mapper.WxUserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.WxUserInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="uid" jdbcType="VARCHAR" property="uid" />
+        <result column="subscribe" jdbcType="CHAR" property="subscribe" />
+        <result column="openid" jdbcType="VARCHAR" property="openid" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+        <result column="sex" jdbcType="CHAR" property="sex" />
+        <result column="language" jdbcType="VARCHAR" property="language" />
+        <result column="city" jdbcType="VARCHAR" property="city" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl" />
+        <result column="subscribe_time" jdbcType="TIMESTAMP" property="subscribe_time" />
+        <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+        <result column="remark" jdbcType="CLOB" property="remark" />
+        <result column="groupid" jdbcType="INTEGER" property="groupid" />
+        <result column="tagid_list" jdbcType="VARCHAR" property="tagid_list" />
+        <result column="subscribe_scene" jdbcType="VARCHAR" property="subscribe_scene" />
+        <result column="qr_scene" jdbcType="VARCHAR" property="qr_scene" />
+        <result column="qr_scene_str" jdbcType="VARCHAR" property="qr_scene_str" />
+        <result column="isdelete" jdbcType="CHAR" property="isdelete" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+        <result column="release2" jdbcType="VARCHAR" property="release2" />
+    </resultMap>
+</mapper>

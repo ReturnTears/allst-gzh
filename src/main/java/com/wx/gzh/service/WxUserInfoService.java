@@ -1,5 +1,6 @@
 package com.wx.gzh.service;
 
+import com.wx.gzh.entity.WxUserInfo;
 import net.sf.json.JSONObject;
 
 /**
@@ -16,5 +17,14 @@ public interface WxUserInfoService {
      * @return
      */
     JSONObject getUserInfos(String openId);
+
+    /**
+     * 保存微信用户信息
+     * @param userInfo
+     *                  WxUserInfo对象
+     * @return
+     *                  1 success 0 fail
+     */
+    int insertUserInfo(WxUserInfo userInfo);
 
 }
