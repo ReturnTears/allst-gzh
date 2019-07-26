@@ -1,4 +1,4 @@
-package com.wx.gzh.model;
+package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import java.io.UnsupportedEncodingException;

@@ -1,9 +1,6 @@
 package com.wx.gzh.entity;
 
-import org.springframework.context.annotation.Bean;
-
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * 微信用户信息

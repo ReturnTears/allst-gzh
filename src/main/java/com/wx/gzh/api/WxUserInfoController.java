@@ -30,7 +30,7 @@ public class WxUserInfoController {
     public JsonResult addWxUserInfo() {
         JSONObject object = WxQRCodeUtil.scanQRCode();
         WxUserInfo userInfo = new JsonToClass().jsonToWxUserInfo(object.toString());
-        System.out.println("UserInfo ： " + userInfo);
+        //System.out.println("UserInfo ： " + userInfo);
         int result = wxUserInfoService.insertUserInfo(userInfo);
         if (result > 0) {
             return new JsonResult(true, "保存用户信息成功!");

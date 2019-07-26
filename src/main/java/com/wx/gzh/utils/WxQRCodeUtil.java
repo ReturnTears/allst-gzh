@@ -2,7 +2,6 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.model.URLTools;
 import net.sf.json.JSONObject;
 
 import java.io.*;
