@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @Auther Junn
- * @Date 2019/6/14 0014
+ * Index Controller
+ * @author JUNN
+ * @since 2019/6/14
  */
 @Controller
 @RequestMapping("/web/conn")

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>微信后台管理首页</title>
+    <title>INDEX</title>
 </head>
     <script type="text/javascript" src="/js/jquery-3.4.1.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
     <script type="text/javascript" src="/js/vue.js" th:src="@{/webjars/vue/2.6.10/dist/vue.min.js}"></script>
@@ -57,7 +57,7 @@
                 success: function(data) {
                    if (data != null) {
                        console.log("获取数据");
-                       $("#img1").attr("src", src);
+                       $("#img1").attr("src", data);
                    }
                 }
             });

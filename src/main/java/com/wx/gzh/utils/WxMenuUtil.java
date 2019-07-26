@@ -43,22 +43,22 @@ public class WxMenuUtil {
         ViewButton button21 = new ViewButton();
         button21.setName("进入项目");
         button21.setType("view");
-        button21.setUrl("https://www.baidu.com");
+        button21.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
 
         ViewButton button22 = new ViewButton();
         button22.setName("图标预览");
         button22.setType("view");
-        button22.setUrl("https://www.baidu.com");
+        button22.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
 
         ViewButton button23 = new ViewButton();
         button23.setName("APP下载");
         button23.setType("view");
-        button23.setUrl("https://www.baidu.com");
+        button23.setUrl("http://huwx.free.idcfengye.com/web/front/profile");
 
         ViewButton button24 = new ViewButton();
-        button24.setName("其他");
+        button24.setName("测试用");
         button24.setType("view");
-        button24.setUrl("https://www.baidu.com");
+        button24.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
 
         Button button1 = new Button();
         button1.setName("关于公司");
