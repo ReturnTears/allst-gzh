@@ -23,7 +23,7 @@ public class FrontIndexController {
      */
     @RequestMapping("/profile")
     public String showCpyProfile() {
-        return "front/menu/companyProfile";
+        return "front/menu/index";
     }
 
     /**
@@ -32,6 +32,6 @@ public class FrontIndexController {
      */
     @RequestMapping("/profile5")
     public String showCpyProfileH5() {
-        return "front/menu/cpyProfile";
+        return "front/menu/index";
     }
 }
