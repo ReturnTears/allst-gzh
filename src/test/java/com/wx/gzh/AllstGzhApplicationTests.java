@@ -46,6 +46,7 @@ public class AllstGzhApplicationTests {
     public void testCreateMenu() {
         String token = WxAccessTokenUtils.getAccessToken();
         String menu = JSONObject.fromObject(WxMenuUtil.initMenu()).toString();
+        System.out.println("menu : " + menu);
         int result = WxMenuUtil.createMenu(token, menu);
         if (result == 0) {
             System.out.println("菜单创建成功");

@@ -20,45 +20,46 @@ public class WxMenuUtil {
     public static Menu initMenu() {
         Menu menu = new Menu();
 
-        ClickButton button11 = new ClickButton();
+        ViewButton button11 = new ViewButton();
         button11.setName("公司简介");
-        button11.setType("click");
-        button11.setKey("11");
+        button11.setType("view");
+        button11.setUrl("http://huwx.free.idcfengye.com/web/front/comp");
 
-        ClickButton button12 = new ClickButton();
+        ViewButton button12 = new ViewButton();
         button12.setName("项目案例");
-        button12.setType("click");
-        button12.setKey("12");
+        button12.setType("view");
+        button12.setUrl("http://huwx.free.idcfengye.com/web/front/proj");
 
-        ClickButton button13 = new ClickButton();
-        button13.setName("招聘信息");
-        button13.setType("click");
-        button13.setKey("13");
+        ViewButton button13 = new ViewButton();
+        button13.setName("人才招聘");
+        button13.setType("view");
+        button13.setUrl("http://huwx.free.idcfengye.com/web/front/jobs");
 
-        ClickButton button14 = new ClickButton();
+        /*ClickButton button14 = new ClickButton();
         button13.setName("其他");
         button13.setType("click");
-        button13.setKey("14");
+        button13.setUrl("14");*/
 
         ViewButton button21 = new ViewButton();
-        button21.setName("进入项目");
+        button21.setName("成宜高速测试");
         button21.setType("view");
-        button21.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
+        button21.setUrl("http://47.101.154.109:10100/admin/web/login");
+        /*button21.setUrl("http://47.101.154.109:10100/admin/web/login");*/
 
-        ViewButton button22 = new ViewButton();
-        button22.setName("图标预览");
+        /*ViewButton button22 = new ViewButton();
+        button22.setName("云凤高速");
         button22.setType("view");
-        button22.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
+        button22.setUrl("http://huwx.free.idcfengye.com/web/front/proj");*/
 
-        ViewButton button23 = new ViewButton();
-        button23.setName("APP下载");
+        /*ViewButton button23 = new ViewButton();
+        button23.setName("项目C");
         button23.setType("view");
-        button23.setUrl("http://huwx.free.idcfengye.com/web/front/profile");
+        button23.setUrl("http://47.101.154.109:10100/admin/web/login");*/
 
-        ViewButton button24 = new ViewButton();
-        button24.setName("测试用");
+        /*ViewButton button24 = new ViewButton();
+        button24.setName("测试使用");
         button24.setType("view");
-        button24.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");
+        button24.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");*/
 
         Button button1 = new Button();
         button1.setName("关于公司");
@@ -66,7 +67,7 @@ public class WxMenuUtil {
 
         Button button2 = new Button();
         button2.setName("关于项目");
-        button2.setSub_button(new Button[]{button21, button22, button23, button24});
+        button2.setSub_button(new Button[]{button21});
 
         menu.setButton(new Button[]{button1, button2});
 

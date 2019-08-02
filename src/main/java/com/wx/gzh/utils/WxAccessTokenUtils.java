@@ -87,12 +87,13 @@ public class WxAccessTokenUtils {
     public static void getToken(){
         String url = Constant.ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
         String tokenStr = WxAccessTokenUtils.getOrPost(url);
+        System.out.println("token : " + tokenStr);
         JSONObject jsonObject = JSONObject.fromObject(tokenStr);
         String accessToken = jsonObject.getString("access_token");
         String expiresIn = jsonObject.getString("expires_in");
         // 创建token对象，并存起来
         token = new AccessToken(accessToken, expiresIn);
-        // System.out.println(token);
+        System.out.println(token);
     }
 
     /**

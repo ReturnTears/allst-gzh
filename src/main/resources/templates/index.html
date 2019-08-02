@@ -17,14 +17,19 @@
             /*left:-140%;*/
             top:0
         }
+        .qrcode {
+            width: 90%;
+            height: 430px;
+        }
+        #img1 {
+            width: 129px;
+            height: 129px;
+            float: right;
+            margin-top: 100px;
+        }
     </style>
 <body>
     <div id="content">
-        <button id="btn">生成二维码</button>
-        <img id="img1" alt="" src="">
-        <div>
-            <h3>{{ msg }}</h3>
-        </div>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
@@ -37,33 +42,11 @@
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
         <p>如果只是遇见，不能停留，不如不遇见。如果只是遇见，不能停留，不如不遇见。</p>
     </div>
+    <div class="qrcode">
+        <img id="img1" alt="" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybWZSRGQ1WThjUWwxMDAwMGcwNzQAAgTpIBNdAwQAAAAA">
+    </div>
 
     <script type="text/javascript">
-        // Ajax
-        $("#btn").on('click', function () {
-            /*let url = "/wx/get/tickets";
-            let tick = "gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybWZSRGQ1WThjUWwxMDAwMGcwNzQAAgTpIBNdAwQAAAAA";
-            $.get(url, function () {
-                console.log('------come in get---------');
-                let src = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + tick;
-                $("#img1").attr("src", src);
-            });*/
-
-            $.ajax({
-                cache: false,
-                type: "GET",
-                url:"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEK8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybWZSRGQ1WThjUWwxMDAwMGcwNzQAAgTpIBNdAwQAAAAA",
-                async: true,
-                success: function(data) {
-                   if (data != null) {
-                       console.log("获取数据");
-                       $("#img1").attr("src", data);
-                   }
-                }
-            });
-
-
-        });
         // Vue
         const vue = new Vue({
             el: '#content',

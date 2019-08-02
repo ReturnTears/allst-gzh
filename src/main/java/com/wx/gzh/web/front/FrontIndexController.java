@@ -19,19 +19,38 @@ public class FrontIndexController {
 
     /**
      * 显示公司简介(Vue方式)
-     * @return
+     * @return page
      */
-    @RequestMapping("/profile")
+    @RequestMapping("/profileV")
     public String showCpyProfile() {
-        return "front/menu/index";
+        return "front/menu/comp";
     }
 
     /**
      * 显示公司简介(H5方式)
-     * @return
+     * @return page
      */
-    @RequestMapping("/profile5")
+    @RequestMapping("/comp")
     public String showCpyProfileH5() {
-        return "front/menu/index";
+        return "front/menu/comp";
     }
+
+    /**
+     * 显示项目案例(H5方式)
+     * @return  page
+     */
+    @RequestMapping("/proj")
+    public String showProject() {
+        return "front/menu/proj";
+    }
+
+    /**
+     * 显示人才招聘(H5方式)
+     * @return page
+     */
+    @RequestMapping("/jobs")
+    public String showJobs() {
+        return "front/menu/jobs";
+    }
+
 }
