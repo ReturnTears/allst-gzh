@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 /**
  * 微信用户信息
  *              (字段意义查看数据库表字段注释)
- * @Auther Junn
- * @Date 2019/7/17 0017上午 11:05
+ * @auther Junn
+ * @since 2019/7/17 0017上午 11:05
  */
 public class WxUserInfo {
     private Integer id;

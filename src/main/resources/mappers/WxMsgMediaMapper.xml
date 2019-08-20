@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.gzh.mapper.WxMsgMediaMapper">
+    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.msg.WxMsgMedia">
+        <result column="msgForeignKey" jdbcType="INTEGER" property="msgForeignKey" />
+        <result column="multimedia" jdbcType="VARCHAR" property="multimedia" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+    </resultMap>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.gzh.mapper.WxMsgMapper">
+    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.msg.WxMsg">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="uid" jdbcType="INTEGER" property="uid" />
+        <result column="ToUserName" jdbcType="VARCHAR" property="ToUserName" />
+        <result column="FromUserName" jdbcType="VARCHAR" property="FromUserName" />
+        <result column="CreateTime" jdbcType="INTEGER" property="CreateTime" />
+        <result column="MsgId" jdbcType="INTEGER" property="MsgId" />
+        <result column="MsgType" jdbcType="INTEGER" property="MsgType" />
+        <result column="MsgSource" jdbcType="INTEGER" property="MsgSource" />
+        <result column="MsgType" jdbcType="INTEGER" property="MsgType" />
+        <result column="msgForeignKey" jdbcType="INTEGER" property="msgForeignKey" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+    </resultMap>
+</mapper>

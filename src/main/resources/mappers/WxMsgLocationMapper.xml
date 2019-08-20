@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.gzh.mapper.WxMsgLocationMapper">
+    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.msg.WxMsgLocation">
+        <result column="msgForeignKey" jdbcType="INTEGER" property="msgForeignKey" />
+        <result column="Location_X" jdbcType="DOUBLE" property="Location_X" />
+        <result column="Location_Y" jdbcType="DOUBLE" property="Location_Y" />
+        <result column="Scale" jdbcType="VARCHAR" property="Scale" />
+        <result column="Url" jdbcType="INTEGER" property="Url" />
+        <result column="Label" jdbcType="VARCHAR" property="Label" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+        <result column="release1" jdbcType="VARCHAR" property="release1" />
+    </resultMap>
+</mapper>
