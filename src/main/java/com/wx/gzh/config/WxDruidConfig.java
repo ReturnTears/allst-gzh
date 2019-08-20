@@ -12,8 +12,8 @@ import java.util.Map;
 
 /**
  * Druid 配置类
- * @Auther Junn
- * @Date 2019/7/17 0017下午 13:57
+ * @author  Junn
+ * @since 2019/7/17 0017下午 13:57
  */
 @Configuration
 public class WxDruidConfig {

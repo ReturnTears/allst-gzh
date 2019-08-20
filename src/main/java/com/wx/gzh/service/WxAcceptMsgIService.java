@@ -9,7 +9,7 @@ import java.util.Map;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
-public interface WxAcceptMsgService {
+public interface WxAcceptMsgIService {
     /**
      *  接受微信用户的消息
      * @param request

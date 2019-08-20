@@ -1,12 +1,12 @@
 package com.wx.gzh.service;
 
-import com.wx.gzh.entity.WxUserInfo;
+import com.wx.gzh.entity.user.WxUserInfo;
 import net.sf.json.JSONObject;
 
 /**
  * Wx用户信息
- * @Auther JUNN
- * @Date 2019-07-08 下午 10:50
+ * @author  JUNN
+ * @since 2019-07-08 下午 10:50
  */
 public interface WxUserInfoService {
 

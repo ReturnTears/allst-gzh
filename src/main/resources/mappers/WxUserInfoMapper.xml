@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wx.gzh.mapper.WxUserInfoMapper">
-    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.WxUserInfo">
+    <resultMap id="BaseResultMap" type="com.wx.gzh.entity.user.WxUserInfo">
         <!--
           WARNING - @mbg.generated
         -->

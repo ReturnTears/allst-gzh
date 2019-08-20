@@ -1,7 +1,7 @@
 package com.wx.gzh;
 
 import com.wx.gzh.constant.CommEnum;
-import com.wx.gzh.entity.AccessToken;
+import com.wx.gzh.entity.token.AccessToken;
 import com.wx.gzh.utils.*;
 import net.sf.json.JSONObject;
 import org.junit.Test;

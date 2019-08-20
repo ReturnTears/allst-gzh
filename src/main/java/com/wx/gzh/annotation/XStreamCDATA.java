@@ -7,8 +7,8 @@ import java.lang.annotation.Target;
 
 /**
  * 创建自定义注解, 用于标注CDATA
- * @Auther Junn
- * @Date 2019/6/20 0020上午 10:18
+ * @author Junn
+ * @since 2019/6/20 0020上午 10:18
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

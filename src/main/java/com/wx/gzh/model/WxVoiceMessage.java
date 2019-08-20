@@ -1,7 +1,7 @@
 package com.wx.gzh.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wx.gzh.entity.Voice;
+import com.wx.gzh.entity.joint.Voice;
 
 import java.util.Map;
 
@@ -16,11 +16,11 @@ public class WxVoiceMessage extends WxBaseMessgae {
     @XStreamAlias("Voice")
     private Voice Voice;
 
-    public com.wx.gzh.entity.Voice getVoice() {
+    public com.wx.gzh.entity.joint.Voice getVoice() {
         return Voice;
     }
 
-    public void setVoice(com.wx.gzh.entity.Voice voice) {
+    public void setVoice(com.wx.gzh.entity.joint.Voice voice) {
         Voice = voice;
     }
 

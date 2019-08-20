@@ -1,16 +1,16 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.joint;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.annotation.XStreamCDATA;
 
 /**
- * Voice
+ * Image
  * @Auther Junn
- * @Date 2019/6/20 0020下午 14:07
+ * @Date 2019/6/20 0020上午 11:58
  */
-public class Voice {
+public class Image {
     /**
-     * 通过素材管理中的接口上传多媒体文件，得到的id
+     * 通过素材管理中的接口上传多媒体文件，得到的id。
      */
     @XStreamAlias("MediaId")
     @XStreamCDATA
@@ -23,4 +23,5 @@ public class Voice {
     public void setMediaId(String mediaId) {
         MediaId = mediaId;
     }
+
 }

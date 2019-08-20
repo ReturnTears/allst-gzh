@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.button;
 
 /**
  * Button的基类

@@ -18,8 +18,8 @@ import java.sql.SQLException;
 
 /**
  * DataSource配置类
- * @Auther Junn
- * @Date 2019/7/17 0017上午 10:43
+ * @author  Junn
+ * @since 2019/7/17 0017上午 10:43
  */
 @Configuration
 @MapperScan(basePackages = {WxDataSourceConfig.MAPPER_PACKAGE}, sqlSessionFactoryRef = "baseSqlSessionTemplate")

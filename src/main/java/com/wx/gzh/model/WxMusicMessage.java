@@ -1,7 +1,7 @@
 package com.wx.gzh.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wx.gzh.entity.Music;
+import com.wx.gzh.entity.joint.Music;
 
 import java.util.Map;
 

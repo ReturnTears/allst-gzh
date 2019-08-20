@@ -1,6 +1,6 @@
 package com.wx.gzh.mapper;
 
-import com.wx.gzh.entity.WxUserInfo;
+import com.wx.gzh.entity.user.WxUserInfo;
 import tk.mybatis.mapper.common.Mapper;
 /**
  * UserInfo Mapper

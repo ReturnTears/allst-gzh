@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.user;
 
 import java.time.LocalDateTime;
 

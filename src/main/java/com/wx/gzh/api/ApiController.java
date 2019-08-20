@@ -4,8 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Auther Junn
- * @Date 2019/6/14 0014
+ * 对外的数据访问接口
+ * @author Junn
+ * @since 2019/6/14 0014
  */
 @RestController
 @RequestMapping("/api/conn")

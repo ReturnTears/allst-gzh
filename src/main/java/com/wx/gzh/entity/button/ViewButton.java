@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.button;
 
 /**
  * view类型按钮

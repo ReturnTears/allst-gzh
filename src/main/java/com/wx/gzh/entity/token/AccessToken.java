@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.token;
 
 /**
  * 微信通用接口凭证AccessToken

@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.joint;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.annotation.XStreamCDATA;

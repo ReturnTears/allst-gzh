@@ -13,8 +13,8 @@ import java.net.URLEncoder;
 
 /**
  * 微信Oauth2.0授权
- * @Auther JUNN
- * @Date 2019-07-10 下午 11:27
+ * @author JUNN
+ * @since 2019-07-10 下午 11:27
  */
 @Controller
 @RequestMapping("/api/oauth")

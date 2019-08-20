@@ -1,6 +1,6 @@
 package com.wx.gzh.service.impl;
 
-import com.wx.gzh.service.WxAcceptMsgService;
+import com.wx.gzh.service.WxAcceptMsgIService;
 import org.dom4j.DocumentException;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,11 @@ import java.util.Map;
 import static com.wx.gzh.utils.WxMsgUtil.parseXml;
 
 /**
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author Junn
+ * @since 2019/6/19 0019
  */
 @Service
-public class WxAcceptMsgServiceImpl implements WxAcceptMsgService {
+public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
 
     /**
      * 接受微信用户的消息

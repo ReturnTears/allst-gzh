@@ -24,6 +24,6 @@ create table wx_user_info(
   createTime datetime comment '编辑时间',
   release1 varchar(32) comment '备用1',
   release2 varchar(32) comment '备用2'
-)
+) comment '用户信息表'
 
 #

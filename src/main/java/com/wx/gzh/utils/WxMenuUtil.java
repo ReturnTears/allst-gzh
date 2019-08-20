@@ -2,10 +2,9 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.entity.Button;
-import com.wx.gzh.entity.ClickButton;
+import com.wx.gzh.entity.button.Button;
 import com.wx.gzh.entity.Menu;
-import com.wx.gzh.entity.ViewButton;
+import com.wx.gzh.entity.button.ViewButton;
 import net.sf.json.JSONObject;
 /**
  * WeiXinUtil工具类

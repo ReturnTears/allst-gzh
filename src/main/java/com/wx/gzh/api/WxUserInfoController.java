@@ -1,6 +1,6 @@
 package com.wx.gzh.api;
 
-import com.wx.gzh.entity.WxUserInfo;
+import com.wx.gzh.entity.user.WxUserInfo;
 import com.wx.gzh.service.WxUserInfoService;
 import com.wx.gzh.utils.JsonResult;
 import com.wx.gzh.utils.JsonToClass;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 用户控制器类
- * @Auther Junn
- * @Date 2019/7/17 0017下午 15:10
+ * @author Junn
+ * @since 2019/7/17 0017下午 15:10
  */
 @RestController
 @RequestMapping("/user")

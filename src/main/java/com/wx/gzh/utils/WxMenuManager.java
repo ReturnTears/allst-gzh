@@ -1,7 +1,7 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.entity.Button;
+import com.wx.gzh.entity.button.Button;
 import com.wx.gzh.entity.Menu;
 import com.wx.gzh.model.WxCommonButton;
 import com.wx.gzh.model.WxComplexButton;

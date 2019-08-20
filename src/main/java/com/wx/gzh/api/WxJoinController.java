@@ -1,10 +1,8 @@
 package com.wx.gzh.api;
 
-import com.wx.gzh.constant.CommEnum;
-import com.wx.gzh.constant.Constant;
-import com.wx.gzh.service.WxAcceptMsgService;
+import com.wx.gzh.service.WxAcceptMsgIService;
 import com.wx.gzh.service.WxHandlerEventMsgService;
-import com.wx.gzh.service.WxJoinService;
+import com.wx.gzh.service.WxJointService;
 import com.wx.gzh.utils.WxQRCodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,15 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Map;
 
 /**
- * 微信公众号的接入, 改用RESTful的编码方式
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * 微信公众号的接入入口
+ * @author Junn
+ * @since 2019/6/19 0019
  */
 @RestController
 @RequestMapping("/api/join")
@@ -30,10 +25,10 @@ public class WxJoinController {
     private static final Logger logger = LoggerFactory.getLogger(WxJoinController.class);
 
     @Autowired
-    private WxJoinService wxJoinService;
+    private WxJointService wxJoinService;
 
     @Autowired
-    private WxAcceptMsgService wxAcceptMsgService;
+    private WxAcceptMsgIService wxAcceptMsgIService;
 
     @Autowired
     private WxHandlerEventMsgService wxHandlerEventMsgService;
@@ -77,7 +72,7 @@ public class WxJoinController {
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         // 接受用户消息
         // System.out.println("接受用户发送的消息");
-        Map<String, String> res = wxAcceptMsgService.joinWxMsg(request, response);
+        Map<String, String> res = wxAcceptMsgIService.joinWxMsg(request, response);
         // 被动回复用户消息,准备回复的数据包
         /*String textXml = "<xml><ToUserName><![CDATA["+ res.get("FromUserName") +"]]></ToUserName>" +
                             "<FromUserName><![CDATA[" + res.get("ToUserName") + "]]></FromUserName>" +

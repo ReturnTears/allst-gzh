@@ -1,8 +1,7 @@
 package com.wx.gzh.utils;
 
-import com.wx.gzh.entity.WxUserInfo;
+import com.wx.gzh.entity.user.WxUserInfo;
 import net.sf.json.JSONObject;
-import tk.mybatis.mapper.common.Mapper;
 
 /**
  * 将JSON对象转换为实体类

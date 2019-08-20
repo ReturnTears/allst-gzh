@@ -1,6 +1,6 @@
 package com.wx.gzh.service.impl;
 
-import com.wx.gzh.entity.WxUserInfo;
+import com.wx.gzh.entity.user.WxUserInfo;
 import com.wx.gzh.mapper.WxUserInfoMapper;
 import com.wx.gzh.service.WxUserInfoService;
 import net.sf.json.JSONObject;

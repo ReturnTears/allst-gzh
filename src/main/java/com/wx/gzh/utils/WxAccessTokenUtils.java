@@ -1,22 +1,16 @@
 package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
-import com.wx.gzh.entity.AccessToken;
+import com.wx.gzh.entity.token.AccessToken;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
 import java.io.*;
-import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
 
 import static com.wx.gzh.constant.Constant.APPID;
 import static com.wx.gzh.constant.Constant.APPSECRET;

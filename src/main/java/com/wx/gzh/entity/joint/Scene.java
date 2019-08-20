@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.joint;
 
 /**
  * 二维码信息用

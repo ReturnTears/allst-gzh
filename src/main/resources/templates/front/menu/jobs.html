@@ -5,6 +5,10 @@
      <meta charset="utf-8">
     <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/vue/2.6.10/dist/vue.min.js}"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <style>
         html, body {
             width: 100%;
@@ -25,6 +29,7 @@
             width: 100%;
             margin: 0 auto;
             height: 30px;
+            font-size: 20px;
         }
         .comp-header-conetent-span, .comp-content-topa, .comp-content-topb, .comp-footer-content-span {
             font-size: 40px;
@@ -42,7 +47,7 @@
         }
         .comp-content-bottom {
             width: 100%;
-            height: 1320px;
+            height: 800px;
             border: 1px solid #d39e00;
         }
         .comp-footer {
@@ -54,41 +59,153 @@
             width: 100%;
 
         }
-
+        #jobList {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
-<!--==============================header=================================-->
-<header>
-	<div class="comp-header">
-        <div class="comp-header-conetent">
-            <span class="comp-header-conetent-span">人才招聘页面(Header部分)</span>
+<div id="jobContent">
+    <!--==============================header=================================-->
+    <header>
+        <div class="comp-header">
+            <div class="comp-header-conetent">
+                <span class="comp-header-conetent-span">重庆普斯克科技有限公司招聘信息</span>
+                <span>有效期: {{ indate }}</span>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<!--============================content================================-->
-<div class="comp-content">
-    <div class="comp-content-top">
-        <span class="comp-content-topa">
-            人才招聘页面(Body部分-top)
-        </span>
-    </div>
-    <div class="comp-content-bottom">
-        <span class="comp-content-topb">
-            人才招聘页面(Body部分-bottom)
-        </span>
-    </div>
+    <!--============================content================================-->
+
+        <div class="comp-content">
+            <!-- =====================招聘详情列表模板======================= -->
+            <template id="jobList">
+                <el-table :data="tableData" tyle="width: 100%;height: 40px;">
+                    <el-table-column label="有效日期" width="400" height="32px" tyle="font-size: 30px">
+                        <template slot-scope="scope">
+                            <i class="el-icon-time"></i>
+                            <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="招聘职位" width="500" height="30px">
+                        <template slot-scope="scope">
+                            <el-popover trigger="hover" placement="top">
+                                <div slot="reference" class="name-wrapper">
+                                    <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                                </div>
+                            </el-popover>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template> <!-- 招聘详情列表end -->
+
+            <el-tabs type="border-card" style="font-size: 30px">
+                <el-tab-pane label="职位描述" style="font-size: 30px">
+                    <div>
+                        岗位职责
+                        1、负责公司JAVA培训项目库管理与更新；
+
+                        2、负责带领实习学员完成既定的JAVA项目开发；
+
+                        3、参加公司组织的学术交流和技术讲座；
+
+                        4、支持其他部门的相关工作，完成上级交办的其他工作；
+
+                        5、参与公司组织的其他项目研发工作；
+
+                        补充说明
+                        1、5年以上JAVA方向开发工作经验；
+
+                        2、熟悉完整的软件开发流程，有丰富项目开发经验；
+
+                        3、精通JAVA SE核心编程和面向对象思想；
+
+                        4、精通IAVA Web相关技能（JSP、Servlet、JDBC）；
+
+                        5、精通数据库使用，会使用工具（如power designer）进行数据库建模；
+
+                        6、精通Web相关技术（HTML、CSS、javascript、JQuery、Dom编程、Ajax等）；
+
+                        7、熟练掌握通用技能（解析Xml、日志、测试等）；
+
+                        8、精通JAVA常用开源框架（Mybatis、Hibernate、Spring等）；
+
+                        9、精通MVC三层架构，熟悉UML及设计模式。
+
+                        公司福利：
+
+                        1、薪酬福利：为员工提供富有竞争力的薪酬体系。
+
+                        2、社会保险：五险
+
+                        3、晋升机制：公司设立良好的晋升机制并提供内部招聘、职位轮换机会。
+
+                        4、不加班，朝9晚6，工作规律性强；
+
+                        面试地址：重庆市江北区观音桥北城天街15号富力海洋广场（重庆网商产业园）6栋1楼40号
+                    </div>
+                </el-tab-pane>
+                <el-tab-pane label="公司简介" style="font-size: 30px">
+                    <div>
+                        公司简介
+                        重庆汇博优才科技有限公司是重庆最大的招聘网站——汇博网旗下企业，（汇博网其前身重庆人才网创立于2002年，成立于2005年，是重庆招聘行业的领军企业，也是一家人力资源领域互联网 的典型企业。
+                        十二年来为360多万像您这样的求职者提供求职服务，为30多万企业提供了人才输送服务，目前是西南地区规模大、成立早、访问量高、服务客户品质好的专业人才招聘网站）。
+                        汇博优才依托汇博网海量的人才资源及企业资源，为IT、互联网、大数据等行业内企业提供其急需的专业技术人才解决方案，为高校提供从专业建设、技能培训到优质就业为一体的人力资源合作基地。
+
+                        期待您的加入，未来，我们一起扬帆起航！
+                    </div>
+                </el-tab-pane>
+            </el-tabs>
+            <div class="comp-content-top">
+                <span class="comp-content-topa">
+
+                </span>
+            </div>
+            <div class="comp-content-bottom">
+                <span class="comp-content-topb">
+                    人才招聘页面(Body部分-bottom)
+                    <br>
+                    打电话前先投个简历，获得面试的成功率增加30%
+                </span>
+            </div>
+        </div>
+
+    <!--==============================footer=================================-->
+    <footer>
+        <div class="comp-footer">
+            <div class="comp-footer-content">
+                <span class="comp-footer-content-span">重庆普斯克 &copy; 2019 | Privacy Policy | Website  designed by <a href="javascript;" rel="nofollow" target="_blank">www.pusker.com</a></span>
+            </div>
+        </div>
+    </footer>
 </div>
-<!--==============================footer=================================-->
-<footer>
-	<div class="comp-footer">
-		<div class="comp-footer-content">
-			<span class="comp-footer-content-span">重庆普斯克 &copy; 2016 | Privacy Policy | Website  designed by <a href="javascript;" rel="nofollow" target="_blank">www.pusker.com</a></span>
-		</div>
-	</div>
-</footer>
+    <script>
+        let vm = new Vue({
+            el: '#jobContent',
+            data() {
+                return {
+                    msg: '人才招聘',
+                    indate: '2019-08-20 ~ 2019-09-15',
+                    tableData: [
+                        {
+                            date: '2019-08-20',
+                            name: '实施工程师',
+                            address: ''
+                        },
+                        {
+                            date: '2019-09-10',
+                            name: 'Java开发工程师',
+                            address: ''
+                        }
+                    ]
+                }
+            },
+            methods: {
 
+            }
+        })
+    </script>
 </body>
 </html>

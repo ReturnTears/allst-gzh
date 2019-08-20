@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Auther Junn
- * @Date 2019/6/26 0026上午 10:35
+ * 获取二维码Controller
+ * @author Junn
+ * @since 2019/6/26 0026上午 10:35
  */
 @RestController
 @RequestMapping("/wx/get")

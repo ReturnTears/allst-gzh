@@ -1,4 +1,4 @@
-package com.wx.gzh.entity;
+package com.wx.gzh.entity.user;
 
 /**
  * 用户的基本信息

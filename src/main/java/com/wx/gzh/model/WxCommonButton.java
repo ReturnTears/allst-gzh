@@ -1,6 +1,6 @@
 package com.wx.gzh.model;
 
-import com.wx.gzh.entity.Button;
+import com.wx.gzh.entity.button.Button;
 
 /**
  * 子菜单项

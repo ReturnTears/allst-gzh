@@ -5,7 +5,7 @@ package com.wx.gzh.service;
  * @Auther Junn
  * @Date 2019/6/19 0019
  */
-public interface WxJoinService {
+public interface WxJointService {
     /**
      * 接入验证
      * @param timestamp
