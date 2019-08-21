@@ -6,6 +6,7 @@
         <result column="media_id" jdbcType="VARCHAR" property="MediaId" />
         <result column="pic_url" jdbcType="VARCHAR" property="PicUrl" />
         <result column="format" jdbcType="VARCHAR" property="Format" />
+        <result column="recognition" jdbcType="VARCHAR" property="Recognition" />
         <result column="thumb_media_id" jdbcType="VARCHAR" property="ThumbMediaId" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />

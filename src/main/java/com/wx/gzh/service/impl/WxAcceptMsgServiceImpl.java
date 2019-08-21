@@ -66,18 +66,25 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                         wxMsgText.setMsgForeignKey(currentTime);
                         wxMsgIService.insertMsgContentStore(wxMsgText);
                     case Constant.RESP_MESSAGE_TYPE_IMAGE:
-                        WxMsgMedia wxMsgMedia = new WxMsgMedia();
-                        wxMsgMedia.setMsgForeignKey(currentTime);
-                        wxMsgMedia.setPicUrl(map.get("PicUrl"));
-                        wxMsgMedia.setMediaId(map.get("MediaId"));
-                        wxMsgIService.insertMsgMediaStore(wxMsgMedia);
+                        WxMsgMedia wxMsgMImage = new WxMsgMedia();
+                        wxMsgMImage.setMsgForeignKey(currentTime);
+                        wxMsgMImage.setPicUrl(map.get("PicUrl"));
+                        wxMsgMImage.setMediaId(map.get("MediaId"));
+                        wxMsgIService.insertMsgMediaStore(wxMsgMImage);
+                    case Constant.RESP_MESSAGE_TYPE_VOICE:
+                        WxMsgMedia wxMsgVoice = new WxMsgMedia();
+                        wxMsgVoice.setMsgForeignKey(currentTime);
+                        wxMsgVoice.setFormat(map.get("Format"));
+                        wxMsgVoice.setMediaId(map.get("MediaId"));
+                        wxMsgVoice.setRecognition(map.get("Recognition"));
+                        wxMsgIService.insertMsgMediaStore(wxMsgVoice);
                     case Constant.REQ_MESSAGE_TYPE_LOCATION:
                         WxMsgLocation wxMsgLocation = new WxMsgLocation();
                         wxMsgLocation.setMsgForeignKey(currentTime);
                         wxMsgLocation.setLabel(map.get("Label"));
                         wxMsgLocation.setLocation_X(Double.valueOf(map.getOrDefault("Location_X", "0.0")));
                         wxMsgLocation.setLocation_Y(Double.valueOf(map.getOrDefault("Location_Y", "0.0")));
-                        wxMsgLocation.setScale(Integer.parseInt(map.get("Scale")));
+                        wxMsgLocation.setScale(map.get("Scale"));
                         wxMsgIService.insertMsgLocationStore(wxMsgLocation);
                     case Constant.REQ_MESSAGE_TYPE_LINK:
                         WxMsgLink wxMsgLink = new WxMsgLink();

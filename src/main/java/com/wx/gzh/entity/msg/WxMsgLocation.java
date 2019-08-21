@@ -8,7 +8,7 @@ public class WxMsgLocation {
     private String msgForeignKey;
     private Double Location_X;
     private Double Location_Y;
-    private Integer Scale;
+    private String Scale;
     private String Label;
     private String release1;
     private String release2;
@@ -37,11 +37,11 @@ public class WxMsgLocation {
         Location_Y = location_Y;
     }
 
-    public Integer getScale() {
+    public String getScale() {
         return Scale;
     }
 
-    public void setScale(Integer scale) {
+    public void setScale(String scale) {
         Scale = scale;
     }
 

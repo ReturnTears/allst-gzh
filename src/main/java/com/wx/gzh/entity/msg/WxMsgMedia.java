@@ -9,6 +9,7 @@ public class WxMsgMedia {
     private String MediaId;
     private String PicUrl;
     private String Format;
+    private String Recognition;
     private String ThumbMediaId;
     private String release1;
     private String release2;
@@ -27,6 +28,14 @@ public class WxMsgMedia {
 
     public void setMediaId(String mediaId) {
         MediaId = mediaId;
+    }
+
+    public String getRecognition() {
+        return Recognition;
+    }
+
+    public void setRecognition(String recognition) {
+        Recognition = recognition;
     }
 
     public String getPicUrl() {
@@ -76,6 +85,7 @@ public class WxMsgMedia {
                 ", MediaId='" + MediaId + '\'' +
                 ", PicUrl='" + PicUrl + '\'' +
                 ", Format='" + Format + '\'' +
+                ", Recognition='" + Recognition + '\'' +
                 ", ThumbMediaId='" + ThumbMediaId + '\'' +
                 ", release1='" + release1 + '\'' +
                 ", release2='" + release2 + '\'' +
