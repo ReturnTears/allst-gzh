@@ -5,18 +5,18 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:05
  */
 public class WxMsgLink {
-    private int msgForeignKey;
+    private String msgForeignKey;
     private String Title;
     private String Description;
     private String Url;
     private String release1;
     private String release2;
 
-    public int getMsgForeignKey() {
+    public String getMsgForeignKey() {
         return msgForeignKey;
     }
 
-    public void setMsgForeignKey(int msgForeignKey) {
+    public void setMsgForeignKey(String msgForeignKey) {
         this.msgForeignKey = msgForeignKey;
     }
 

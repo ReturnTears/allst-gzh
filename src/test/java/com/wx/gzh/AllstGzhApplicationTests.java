@@ -1,6 +1,7 @@
 package com.wx.gzh;
 
 import com.wx.gzh.constant.CommEnum;
+import com.wx.gzh.entity.msg.WxMsg;
 import com.wx.gzh.entity.token.AccessToken;
 import com.wx.gzh.utils.*;
 import net.sf.json.JSONObject;
@@ -9,7 +10,12 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.wx.gzh.constant.Constant.*;
 import static com.wx.gzh.utils.WxMenuUtil.deleteMenu;
@@ -84,6 +90,7 @@ public class AllstGzhApplicationTests {
     public void testTempDir() {
         System.out.println(TMPDIR);
         System.out.println(CommEnum.MatterType.图片.getValue());
+        System.out.println(System.currentTimeMillis());
     }
 
     /**

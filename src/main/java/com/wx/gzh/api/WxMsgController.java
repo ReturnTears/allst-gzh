@@ -1,6 +1,7 @@
 package com.wx.gzh.api;
 
 import com.wx.gzh.service.WxAcceptMsgIService;
+import com.wx.gzh.service.WxMsgIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,21 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * 非RESTful方式
+ * 接收消息，发送消息Controller
  * @author Junn
  * @since 2019/6/19 0019
  */
 @Controller
-@RequestMapping("/api/accept")
-public class WxAcceptMsgController {
+@RequestMapping("/wx/msg")
+public class WxMsgController {
 
     @Autowired
-    private WxAcceptMsgIService wxAcceptMsgIService;
+    private WxMsgIService wxMsgIService;
 
-    @RequestMapping(value = "msg", method = RequestMethod.POST)
+    @RequestMapping(value = "acceptMsg", method = RequestMethod.GET)
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("accept msg");
-        Map<String, String> res = wxAcceptMsgIService.joinWxMsg(request, response);
+        Map<String, String> res = wxMsgIService.joinWxMsg(request, response);
+        System.out.println("res" + res);
         return null;
     }
 }

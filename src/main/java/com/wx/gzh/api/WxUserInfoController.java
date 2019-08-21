@@ -1,6 +1,7 @@
 package com.wx.gzh.api;
 
 import com.wx.gzh.entity.user.WxUserInfo;
+import com.wx.gzh.service.WxMsgIService;
 import com.wx.gzh.service.WxUserInfoService;
 import com.wx.gzh.utils.JsonResult;
 import com.wx.gzh.utils.JsonToClass;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019/7/17 0017下午 15:10
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/wx/user")
 public class WxUserInfoController {
 
     private static final Logger logger = LoggerFactory.getLogger(WxUserInfoController.class);

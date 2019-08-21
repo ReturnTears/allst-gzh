@@ -2,6 +2,7 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.WxImageMessage;
+import net.sf.json.JSONObject;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -19,8 +20,8 @@ import static com.wx.gzh.utils.Message2Xml.*;
 
 /**
  * 微信消息类型以及消息内容格式转换
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author Junn
+ * @since 2019/6/19 0019
  */
 public class WxMsgUtil {
 
@@ -30,7 +31,7 @@ public class WxMsgUtil {
      * @param request
      * @return
      */
-    public static Map<String, String> parseXml(HttpServletRequest request) throws IOException, DocumentException {
+    public static Map<String, String> xmlParseMap(HttpServletRequest request) throws IOException, DocumentException {
         // 将解析结果存储在HashMap中
         Map<String, String>map =new HashMap<>();
         // 从request中得到输入流
@@ -55,6 +56,20 @@ public class WxMsgUtil {
         // inputStream = null;
         // System.out.println("---------xml转换为map-----:" + map);
         return map;
+    }
+
+    /**
+     * ---------------------------------------------------xml转json------------------------------------------------
+     * 解析微信服务器发过来的xml格式的消息将其转换为JSON
+     * @param request
+     *                 HttpServletRequest
+     * @return
+     * @throws IOException
+     * @throws DocumentException
+     */
+    public static JSONObject xmlParseJson(HttpServletRequest request) throws IOException, DocumentException {
+
+        return null;
     }
 
     /**

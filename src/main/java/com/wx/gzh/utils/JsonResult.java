@@ -2,8 +2,8 @@ package com.wx.gzh.utils;
 
 /**
  * 封装JSON对象
- * @Auther Junn
- * @Date 2019/7/17 0017下午 15:15
+ * @author Junn
+ * @since 2019/7/17 0017下午 15:15
  */
 public class JsonResult {
 

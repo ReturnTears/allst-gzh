@@ -7,14 +7,14 @@ package com.wx.gzh.entity.msg;
  */
 public class WxMsg {
     private int id;
-    private int uid;
+    private String uid;
     private String ToUserName;
     private String FromUserName;
-    private int CreateTime;
-    private int MsgId;
-    private int MsgType;
-    private int MsgSource;
-    private int msgForeignKey;
+    private String CreateTime;
+    private String MsgId;
+    private String MsgType;
+    private Integer MsgSource;
+    private String msgForeignKey;
     private String release1;
     private String release2;
 
@@ -26,11 +26,11 @@ public class WxMsg {
         this.id = id;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -50,43 +50,43 @@ public class WxMsg {
         FromUserName = fromUserName;
     }
 
-    public int getCreateTime() {
+    public String getCreateTime() {
         return CreateTime;
     }
 
-    public void setCreateTime(int createTime) {
+    public void setCreateTime(String createTime) {
         CreateTime = createTime;
     }
 
-    public int getMsgId() {
+    public String getMsgId() {
         return MsgId;
     }
 
-    public void setMsgId(int msgId) {
+    public void setMsgId(String msgId) {
         MsgId = msgId;
     }
 
-    public int getMsgType() {
+    public String getMsgType() {
         return MsgType;
     }
 
-    public void setMsgType(int msgType) {
+    public void setMsgType(String msgType) {
         MsgType = msgType;
     }
 
-    public int getMsgSource() {
+    public Integer getMsgSource() {
         return MsgSource;
     }
 
-    public void setMsgSource(int msgSource) {
+    public void setMsgSource(Integer msgSource) {
         MsgSource = msgSource;
     }
 
-    public int getMsgForeignKey() {
+    public String getMsgForeignKey() {
         return msgForeignKey;
     }
 
-    public void setMsgForeignKey(int msgForeignKey) {
+    public void setMsgForeignKey(String msgForeignKey) {
         this.msgForeignKey = msgForeignKey;
     }
 
@@ -104,5 +104,22 @@ public class WxMsg {
 
     public void setRelease2(String release2) {
         this.release2 = release2;
+    }
+
+    @Override
+    public String toString() {
+        return "WxMsg{" +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
+                ", ToUserName='" + ToUserName + '\'' +
+                ", FromUserName='" + FromUserName + '\'' +
+                ", CreateTime=" + CreateTime +
+                ", MsgId='" + MsgId + '\'' +
+                ", MsgType=" + MsgType +
+                ", MsgSource=" + MsgSource +
+                ", msgForeignKey=" + msgForeignKey +
+                ", release1='" + release1 + '\'' +
+                ", release2='" + release2 + '\'' +
+                '}';
     }
 }

@@ -170,5 +170,6 @@ Navicat连接MySQL Server8.0版本时出现Client does not support authenticatio
 
 3、flush privileges;
 
+SQL数据类型和Java数据类型的对应关系 integer、int ---> int tinyint、smallint ---> short bigint --->long decimal、numeric ---> java.math.BigDecimal float ---> float double ---> double char、varchar ---> String boolean、bit
 ```
         

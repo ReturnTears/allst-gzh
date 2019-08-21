@@ -5,43 +5,43 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:07
  */
 public class WxMsgLocation {
-    private int msgForeignKey;
-    private double Location_X;
-    private double Location_Y;
-    private int Scale;
+    private String msgForeignKey;
+    private Double Location_X;
+    private Double Location_Y;
+    private Integer Scale;
     private String Label;
     private String release1;
     private String release2;
 
-    public int getMsgForeignKey() {
+    public String getMsgForeignKey() {
         return msgForeignKey;
     }
 
-    public void setMsgForeignKey(int msgForeignKey) {
+    public void setMsgForeignKey(String msgForeignKey) {
         this.msgForeignKey = msgForeignKey;
     }
 
-    public double getLocation_X() {
+    public Double getLocation_X() {
         return Location_X;
     }
 
-    public void setLocation_X(double location_X) {
+    public void setLocation_X(Double location_X) {
         Location_X = location_X;
     }
 
-    public double getLocation_Y() {
+    public Double getLocation_Y() {
         return Location_Y;
     }
 
-    public void setLocation_Y(double location_Y) {
+    public void setLocation_Y(Double location_Y) {
         Location_Y = location_Y;
     }
 
-    public int getScale() {
+    public Integer getScale() {
         return Scale;
     }
 
-    public void setScale(int scale) {
+    public void setScale(Integer scale) {
         Scale = scale;
     }
 
@@ -67,5 +67,18 @@ public class WxMsgLocation {
 
     public void setRelease2(String release2) {
         this.release2 = release2;
+    }
+
+    @Override
+    public String toString() {
+        return "WxMsgLocation{" +
+                "msgForeignKey=" + msgForeignKey +
+                ", Location_X=" + Location_X +
+                ", Location_Y=" + Location_Y +
+                ", Scale=" + Scale +
+                ", Label='" + Label + '\'' +
+                ", release1='" + release1 + '\'' +
+                ", release2='" + release2 + '\'' +
+                '}';
     }
 }

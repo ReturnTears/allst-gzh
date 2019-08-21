@@ -20,9 +20,9 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/join")
-public class WxJoinController {
+public class WxJointController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxJoinController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WxJointController.class);
 
     @Autowired
     private WxJointService wxJoinService;

@@ -23,19 +23,26 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
             // 处理文本消息
             case Constant.RESP_MESSAGE_TYPE_TEXT:
                 return dealTextMessgae(params);
+            // 处理图片消息
             case Constant.RESP_MESSAGE_TYPE_IMAGE:
                 return dealImageMessage(params);
+            // 处理语音消息
             case Constant.RESP_MESSAGE_TYPE_VOICE:
                 return dealVoiceMessage(params);
+            // 处理视频消息
             case Constant.RESP_MESSAGE_TYPE_VIDEO:
                 return dealVideoMessage(params);
+            // 处理音乐消息
             case Constant.RESP_MESSAGE_TYPE_MUSIC:
                 return dealMusicMessage(params);
+            // 处理图文消息
             case Constant.RESP_MESSAGE_TYPE_NEWS:
                 return dealNewsMessage(params);
+            // 处理位置信息消息
             case Constant.REQ_MESSAGE_TYPE_LOCATION:
                 // TODO 处理位置消息以及事件处理
                 return "";
+            // Other
             default:
                 return null;
         }

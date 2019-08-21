@@ -4,17 +4,17 @@ package com.wx.gzh.entity.msg;
  * @author JUNN
  * @since 2019/8/20 0020 下午 18:02
  */
-public class WxMsgContent {
-    private int msgForeignKey;
+public class WxMsgText {
+    private String msgForeignKey;
     private String content;
     private String release1;
     private String release2;
 
-    public int getMsgForeignKey() {
+    public String getMsgForeignKey() {
         return msgForeignKey;
     }
 
-    public void setMsgForeignKey(int msgForeignKey) {
+    public void setMsgForeignKey(String msgForeignKey) {
         this.msgForeignKey = msgForeignKey;
     }
 

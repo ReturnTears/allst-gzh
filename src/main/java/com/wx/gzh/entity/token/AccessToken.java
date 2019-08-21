@@ -3,8 +3,8 @@ package com.wx.gzh.entity.token;
 /**
  * 微信通用接口凭证AccessToken
  * 封装一个对象保存accesstoken
- * @Auther Junn
- * @Date 2019/6/24 0024下午 14:42
+ * @author Junn
+ * @since 2019/6/24 0024下午 14:42
  */
 public class AccessToken {
     /**

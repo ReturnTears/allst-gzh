@@ -7,10 +7,23 @@ package com.wx.gzh.constant;
  */
 public class CommEnum {
     /**
+     * 常用关键词
+     */
+    public enum KeyWord {
+        登录("LOGIN"), 扫描("SCAN"), 二维码("QRCODE"), 普斯克("PSK"), 时间("TIME"), 项目("PROJECT");
+
+        private String value;
+
+        KeyWord(String value) {
+            this.value = value;
+        }
+    }
+
+    /**
      * 消息类型
      */
     public enum MsgType {
-        文本消息("Content", 101), 图片消息("Image", 102), 语音消息("Voice", 103), 视频消息("Video", 104), 小视频消息("ShortVideo", 105),
+        文本消息("Text", 101), 图片消息("Image", 102), 语音消息("Voice", 103), 视频消息("Video", 104), 小视频消息("ShortVideo", 105),
 
         地理位置消息("Location", 106), 链接消息("Link", 107), 图文消息("News", 108);
 
@@ -79,15 +92,15 @@ public class CommEnum {
      *          2 - 消息来自微信服务(服务接收微信服务的消息)
      */
     public enum MsgSource {
-        用户("0"), 服务器("1"), 微信服务("2");
+        用户(0), 服务器(1), 微信服务(2);
 
-        private String value;
+        private Integer value;
 
-        public String getValue() {
+        public Integer getValue() {
             return value;
         }
 
-        MsgSource(String value) {
+        MsgSource(Integer value) {
             this.value = value;
         }
     }

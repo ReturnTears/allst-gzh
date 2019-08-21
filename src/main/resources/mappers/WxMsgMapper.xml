@@ -3,15 +3,14 @@
 <mapper namespace="com.wx.gzh.mapper.WxMsgMapper">
     <resultMap id="BaseResultMap" type="com.wx.gzh.entity.msg.WxMsg">
         <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="uid" jdbcType="INTEGER" property="uid" />
-        <result column="ToUserName" jdbcType="VARCHAR" property="ToUserName" />
-        <result column="FromUserName" jdbcType="VARCHAR" property="FromUserName" />
-        <result column="CreateTime" jdbcType="INTEGER" property="CreateTime" />
-        <result column="MsgId" jdbcType="INTEGER" property="MsgId" />
-        <result column="MsgType" jdbcType="INTEGER" property="MsgType" />
-        <result column="MsgSource" jdbcType="INTEGER" property="MsgSource" />
-        <result column="MsgType" jdbcType="INTEGER" property="MsgType" />
-        <result column="msgForeignKey" jdbcType="INTEGER" property="msgForeignKey" />
+        <result column="uid" jdbcType="VARCHAR" property="uid" />
+        <result column="to_user_name" jdbcType="VARCHAR" property="ToUserName" />
+        <result column="from_user_name" jdbcType="VARCHAR" property="FromUserName" />
+        <result column="create_time" jdbcType="VARCHAR" property="CreateTime" />
+        <result column="msg_id" jdbcType="VARCHAR" property="MsgId" />
+        <result column="msg_type" jdbcType="VARCHAR" property="MsgType" />
+        <result column="msg_source" jdbcType="INTEGER" property="MsgSource" />
+        <result column="msg_foreign_key" jdbcType="VARCHAR" property="msgForeignKey" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
     </resultMap>

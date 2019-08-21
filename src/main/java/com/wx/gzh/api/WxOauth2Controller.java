@@ -17,7 +17,7 @@ import java.net.URLEncoder;
  * @since 2019-07-10 下午 11:27
  */
 @Controller
-@RequestMapping("/api/oauth")
+@RequestMapping("/wx/oauth")
 public class WxOauth2Controller {
 
     /**
