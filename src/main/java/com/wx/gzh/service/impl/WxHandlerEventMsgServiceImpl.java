@@ -22,6 +22,7 @@ public class WxHandlerEventMsgServiceImpl implements WxHandlerEventMsgService {
         switch (msgType){
             // 处理文本消息
             case Constant.RESP_MESSAGE_TYPE_TEXT:
+
                 return dealTextMessgae(params);
             // 处理图片消息
             case Constant.RESP_MESSAGE_TYPE_IMAGE:
