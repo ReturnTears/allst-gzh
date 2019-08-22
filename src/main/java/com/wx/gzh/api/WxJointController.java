@@ -1,8 +1,8 @@
 package com.wx.gzh.api;
 
 import com.wx.gzh.service.WxAcceptMsgIService;
-import com.wx.gzh.service.WxHandlerEventMsgService;
-import com.wx.gzh.service.WxJointService;
+import com.wx.gzh.service.WxHandlerMsgIService;
+import com.wx.gzh.service.WxJointIService;
 import com.wx.gzh.utils.WxQRCodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +25,13 @@ public class WxJointController {
     private static final Logger logger = LoggerFactory.getLogger(WxJointController.class);
 
     @Autowired
-    private WxJointService wxJoinService;
+    private WxJointIService wxJoinService;
 
     @Autowired
     private WxAcceptMsgIService wxAcceptMsgIService;
 
     @Autowired
-    private WxHandlerEventMsgService wxHandlerEventMsgService;
+    private WxHandlerMsgIService wxHandlerMsgService;
 
     /**
      * @param signature	    微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
@@ -62,9 +62,11 @@ public class WxJointController {
     }
 
     /**
-     * 接受消息
+     * 接受消息以及回复消息
      * @param request
+     *                  HttpServletRequest
      * @param response
+     *                  HttpServletResponse
      * @return
      */
     // @RequestMapping(value = "msg", method = RequestMethod.POST)
@@ -82,8 +84,8 @@ public class WxJointController {
         System.out.println(textXml);*/
 
         // 消息的统一处理, 需要将回复的消息封装为上述格式的xml内容
-        String textXml = wxHandlerEventMsgService.handlerEventAndMsg(res);
-        // System.out.println("回复消息 >> : " + textXml);
+        String textXml = wxHandlerMsgService.replayMsgs(res);
+        System.out.println("回复消息 >> : " + textXml);
         return textXml;
     }
 

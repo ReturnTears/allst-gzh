@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 微信菜单管理器
- * @Auther Junn
- * @Date 2019/6/24 0024下午 15:22
+ * @author JUNN
+ * @since 2019/6/24 0024下午 15:22
  */
 public class WxMenuManager {
     private static Logger log = LoggerFactory.getLogger(WxMenuManager.class);

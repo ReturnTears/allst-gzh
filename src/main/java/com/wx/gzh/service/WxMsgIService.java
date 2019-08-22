@@ -51,4 +51,13 @@ public interface WxMsgIService {
      * @return
      */
     int insertMsgLocationStore(WxMsgLocation wxMsgLocation);
+
+    /**
+     * 通过参数(微信名称/手机号/身份证号/系统ID)查询指定用户信息
+     * @param params
+     *                      查询参数
+     * @return
+     *                      用户信息集合
+     */
+    Map<String, Object> selectUserInfo(Map<String, Object> params);
 }

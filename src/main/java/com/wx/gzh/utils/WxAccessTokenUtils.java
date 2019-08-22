@@ -18,8 +18,8 @@ import static com.wx.gzh.constant.Constant.APPSECRET;
 /**
  * access_token是公众号的全局唯一接口调用凭据，公众号调用各接口时都需使用access_token。
  * 微信AccessToken工具类
- * @Auther Junn
- * @Date 2019/6/24 0024下午 14:55
+ * @author JUNN
+ * @since 2019/6/24 0024下午 14:55
  */
 public class WxAccessTokenUtils {
 

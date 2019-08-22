@@ -10,8 +10,8 @@ import java.util.Map;
 
 /**
  * 将Message转换为XML格式工具类
- * @Auther Junn
- * @Date 2019/6/20 0020上午 9:29
+ * @author JUNN
+ * @since 2019/6/20 0020上午 9:29
  */
 public class Message2Xml {
 

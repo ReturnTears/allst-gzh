@@ -2,8 +2,8 @@ package com.wx.gzh.constant;
 
 /**
  * 常量类
- * @Auther Junn
- * @Date 2019/6/24 0024下午 14:48
+ * @author JUNN
+ * @since 2019/6/24 0024下午 14:48
  */
 public class Constant {
     /**
@@ -86,6 +86,37 @@ public class Constant {
      * ------------------------------------------------获取用户基本信息---------------------------------------------------
      */
     public static final String WX_USER_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+
+    /**
+     * ------------------------------------------------主动推送信息接口---------------------------------------------------
+     */
+    public static final String WX_SEND_MSG_URL = "https://api.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN";
+
+    /**
+     * --------------------------------------------------模板消息接口-----------------------------------------------------
+     * 发送模板消息, http请求方式: POST
+     */
+    public static final String WX_TEMPLATE_MSG_SEND = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+    /**
+     * 设置所属行业, http请求方式: POST
+     */
+    public static final String WX_TEMPLATE_MSG_SET_INDUSTRY = "https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=ACCESS_TOKEN";
+    /**
+     * 获取设置的行业信息, http请求方式：GET
+     */
+    public static final String WX_TEMPLATE_MSG_GET_INDUSTRY = "https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=ACCESS_TOKEN";
+    /**
+     * 获得模板ID, http请求方式: POST
+     */
+    public static final String WX_TEMPLATE_MSG_ID = "https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=ACCESS_TOKEN";
+    /**
+     * 获取模板列表, http请求方式：GET
+     */
+    public static final String WX_TEMPlATE_MSG_LIST = "https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=ACCESS_TOKEN";
+    /**
+     * 删除模板, http请求方式：POST
+     */
+    public static final String WX_TEMPLATE_MSG_DELETE = "https://api.weixin.qq.com/cgi-bin/template/del_private_template?access_token=ACCESS_TOKEN";
 
     /**
      * -----------------------------------------------用户关注的渠道来源--------------------------------------------------

@@ -7,7 +7,7 @@ package com.wx.gzh.constant;
  */
 public class CommEnum {
     /**
-     * 常用关键词
+     * 默认常用关键词
      */
     public enum KeyWord {
         登录("LOGIN"), 扫描("SCAN"), 二维码("QRCODE"), 普斯克("PSK"), 时间("TIME"), 项目("PROJECT");
@@ -20,7 +20,7 @@ public class CommEnum {
     }
 
     /**
-     * 消息类型
+     * 默认消息类型
      */
     public enum MsgType {
         文本消息("Text", 101), 图片消息("Image", 102), 语音消息("Voice", 103), 视频消息("Video", 104), 小视频消息("ShortVideo", 105),
@@ -54,7 +54,7 @@ public class CommEnum {
     }
 
     /**
-     * 事件类型
+     * 默认事件类型
      */
     public enum EventType {
         关注事件("subscribe", 201), 取消关注事件("unsubscribe", 202), 扫描事件("SCAN", 203), 上报地理位置事件("LOCATION", 204), 自定义菜单事件("CLICK", 205);
@@ -86,7 +86,7 @@ public class CommEnum {
     }
 
     /**
-     * 消息来源:
+     * 默认消息来源:
      *          0 - 消息来自用户(服务器接收用户的消息)，
      *          1 - 消息来自服务器(服务器向用户推送消息)，
      *          2 - 消息来自微信服务(服务接收微信服务的消息)

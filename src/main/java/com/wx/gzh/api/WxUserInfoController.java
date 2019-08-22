@@ -1,8 +1,7 @@
 package com.wx.gzh.api;
 
 import com.wx.gzh.entity.user.WxUserInfo;
-import com.wx.gzh.service.WxMsgIService;
-import com.wx.gzh.service.WxUserInfoService;
+import com.wx.gzh.service.WxUserInfoIService;
 import com.wx.gzh.utils.JsonResult;
 import com.wx.gzh.utils.JsonToClass;
 import com.wx.gzh.utils.WxQRCodeUtil;
@@ -25,7 +24,7 @@ public class WxUserInfoController {
     private static final Logger logger = LoggerFactory.getLogger(WxUserInfoController.class);
 
     @Autowired
-    private WxUserInfoService wxUserInfoService;
+    private WxUserInfoIService wxUserInfoService;
 
     @RequestMapping("/add")
     public JsonResult addWxUserInfo() {

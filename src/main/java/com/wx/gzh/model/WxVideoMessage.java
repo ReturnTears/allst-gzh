@@ -7,8 +7,8 @@ import java.util.Map;
 
 /**
  * 微信视频类型消息
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author Junn
+ * @since 2019/6/19 0019
  */
 @XStreamAlias("xml")
 public class WxVideoMessage extends WxBaseMessgae {

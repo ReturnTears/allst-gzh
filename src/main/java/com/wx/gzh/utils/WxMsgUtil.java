@@ -2,11 +2,13 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.WxImageMessage;
+import com.wx.gzh.robot.TuLingRobot;
 import net.sf.json.JSONObject;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.thymeleaf.engine.TemplateData;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -83,6 +85,7 @@ public class WxMsgUtil {
         // map.put("Content", "欢迎使用微信接口测试号，这是一条文本类型消息回复");
         // 将自定义消息改为机器人回复
         String question = map.get("Content");
+        System.out.println("quest : " + question);
         if ("登陆".equals(question)) {
             String url = Constant.WX_OAuth2_Code.replace("APPID", Constant.APPID)
                                             .replace("REDIRECT_URI", Constant.URL)      // 这里的URI应为项目下的重定向地址，需要和网页授权的 授权回调页面域名一致
@@ -91,6 +94,7 @@ public class WxMsgUtil {
             // todo 未完待处理
             map.put("Content", cont);
         } else {
+            System.out.println("不在进入该方法.....");
             String reqStr = getRequestParams(question);
             String respStr = tulinPost(Constant.APIURL, reqStr);
             String talk = getResultMes(respStr);
@@ -98,6 +102,19 @@ public class WxMsgUtil {
         }
         // System.out.println(textXml);
         return initTextMessage(map);
+    }
+
+    /**
+     * 机器人回复功能
+     * @param accetpContent
+     *                          接收的内容
+     * @return
+     *                          机器人的回复
+     */
+    public static String replyTlMsg(String accetpContent) {
+        String tempContent = TuLingRobot.getRequestParams(accetpContent);
+        String tempRespStr = TuLingRobot.tulinPost(Constant.APIURL, tempContent);
+        return TuLingRobot.getResultMes(tempRespStr);
     }
 
     /**
@@ -147,4 +164,8 @@ public class WxMsgUtil {
         return initNewsMessage(map);
     }
 
+
+    public static JSONObject packJsonmsg(Map<String, TemplateData> param) {
+        return null;
+    }
 }

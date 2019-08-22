@@ -10,10 +10,14 @@ import java.net.URL;
 
 /**
  * 微信二维码工具类
- * @Auther Junn
- * @Date 2019/6/25 0025下午 17:28
+ * @author JUNN
+ * @since 2019/6/25 0025下午 17:28
  */
 public class WxQRCodeUtil {
+    public static void main(String[] args) {
+        getQrCodeTempTicket();
+    }
+
     /**
      * 获取带参数的临时二维码TICKET
      * @return
@@ -21,6 +25,7 @@ public class WxQRCodeUtil {
     public static String getQrCodeTempTicket() {
         // 获取ACCESSTOKEN
         String accessToken = WxAccessTokenUtils.getAccessToken();
+        System.out.println("access_token : " + accessToken);
         String url = Constant.WX_QRCODE_URL.replace("TOKEN", accessToken);
         // 生成临时字符二维码POST数据
         String jsonTempData = "{\"expire_seconds\": 600, \"action_name\": \"QR_STR_SCENE\", \"action_info\": {\"scene\": {\"scene_str\": \"test\"}}}";

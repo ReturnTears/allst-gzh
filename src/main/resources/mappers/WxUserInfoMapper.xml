@@ -28,4 +28,10 @@
         <result column="release1" jdbcType="VARCHAR" property="release1" />
         <result column="release2" jdbcType="VARCHAR" property="release2" />
     </resultMap>
+
+    <!-- 通过 -->
+    <!--<select id="">
+
+    </select>-->
+
 </mapper>

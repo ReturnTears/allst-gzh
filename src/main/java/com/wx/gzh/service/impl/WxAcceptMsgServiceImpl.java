@@ -59,18 +59,22 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
             System.out.println("msgType : " + msgType);
             if (saveResult == 1) {
                 switch (msgType) {
-                    // 处理文本消息
+                    // 文本消息
                     case Constant.RESP_MESSAGE_TYPE_TEXT:
                         WxMsgText wxMsgText = new WxMsgText();
                         wxMsgText.setContent(map.get("Content"));
                         wxMsgText.setMsgId(currentTime);
                         wxMsgIService.insertMsgContentStore(wxMsgText);
+                        break;
+                    // 图片消息
                     case Constant.RESP_MESSAGE_TYPE_IMAGE:
                         WxMsgMedia wxMsgMImage = new WxMsgMedia();
                         wxMsgMImage.setMsgId(currentTime);
                         wxMsgMImage.setPicUrl(map.get("PicUrl"));
                         wxMsgMImage.setMediaId(map.get("MediaId"));
                         wxMsgIService.insertMsgMediaStore(wxMsgMImage);
+                        break;
+                    // 语音消息
                     case Constant.RESP_MESSAGE_TYPE_VOICE:
                         WxMsgMedia wxMsgVoice = new WxMsgMedia();
                         wxMsgVoice.setMsgId(currentTime);
@@ -78,6 +82,8 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                         wxMsgVoice.setMediaId(map.get("MediaId"));
                         wxMsgVoice.setRecognition(map.get("Recognition"));
                         wxMsgIService.insertMsgMediaStore(wxMsgVoice);
+                        break;
+                    // 地理位置信息消息
                     case Constant.REQ_MESSAGE_TYPE_LOCATION:
                         WxMsgLocation wxMsgLocation = new WxMsgLocation();
                         wxMsgLocation.setMsgId(currentTime);
@@ -86,6 +92,8 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                         wxMsgLocation.setLocation_Y(Double.valueOf(map.getOrDefault("Location_Y", "0.0")));
                         wxMsgLocation.setScale(map.get("Scale"));
                         wxMsgIService.insertMsgLocationStore(wxMsgLocation);
+                        break;
+                    // 链接消息
                     case Constant.REQ_MESSAGE_TYPE_LINK:
                         WxMsgLink wxMsgLink = new WxMsgLink();
                         wxMsgLink.setMsgId(currentTime);
@@ -93,15 +101,15 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                         wxMsgLink.setTitle(map.get("Title"));
                         wxMsgLink.setUrl(map.get("Url"));
                         wxMsgIService.insertMsgLinkStore(wxMsgLink);
+                        break;
+                    // 其他消息
                     default:
                         System.out.println("什么都没有执行");
+                        break;
                 }
             } else {
                 LOGGER.error("保存信息失败，errcode:{}" + saveResult);
             }
-
-            // 文本消息内容
-            String contentText = map.get("Content");
 
             /*// 保存用户发送过来的信息
             String uuid = UUID.randomUUID().toString();
@@ -149,7 +157,7 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
         WxMsg wxMsg = JSON.parseObject(JSON.toJSONString(map), WxMsg.class);
         // String currentTime = String.valueOf(System.currentTimeMillis());
         wxMsg.setUid(uuid);
-        wxMsg.setMsgForeignKey(timestrap);
+        wxMsg.setMsgKey(timestrap);
         wxMsg.setMsgSource(CommEnum.MsgSource.用户.getValue());
         return wxMsgIService.insertMsg(wxMsg);
     }

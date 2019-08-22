@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 /**
  * 图灵机器人
- * @Auther JUNN
- * @Date 2019-06-21 下午 11:50
+ * @author JUNN
+ * @since 2019-06-21 下午 11:50
  */
 public class TuLingRobot {
 
@@ -77,6 +77,15 @@ public class TuLingRobot {
         return jsonObject.toString();
     }
 
+    /**
+     * 发送请求获取消息的机器人回复内容
+     * @param url
+     *                      请求URL
+     * @param reqMes
+     *                      消息
+     * @return
+     *                      机器人回复内容
+     */
     public static String tulinPost(String url, String reqMes) {
         String status = "";
         String responseStr = "";
@@ -144,7 +153,7 @@ public class TuLingRobot {
      * 测试图灵机器人
      * @param args
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         System.out.println("输入：");
         Scanner scanner = new Scanner(System.in);
@@ -154,5 +163,5 @@ public class TuLingRobot {
             String talk = getResultMes(respStr);
             System.out.println("TA > 你说 : " + talk);
         }
-    }
+    }*/
 }

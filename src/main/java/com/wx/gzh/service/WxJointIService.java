@@ -2,10 +2,10 @@ package com.wx.gzh.service;
 
 /**
  * 微信接入Service
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author JUNN
+ * @since 2019/6/19 0019
  */
-public interface WxJointService {
+public interface WxJointIService {
     /**
      * 接入验证
      * @param timestamp

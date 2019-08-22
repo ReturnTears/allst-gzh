@@ -2,7 +2,7 @@ package com.wx.gzh.service.impl;
 
 import com.wx.gzh.entity.user.WxUserInfo;
 import com.wx.gzh.mapper.WxUserInfoMapper;
-import com.wx.gzh.service.WxUserInfoService;
+import com.wx.gzh.service.WxUserInfoIService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.UUID;
  */
 @Service
 @Transactional(value = "baseTransationManager")
-public class WxUserInfoServiceImpl implements WxUserInfoService {
+public class WxUserInfoServiceImpl implements WxUserInfoIService {
 
     @Autowired
     private WxUserInfoMapper userInfoMapper;

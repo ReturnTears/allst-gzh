@@ -1,6 +1,6 @@
 package com.wx.gzh.service.impl;
 
-import com.wx.gzh.service.WxJointService;
+import com.wx.gzh.service.WxJointIService;
 import com.wx.gzh.utils.Sha1Util;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import static com.wx.gzh.constant.Constant.TOKEN;
  * @Date 2019/6/19 0019
  */
 @Service
-public class WxJoinServiceImpl implements WxJointService {
+public class WxJoinServiceImpl implements WxJointIService {
 
     /**
      * 接入验证， 验证消息确实来自微信服务器

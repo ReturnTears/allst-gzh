@@ -5,17 +5,17 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:02
  */
 public class WxMsgText {
-    private String id;
+    private Integer id;
     private String content;
     private String msgId;
     private String release1;
     private String release2;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -82,11 +82,11 @@ public class WxMsg {
         MsgSource = msgSource;
     }
 
-    public String getMsgForeignKey() {
+    public String getMsgKey() {
         return msgKey;
     }
 
-    public void setMsgForeignKey(String msgKey) {
+    public void setMsgKey(String msgKey) {
         this.msgKey = msgKey;
     }
 

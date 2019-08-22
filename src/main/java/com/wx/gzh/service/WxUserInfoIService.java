@@ -8,7 +8,7 @@ import net.sf.json.JSONObject;
  * @author  JUNN
  * @since 2019-07-08 下午 10:50
  */
-public interface WxUserInfoService {
+public interface WxUserInfoIService {
 
     /**
      * 正常情况下，微信会返回下述JSON数据包给公众号
