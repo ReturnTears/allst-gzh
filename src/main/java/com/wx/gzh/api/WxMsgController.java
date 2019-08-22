@@ -30,4 +30,17 @@ public class WxMsgController {
         System.out.println("res" + res);
         return null;
     }
+
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(value = "temp", method = RequestMethod.POST)
+    public String sendWxTemplateMsg(HttpServletRequest request) {
+        boolean flag = wxMsgIService.sendMessage("o_Ag01ZEmXLI2gCkgSaCmn6FYbmI", "模板测试", "aaa", "bbbb", request);
+        if (flag) {
+            return "success";
+        }
+        return "Failure";
+    }
 }

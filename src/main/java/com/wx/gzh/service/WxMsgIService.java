@@ -60,4 +60,20 @@ public interface WxMsgIService {
      *                      用户信息集合
      */
     Map<String, Object> selectUserInfo(Map<String, Object> params);
+
+    /**
+     * 发送消息
+     * @param openid
+     *                      openID
+     * @param title
+     *                      标题
+     * @param defeated
+     *                      def
+     * @param intr
+     *                      instructions
+     * @param request
+     *                      request请求
+     * @return
+     */
+    boolean sendMessage(String openid, String title, String defeated, String intr, HttpServletRequest request);
 }

@@ -1,8 +1,14 @@
 package com.wx.gzh.service.impl;
 
+import com.wx.gzh.constant.Constant;
 import com.wx.gzh.entity.msg.*;
+import com.wx.gzh.entity.token.AccessToken;
 import com.wx.gzh.mapper.*;
+import com.wx.gzh.model.WxMsgTemplate;
 import com.wx.gzh.service.WxMsgIService;
+import com.wx.gzh.utils.WxAccessTokenUtils;
+import com.wx.gzh.utils.WxHttpUtil;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
+import static com.wx.gzh.constant.Constant.APPID;
+import static com.wx.gzh.constant.Constant.APPSECRET;
 import static com.wx.gzh.utils.WxMsgUtil.xmlParseMap;
 
 /**
@@ -137,5 +145,42 @@ public class WxMsgServiceImpl implements WxMsgIService {
     @Override
     public Map<String, Object> selectUserInfo(Map<String, Object> params) {
         return null;
+    }
+
+    /**
+     * 发送消息
+     *
+     * @param openid   openID
+     * @param title    标题
+     * @param defeated def
+     * @param intr     instructions
+     * @param request  request请求
+     * @return
+     */
+    @Override
+    public boolean sendMessage(String openid, String title, String defeated, String intr, HttpServletRequest request) {
+        WxMsgTemplate template = new WxMsgTemplate();
+        template.setTemplate_id("0ZUeqUJQ7jxB3G-fxgKyP17SPoo44wFuxnYBqLu5zA4E");
+        template.setColor("gray");
+        template.setTouser(openid);
+        template.setUrl("https://www.baidu.com");
+        boolean flag = false;
+        String jsonString = new WxMsgTemplate().toJSON();
+        String token = WxAccessTokenUtils.getAccessToken();
+        //AccessToken token = WxAccessTokenUtils.getAccessToken(APPID, APPSECRET);
+        String url = Constant.WX_TEMPLATE_MSG_SEND.replace("ACCESS_TOKEN", token);
+        // 发送模板消息
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, "POST", jsonString);
+        if (jsonObject != null) {
+            int errorCode = jsonObject.getInt("errcode");
+            String errorMsg = jsonObject.getString("errmsg");
+            if (errorCode == 0) {
+                flag = true;
+            } else {
+                System.out.println("消息模板发送失败....");
+                flag = false;
+            }
+        }
+        return flag;
     }
 }

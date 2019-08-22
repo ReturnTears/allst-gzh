@@ -43,6 +43,8 @@ public class WxMsgTemplate {
      */
     private String data;
 
+    //private List<TemplateParam> templateParamList;
+
     public String getTouser() {
         return touser;
     }
@@ -113,7 +115,52 @@ public class WxMsgTemplate {
      *              模板格式字JSON符串
      */
     public String toJSON() {
-
-        return "";
+        /**
+         * {
+         *    "touser":"OPENID",
+         *    "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY",
+         *    "url":"http://weixin.qq.com/download",
+         *    "miniprogram":{
+         *      "appid":"xiaochengxuappid12345",
+         *      "pagepath":"index?foo=bar"
+         *    },
+         *    "data":{
+         *            "first": {
+         *                "value":"恭喜你购买成功！",
+         *                "color":"#173177"
+         *            },
+         *            "keyword1":{
+         *                "value":"巧克力",
+         *                "color":"#173177"
+         *            },
+         *            "keyword2": {
+         *                "value":"39.8元",
+         *                "color":"#173177"
+         *            },
+         *            "keyword3": {
+         *                "value":"2014年9月22日",
+         *                "color":"#173177"
+         *            },
+         *            "remark":{
+         *                "value":"欢迎再次购买！",
+         *                "color":"#173177"
+         *            }
+         *    }
+         * }
+         */
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("{");
+        buffer.append(String.format("\"touser\":\"%s\"", this.touser)).append(",");
+        buffer.append(String.format("\"template_id:\":\"%s\"", this.template_id)).append(",");
+        buffer.append(String.format("\"url:\":\"%s\"", this.url)).append(",");
+        buffer.append(String.format("\"color:\":\"%s\"", this.color)).append(",");
+        buffer.append(String.format("\"data\":{"));
+        buffer.append(String.format("\"first\":{\"value\":\"欢迎关注\",\"color\":\"red\"}")).append(",");
+        buffer.append(String.format("\"keyword1\":{\"value\":\"回复1\",\"color\":\"green\"}")).append(",");
+        buffer.append(String.format("\"keyword2\":{\"value\":\"回复2\",\"color\":\"green\"}")).append(",");
+        buffer.append(String.format("\"keyword3\":{\"value\":\"回复3\",\"color\":\"green\"}")).append(",");
+        buffer.append(String.format("\"remark\":{\"value\":\"更多\",\"color\":\"yellow\"}"));
+        buffer.append("}").append("}");
+        return buffer.toString();
     }
 }
