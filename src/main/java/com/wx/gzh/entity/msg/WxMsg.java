@@ -14,7 +14,7 @@ public class WxMsg {
     private String MsgId;
     private String MsgType;
     private Integer MsgSource;
-    private String msgForeignKey;
+    private String msgKey;
     private String release1;
     private String release2;
 
@@ -83,11 +83,11 @@ public class WxMsg {
     }
 
     public String getMsgForeignKey() {
-        return msgForeignKey;
+        return msgKey;
     }
 
-    public void setMsgForeignKey(String msgForeignKey) {
-        this.msgForeignKey = msgForeignKey;
+    public void setMsgForeignKey(String msgKey) {
+        this.msgKey = msgKey;
     }
 
     public String getRelease1() {
@@ -117,7 +117,7 @@ public class WxMsg {
                 ", MsgId='" + MsgId + '\'' +
                 ", MsgType=" + MsgType +
                 ", MsgSource=" + MsgSource +
-                ", msgForeignKey=" + msgForeignKey +
+                ", msgForeignKey=" + msgKey +
                 ", release1='" + release1 + '\'' +
                 ", release2='" + release2 + '\'' +
                 '}';

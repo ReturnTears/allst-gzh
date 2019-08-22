@@ -5,20 +5,21 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:07
  */
 public class WxMsgLocation {
-    private String msgForeignKey;
+    private String id;
     private Double Location_X;
     private Double Location_Y;
     private String Scale;
     private String Label;
+    private String msgId;
     private String release1;
     private String release2;
 
-    public String getMsgForeignKey() {
-        return msgForeignKey;
+    public String getId() {
+        return id;
     }
 
-    public void setMsgForeignKey(String msgForeignKey) {
-        this.msgForeignKey = msgForeignKey;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Double getLocation_X() {
@@ -53,6 +54,14 @@ public class WxMsgLocation {
         Label = label;
     }
 
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
+
     public String getRelease1() {
         return release1;
     }
@@ -72,11 +81,12 @@ public class WxMsgLocation {
     @Override
     public String toString() {
         return "WxMsgLocation{" +
-                "msgForeignKey=" + msgForeignKey +
+                "id='" + id + '\'' +
                 ", Location_X=" + Location_X +
                 ", Location_Y=" + Location_Y +
-                ", Scale=" + Scale +
+                ", Scale='" + Scale + '\'' +
                 ", Label='" + Label + '\'' +
+                ", msgId='" + msgId + '\'' +
                 ", release1='" + release1 + '\'' +
                 ", release2='" + release2 + '\'' +
                 '}';

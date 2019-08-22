@@ -9,7 +9,7 @@ create table wx_msg(
     msg_id VARCHAR(32) comment  '消息id，64位整型',
     msg_type VARCHAR(32) comment '消息类型',
     msg_source int comment  '消息来源',
-    msg_foreign_key bigint(64) not null comment '外键',
+    msg_key bigint(64) not null comment '外键',
     release1 varchar(32) comment '备用1',
     release2 varchar(32) comment '备用2'
 ) comment '消息记录表';

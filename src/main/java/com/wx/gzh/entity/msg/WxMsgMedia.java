@@ -5,21 +5,22 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:08
  */
 public class WxMsgMedia {
-    private String msgForeignKey;
+    private String id;
     private String MediaId;
     private String PicUrl;
     private String Format;
     private String Recognition;
     private String ThumbMediaId;
+    private String msgId;
     private String release1;
     private String release2;
 
-    public String getMsgForeignKey() {
-        return msgForeignKey;
+    public String getId() {
+        return id;
     }
 
-    public void setMsgForeignKey(String msgForeignKey) {
-        this.msgForeignKey = msgForeignKey;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMediaId() {
@@ -62,6 +63,14 @@ public class WxMsgMedia {
         ThumbMediaId = thumbMediaId;
     }
 
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
+
     public String getRelease1() {
         return release1;
     }
@@ -81,12 +90,13 @@ public class WxMsgMedia {
     @Override
     public String toString() {
         return "WxMsgMedia{" +
-                "msgForeignKey='" + msgForeignKey + '\'' +
+                "id='" + id + '\'' +
                 ", MediaId='" + MediaId + '\'' +
                 ", PicUrl='" + PicUrl + '\'' +
                 ", Format='" + Format + '\'' +
                 ", Recognition='" + Recognition + '\'' +
                 ", ThumbMediaId='" + ThumbMediaId + '\'' +
+                ", msgId='" + msgId + '\'' +
                 ", release1='" + release1 + '\'' +
                 ", release2='" + release2 + '\'' +
                 '}';

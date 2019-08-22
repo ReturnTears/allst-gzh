@@ -10,7 +10,7 @@
         <result column="msg_id" jdbcType="VARCHAR" property="MsgId" />
         <result column="msg_type" jdbcType="VARCHAR" property="MsgType" />
         <result column="msg_source" jdbcType="INTEGER" property="MsgSource" />
-        <result column="msg_foreign_key" jdbcType="VARCHAR" property="msgForeignKey" />
+        <result column="msg_key" jdbcType="VARCHAR" property="msgKey" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
     </resultMap>

@@ -63,24 +63,24 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                     case Constant.RESP_MESSAGE_TYPE_TEXT:
                         WxMsgText wxMsgText = new WxMsgText();
                         wxMsgText.setContent(map.get("Content"));
-                        wxMsgText.setMsgForeignKey(currentTime);
+                        wxMsgText.setMsgId(currentTime);
                         wxMsgIService.insertMsgContentStore(wxMsgText);
                     case Constant.RESP_MESSAGE_TYPE_IMAGE:
                         WxMsgMedia wxMsgMImage = new WxMsgMedia();
-                        wxMsgMImage.setMsgForeignKey(currentTime);
+                        wxMsgMImage.setMsgId(currentTime);
                         wxMsgMImage.setPicUrl(map.get("PicUrl"));
                         wxMsgMImage.setMediaId(map.get("MediaId"));
                         wxMsgIService.insertMsgMediaStore(wxMsgMImage);
                     case Constant.RESP_MESSAGE_TYPE_VOICE:
                         WxMsgMedia wxMsgVoice = new WxMsgMedia();
-                        wxMsgVoice.setMsgForeignKey(currentTime);
+                        wxMsgVoice.setMsgId(currentTime);
                         wxMsgVoice.setFormat(map.get("Format"));
                         wxMsgVoice.setMediaId(map.get("MediaId"));
                         wxMsgVoice.setRecognition(map.get("Recognition"));
                         wxMsgIService.insertMsgMediaStore(wxMsgVoice);
                     case Constant.REQ_MESSAGE_TYPE_LOCATION:
                         WxMsgLocation wxMsgLocation = new WxMsgLocation();
-                        wxMsgLocation.setMsgForeignKey(currentTime);
+                        wxMsgLocation.setMsgId(currentTime);
                         wxMsgLocation.setLabel(map.get("Label"));
                         wxMsgLocation.setLocation_X(Double.valueOf(map.getOrDefault("Location_X", "0.0")));
                         wxMsgLocation.setLocation_Y(Double.valueOf(map.getOrDefault("Location_Y", "0.0")));
@@ -88,7 +88,7 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
                         wxMsgIService.insertMsgLocationStore(wxMsgLocation);
                     case Constant.REQ_MESSAGE_TYPE_LINK:
                         WxMsgLink wxMsgLink = new WxMsgLink();
-                        wxMsgLink.setMsgForeignKey(currentTime);
+                        wxMsgLink.setMsgId(currentTime);
                         wxMsgLink.setDescription(map.get("Description"));
                         wxMsgLink.setTitle(map.get("Title"));
                         wxMsgLink.setUrl(map.get("Url"));

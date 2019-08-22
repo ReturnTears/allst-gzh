@@ -5,17 +5,18 @@ package com.wx.gzh.entity.msg;
  * @since 2019/8/20 0020 下午 18:02
  */
 public class WxMsgText {
-    private String msgForeignKey;
+    private String id;
     private String content;
+    private String msgId;
     private String release1;
     private String release2;
 
-    public String getMsgForeignKey() {
-        return msgForeignKey;
+    public String getId() {
+        return id;
     }
 
-    public void setMsgForeignKey(String msgForeignKey) {
-        this.msgForeignKey = msgForeignKey;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -24,6 +25,14 @@ public class WxMsgText {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
     }
 
     public String getRelease1() {
@@ -40,5 +49,16 @@ public class WxMsgText {
 
     public void setRelease2(String release2) {
         this.release2 = release2;
+    }
+
+    @Override
+    public String toString() {
+        return "WxMsgText{" +
+                "id='" + id + '\'' +
+                ", content='" + content + '\'' +
+                ", msgId='" + msgId + '\'' +
+                ", release1='" + release1 + '\'' +
+                ", release2='" + release2 + '\'' +
+                '}';
     }
 }

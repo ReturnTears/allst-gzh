@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wx.gzh.mapper.WxMsgTextMapper">
     <resultMap id="BaseResultMap" type="com.wx.gzh.entity.msg.WxMsgText">
-        <result column="msg_foreign_key" jdbcType="VARCHAR" property="msgForeignKey" />
+        <result column="id" jdbcType="INTEGER" property="id" />
         <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="msg_id" jdbcType="VARCHAR" property="msgId" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
         <result column="release1" jdbcType="VARCHAR" property="release1" />
     </resultMap>
