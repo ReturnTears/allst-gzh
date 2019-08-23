@@ -1,7 +1,7 @@
 package com.wx.gzh.model;
 
 /**
- * 模板数据的内容
+ * 消息模板数据的内容
  * @author JUNN
  * @since 2019/8/23 0023 下午 14:20
  */

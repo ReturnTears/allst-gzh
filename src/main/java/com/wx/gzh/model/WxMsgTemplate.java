@@ -1,7 +1,5 @@
 package com.wx.gzh.model;
 
-import java.util.List;
-
 /**
  * Wx模板消息类
  * @author JUNN
@@ -147,23 +145,23 @@ public class WxMsgTemplate {
         buffer.append(String.format("\"touser\":\"%s\"", this.touser)).append(",");
         buffer.append(String.format("\"template_id:\":\"%s\"", this.template_id)).append(",");
         buffer.append(String.format("\"url:\":\"%s\"", this.url)).append(",");
-        buffer.append(String.format("\"color:\":\"%s\"", this.topcolor)).append(",");
+        buffer.append(String.format("\"topcolor:\":\"%s\"", this.topcolor)).append(",");
         buffer.append(String.format("\"data\":{"));
         buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "first", "恭喜你购买成功", "#173177"));
         buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "time", "2019-08-23", "#173177"));
         buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "content", "this is a test content", "#173177"));
         buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", "remark", "查看详情", "#173177"));
 
-        /*WxTemplateData param = null;
-        for (int i = 0; i < this.templateDataList.size(); i++) {
-            param = templateDataList.get(i);
+        WxTemplateData param = null;
+        for (int i = 0; i < 2; i++) {
+
             // 判断是否需要追加逗号
-            if (i < this.templateDataList.size() - 1) {
+            if (i < 2) {
                 buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", param.getName(), param.getValue(), param.getColor()));
             } else {
                 buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
             }
-        }*/
+        }
         buffer.append("}").append("}");
         return buffer.toString();
     }

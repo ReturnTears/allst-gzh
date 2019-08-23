@@ -7,7 +7,7 @@ package com.wx.gzh.constant;
  */
 public class CommEnum {
     /**
-     * 默认常用关键词
+     * 默认常用关键词, 补充的关键词放到Redis中
      */
     public enum KeyWord {
         登录("LOGIN"), 扫描("SCAN"), 二维码("QRCODE"), 普斯克("PSK"), 时间("TIME"), 项目("PROJECT");

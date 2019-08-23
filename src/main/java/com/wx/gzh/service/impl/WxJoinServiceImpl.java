@@ -9,8 +9,9 @@ import java.util.Arrays;
 import static com.wx.gzh.constant.Constant.TOKEN;
 
 /**
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * 接入微信
+ * @author JUNN
+ * @since 2019/6/19 0019
  */
 @Service
 public class WxJoinServiceImpl implements WxJointIService {

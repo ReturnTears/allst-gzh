@@ -84,7 +84,7 @@ public class WxQRCodeUtil {
             // 二维码存放路径+二维码名称
             String path = "";
             try {
-                String wxTicketUrl = Constant.WX_TICKET_URL.replace("TICKET", URLTools.encodeUTF8Url(ticket));
+                String wxTicketUrl = Constant.WX_TICKET_URL.replace("TICKET", CoreToolsUtil.encodeUTF8Url(ticket));
                 URL url = new URL(wxTicketUrl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setDoInput(true);

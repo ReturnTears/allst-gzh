@@ -10,10 +10,10 @@ import java.util.Map;
  * 以下四个参数为消息公共参数:
  * ToUserName   	接收方帐号（收到的OpenID）
  * FromUserName		开发者微信号
- * CreateTime		消息创建时间 （整型）
+ * CreateTime		消息创建时间 （10位整型）
  * MsgType          消息类型
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author JUNN
+ * @since 2019/6/19 0019
  */
 
 public class WxBaseMessgae {

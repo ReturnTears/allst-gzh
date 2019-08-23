@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +20,12 @@ import java.util.UUID;
 import static com.wx.gzh.utils.WxMsgUtil.xmlParseMap;
 
 /**
+ * 接收消息
  * @author Junn
  * @since 2019/6/19 0019
  */
 @Service
+@Transactional(value = "baseTransationManager")
 public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WxAcceptMsgServiceImpl.class);

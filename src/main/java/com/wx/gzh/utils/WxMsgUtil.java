@@ -164,8 +164,21 @@ public class WxMsgUtil {
         return initNewsMessage(map);
     }
 
+    /**
+     * 封装模板数据为JSON对象
+     * @param params
+     *                  模板数据Map
+     * @return
+     *                  JSON对象
+     */
+    public static JSONObject tempMsg2JSON(Map<String, TemplateData> params) {
+        if (CoreToolsUtil.isNotEmpty(params)) {
+            StringBuffer buffer = new StringBuffer();
+            buffer.append("{");
+            buffer.append(String.format("\"touser\":\"%s\"", params.get("touser"))).append(",");
 
-    public static JSONObject packJsonmsg(Map<String, TemplateData> param) {
+        }
         return null;
     }
+
 }

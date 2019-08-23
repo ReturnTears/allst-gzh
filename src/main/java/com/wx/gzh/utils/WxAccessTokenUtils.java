@@ -39,6 +39,7 @@ public class WxAccessTokenUtils {
      * @param appsecret
      *                      密钥
      * @return
+     *                      AccessToken对象
      */
     public static AccessToken getAccessToken(String appid, String appsecret) {
         AccessToken accessToken = null;

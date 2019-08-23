@@ -11,6 +11,7 @@ import com.wx.gzh.utils.Message2Xml;
 import com.wx.gzh.utils.WxMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ import static com.wx.gzh.utils.WxMsgUtil.*;
  * @since  2019/6/19 0019
  */
 @Service
+@Transactional(value = "baseTransationManager")
 public class WxHandlerServiceImpl implements WxHandlerMsgIService {
 
     @Autowired
