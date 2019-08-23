@@ -20,8 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-import static com.wx.gzh.constant.Constant.APPID;
-import static com.wx.gzh.constant.Constant.APPSECRET;
 import static com.wx.gzh.utils.WxMsgUtil.xmlParseMap;
 
 /**
@@ -70,14 +68,14 @@ public class WxMsgServiceImpl implements WxMsgIService {
             System.out.println("解析后的内容为 : " + map);
 
             // 下面这部分内容为获取微信服务器发送过来的数据格式
-            ServletInputStream is = request.getInputStream();
+           /* ServletInputStream is = request.getInputStream();
             byte[] b = new byte[2048];
             int len;
             StringBuilder sb = new StringBuilder();
             while ((len = is.read(b)) != -1) {
                 sb.append(new String(b, 0, len));
             }
-            System.out.println(sb.toString());
+            System.out.println(sb.toString());*/
             return map;
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,36 +146,35 @@ public class WxMsgServiceImpl implements WxMsgIService {
     }
 
     /**
-     * 发送消息
-     *
-     * @param openid   openID
-     * @param title    标题
-     * @param defeated def
-     * @param intr     instructions
-     * @param request  request请求
+     * 发送模板消息
      * @return
+     *             成功返回 - true， 失败返回 - false
      */
     @Override
-    public boolean sendMessage(String openid, String title, String defeated, String intr, HttpServletRequest request) {
-        WxMsgTemplate template = new WxMsgTemplate();
-        template.setTemplate_id("0ZUeqUJQ7jxB3G-fxgKyP17SPoo44wFuxnYBqLu5zA4E");
-        template.setColor("gray");
-        template.setTouser(openid);
-        template.setUrl("https://www.baidu.com");
+    public boolean sendTempMessage(Map<String, Object> params) {
         boolean flag = false;
-        String jsonString = new WxMsgTemplate().toJSON();
+        String jsonString = null;
+        if (!params.isEmpty()) {
+            WxMsgTemplate template = new WxMsgTemplate();
+            template.setTemplate_id(params.get("templateId").toString());    // 微信公众平台消息模板ID(需要申请)：ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY
+            template.setColor(params.get("color").toString());               // gray
+            template.setTouser(params.get("toUser").toString());             // toUserName 消息接收openId
+            template.setUrl(params.get("url").toString());                   // 点击模板消息需要跳转的地址(根据具体业务而定)
+            jsonString = template.toJSON();                                  // 将实例属性封装在JSON字符串中
+        }
+        // 获取token
         String token = WxAccessTokenUtils.getAccessToken();
-        //AccessToken token = WxAccessTokenUtils.getAccessToken(APPID, APPSECRET);
         String url = Constant.WX_TEMPLATE_MSG_SEND.replace("ACCESS_TOKEN", token);
-        // 发送模板消息
         JSONObject jsonObject = WxHttpUtil.httpRequest(url, "POST", jsonString);
         if (jsonObject != null) {
             int errorCode = jsonObject.getInt("errcode");
             String errorMsg = jsonObject.getString("errmsg");
             if (errorCode == 0) {
                 flag = true;
+                // 发送成功后保存发送的消息记录
+
             } else {
-                System.out.println("消息模板发送失败....");
+                System.out.println("消息模板发送失败....errorMsg : " + errorMsg);
                 flag = false;
             }
         }

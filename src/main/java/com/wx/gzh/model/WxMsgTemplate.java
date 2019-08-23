@@ -1,5 +1,7 @@
 package com.wx.gzh.model;
 
+import java.util.List;
+
 /**
  * Wx模板消息类
  * @author JUNN
@@ -42,8 +44,10 @@ public class WxMsgTemplate {
      * 模板数据
      */
     private String data;
-
-    //private List<TemplateParam> templateParamList;
+    /**
+     * 模板数据
+     */
+    private List<TemplateData> templateDataList;
 
     public String getTouser() {
         return touser;
@@ -109,6 +113,53 @@ public class WxMsgTemplate {
         this.data = data;
     }
 
+    public List<TemplateData> getTemplateDataList() {
+        return templateDataList;
+    }
+
+    public void setTemplateDataList(List<TemplateData> templateDataList) {
+        this.templateDataList = templateDataList;
+    }
+
+    /**
+     * 模板数据类
+     */
+    class TemplateData {
+        private String name;
+        private String value;
+        private String color;
+
+        public TemplateData(String name, String value, String color) {
+            this.name = name;
+            this.value = value;
+            this.color = color;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+    }
+
     /**
      * 按微信接口要求格式化模板
      * @return
@@ -116,6 +167,7 @@ public class WxMsgTemplate {
      */
     public String toJSON() {
         /**
+         * 数据格式如下:
          * {
          *    "touser":"OPENID",
          *    "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY",
@@ -155,11 +207,16 @@ public class WxMsgTemplate {
         buffer.append(String.format("\"url:\":\"%s\"", this.url)).append(",");
         buffer.append(String.format("\"color:\":\"%s\"", this.color)).append(",");
         buffer.append(String.format("\"data\":{"));
-        buffer.append(String.format("\"first\":{\"value\":\"欢迎关注\",\"color\":\"red\"}")).append(",");
-        buffer.append(String.format("\"keyword1\":{\"value\":\"回复1\",\"color\":\"green\"}")).append(",");
-        buffer.append(String.format("\"keyword2\":{\"value\":\"回复2\",\"color\":\"green\"}")).append(",");
-        buffer.append(String.format("\"keyword3\":{\"value\":\"回复3\",\"color\":\"green\"}")).append(",");
-        buffer.append(String.format("\"remark\":{\"value\":\"更多\",\"color\":\"yellow\"}"));
+        TemplateData param = null;
+        for (int i = 0; i < this.templateDataList.size(); i++) {
+            param = templateDataList.get(i);
+            // 判断是否需要追加逗号
+            if (i < this.templateDataList.size() - 1) {
+                buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", param.getName(), param.getValue(), param.getColor()));
+            } else {
+                buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
+            }
+        }
         buffer.append("}").append("}");
         return buffer.toString();
     }

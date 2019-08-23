@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public class WxMsgController {
     @Autowired
     private WxMsgIService wxMsgIService;
 
-    @RequestMapping(value = "acceptMsg", method = RequestMethod.GET)
+    @RequestMapping(value = "accept", method = RequestMethod.GET)
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("accept msg");
         Map<String, String> res = wxMsgIService.joinWxMsg(request, response);
@@ -35,12 +36,13 @@ public class WxMsgController {
      *
      * @return
      */
-    @RequestMapping(value = "temp", method = RequestMethod.POST)
+    @ResponseBody
+    @RequestMapping(value = "temp", method = RequestMethod.GET)
     public String sendWxTemplateMsg(HttpServletRequest request) {
-        boolean flag = wxMsgIService.sendMessage("o_Ag01ZEmXLI2gCkgSaCmn6FYbmI", "模板测试", "aaa", "bbbb", request);
+        /*boolean flag = wxMsgIService.sendMessage("gh_bd946e215c89", "模板测试", "aaa", "bbbb", request);
         if (flag) {
             return "success";
-        }
+        }*/
         return "Failure";
     }
 }

@@ -62,18 +62,8 @@ public interface WxMsgIService {
     Map<String, Object> selectUserInfo(Map<String, Object> params);
 
     /**
-     * 发送消息
-     * @param openid
-     *                      openID
-     * @param title
-     *                      标题
-     * @param defeated
-     *                      def
-     * @param intr
-     *                      instructions
-     * @param request
-     *                      request请求
+     * 发送模板消息
      * @return
      */
-    boolean sendMessage(String openid, String title, String defeated, String intr, HttpServletRequest request);
+    boolean sendTempMessage(Map<String, Object> params);
 }
