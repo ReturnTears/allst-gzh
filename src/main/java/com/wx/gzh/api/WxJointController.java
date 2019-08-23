@@ -89,6 +89,13 @@ public class WxJointController {
         return textXml;
     }
 
+    @PostMapping("reply")
+    public String replyPushMsg() {
+        String textXml = wxHandlerMsgService.pushMsg();
+        System.out.println("textXml : " + textXml);
+        return textXml;
+    }
+
     @GetMapping("ticket")
     public String getQRCodeTicket(HttpServletRequest request, HttpServletResponse response) {
 

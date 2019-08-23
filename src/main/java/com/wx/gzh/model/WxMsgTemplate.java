@@ -39,15 +39,11 @@ public class WxMsgTemplate {
      * 非必选
      * 模板内容字体颜色，不填默认为黑色
      */
-    private String color;
+    private String topcolor;
     /**
      * 模板数据
      */
     private String data;
-    /**
-     * 模板数据
-     */
-    private List<TemplateData> templateDataList;
 
     public String getTouser() {
         return touser;
@@ -97,12 +93,12 @@ public class WxMsgTemplate {
         this.pagepath = pagepath;
     }
 
-    public String getColor() {
-        return color;
+    public String getTopcolor() {
+        return topcolor;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setTopcolor(String topcolor) {
+        this.topcolor = topcolor;
     }
 
     public String getData() {
@@ -111,53 +107,6 @@ public class WxMsgTemplate {
 
     public void setData(String data) {
         this.data = data;
-    }
-
-    public List<TemplateData> getTemplateDataList() {
-        return templateDataList;
-    }
-
-    public void setTemplateDataList(List<TemplateData> templateDataList) {
-        this.templateDataList = templateDataList;
-    }
-
-    /**
-     * 模板数据类
-     */
-    class TemplateData {
-        private String name;
-        private String value;
-        private String color;
-
-        public TemplateData(String name, String value, String color) {
-            this.name = name;
-            this.value = value;
-            this.color = color;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
     }
 
     /**
@@ -169,35 +118,28 @@ public class WxMsgTemplate {
         /**
          * 数据格式如下:
          * {
-         *    "touser":"OPENID",
-         *    "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY",
-         *    "url":"http://weixin.qq.com/download",
-         *    "miniprogram":{
-         *      "appid":"xiaochengxuappid12345",
-         *      "pagepath":"index?foo=bar"
-         *    },
-         *    "data":{
-         *            "first": {
-         *                "value":"恭喜你购买成功！",
-         *                "color":"#173177"
-         *            },
-         *            "keyword1":{
-         *                "value":"巧克力",
-         *                "color":"#173177"
-         *            },
-         *            "keyword2": {
-         *                "value":"39.8元",
-         *                "color":"#173177"
-         *            },
-         *            "keyword3": {
-         *                "value":"2014年9月22日",
-         *                "color":"#173177"
-         *            },
-         *            "remark":{
-         *                "value":"欢迎再次购买！",
-         *                "color":"#173177"
-         *            }
-         *    }
+         *     "touser":"o_Ag01ZEmXLI2gCkgSaCmn6FYbmI",
+         *     "template_id":"FEbG1tlcb0vQAEE3l4OfXuTyNXqv4fZay6nH7QnHGk4",
+         *     "url":"https://www.baidu.com/",
+         *     "topcolor":"#FF0000",
+         *     "data":{
+         *       "first": {
+         *           "value":"黄先生",
+         *           "color":"#173177"
+         *       },
+         *       "time":{
+         *           "value":"06月07日 19时24分",
+         *           "color":"#173177"
+         *       },
+         *       "content": {
+         *           "value":"0426",
+         *           "color":"#173177"
+         *       },
+         *       "remark":{
+         *           "value":"点击查看详情...",
+         *           "color":"#173177"
+         *       }
+         *     }
          * }
          */
         StringBuffer buffer = new StringBuffer();
@@ -205,9 +147,14 @@ public class WxMsgTemplate {
         buffer.append(String.format("\"touser\":\"%s\"", this.touser)).append(",");
         buffer.append(String.format("\"template_id:\":\"%s\"", this.template_id)).append(",");
         buffer.append(String.format("\"url:\":\"%s\"", this.url)).append(",");
-        buffer.append(String.format("\"color:\":\"%s\"", this.color)).append(",");
+        buffer.append(String.format("\"color:\":\"%s\"", this.topcolor)).append(",");
         buffer.append(String.format("\"data\":{"));
-        TemplateData param = null;
+        buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "first", "恭喜你购买成功", "#173177"));
+        buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "time", "2019-08-23", "#173177"));
+        buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", "content", "this is a test content", "#173177"));
+        buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", "remark", "查看详情", "#173177"));
+
+        /*WxTemplateData param = null;
         for (int i = 0; i < this.templateDataList.size(); i++) {
             param = templateDataList.get(i);
             // 判断是否需要追加逗号
@@ -216,7 +163,7 @@ public class WxMsgTemplate {
             } else {
                 buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
             }
-        }
+        }*/
         buffer.append("}").append("}");
         return buffer.toString();
     }

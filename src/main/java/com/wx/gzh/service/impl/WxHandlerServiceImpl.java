@@ -12,6 +12,7 @@ import com.wx.gzh.utils.WxMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -28,6 +29,13 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
     @Autowired
     private WxMsgIService wxMsgIService;
 
+    /**
+     * 消息回复
+     * @param params
+     *                  回复用户的消息数据包
+     * @return
+     *                  消息XML格式数据
+     */
     @Override
     public String replayMsgs(Map<String, String> params) {
         String uuid = UUID.randomUUID().toString();
@@ -105,7 +113,7 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
     }
 
     /**
-     * 推送消息(发送模板消息)
+     * 推送消息(按照数据格式主动发送给用户)
      * @return
      */
     @Override
@@ -119,8 +127,13 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
          *   <Content><![CDATA[哈喽！]]></Content>
          * </xml>
          */
-
-        return "";
+        Map<String, String> params = new HashMap<>();
+        params.put("ToUserName", "gh_bd946e215c89");
+        params.put("FromUserName","o_Ag01ZEmXLI2gCkgSaCmn6FYbmI");
+        params.put("CreateTime","1566462070");
+        params.put("MsgType","text");
+        params.put("Content","哈喽!-+-WORLD!");
+        return Message2Xml.initTextMessage(params);
     }
 
 

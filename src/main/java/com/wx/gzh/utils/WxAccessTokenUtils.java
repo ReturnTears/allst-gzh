@@ -23,6 +23,10 @@ import static com.wx.gzh.constant.Constant.APPSECRET;
  */
 public class WxAccessTokenUtils {
 
+    public static void main(String[] args) {
+        getToken();
+    }
+
     private static Logger log = LoggerFactory.getLogger(WxAccessTokenUtils.class);
     /**
      * 声明一个token对象
@@ -96,7 +100,7 @@ public class WxAccessTokenUtils {
      *               指定URL
      * @return
      */
-    public static String getOrPost(String url) {
+    private static String getOrPost(String url) {
         try {
             URL urlObj = new URL(url);
             // 打开链接

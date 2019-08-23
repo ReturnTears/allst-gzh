@@ -5,6 +5,7 @@ import com.wx.gzh.entity.msg.*;
 import com.wx.gzh.entity.token.AccessToken;
 import com.wx.gzh.mapper.*;
 import com.wx.gzh.model.WxMsgTemplate;
+import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.service.WxMsgIService;
 import com.wx.gzh.utils.WxAccessTokenUtils;
 import com.wx.gzh.utils.WxHttpUtil;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 
 import static com.wx.gzh.utils.WxMsgUtil.xmlParseMap;
@@ -49,8 +51,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
     private WxMsgLinkMapper wxMsgLinkMapper;
 
     /**
-     * 接受微信用户的消息
-     *
+     * 接受微信用户的消息， 欲使用此方法替换
      * @param request  HttpServletRequest
      * @param response HttpServletResponse
      * @return
@@ -87,6 +88,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
      * 消息记录
      *
      * @return
+     *              成功返回0， 失败返回！0
      */
     @Override
     public int insertMsg(WxMsg wxMsg) {
@@ -97,6 +99,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
      * 多媒体消息存放
      *
      * @return
+     *              成功返回0，失败返回！0
      */
     @Override
     public int insertMsgMediaStore(WxMsgMedia wxMsgMedia) {
@@ -107,6 +110,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
      * 文本消息存放
      *
      * @return
+     *              成功返回0， 失败返回！0
      */
     @Override
     public int insertMsgContentStore(WxMsgText wxMsgContent) {
@@ -117,6 +121,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
      * 链接信息存放
      *
      * @return
+     *              成功返回0， 失败返回！0
      */
     @Override
     public int insertMsgLinkStore(WxMsgLink wxMsgLink) {
@@ -127,6 +132,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
      * 位置信息存放
      *
      * @return
+     *              成功返回0， 失败返回！0
      */
     @Override
     public int insertMsgLocationStore(WxMsgLocation wxMsgLocation) {
@@ -156,10 +162,11 @@ public class WxMsgServiceImpl implements WxMsgIService {
         String jsonString = null;
         if (!params.isEmpty()) {
             WxMsgTemplate template = new WxMsgTemplate();
-            template.setTemplate_id(params.get("templateId").toString());    // 微信公众平台消息模板ID(需要申请)：ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY
-            template.setColor(params.get("color").toString());               // gray
+            template.setTemplate_id(params.get("template_id").toString());    // 微信公众平台消息模板ID(需要申请)：ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY
+            template.setTopcolor(params.get("topcolor").toString());          // gray
             template.setTouser(params.get("toUser").toString());             // toUserName 消息接收openId
             template.setUrl(params.get("url").toString());                   // 点击模板消息需要跳转的地址(根据具体业务而定)
+            //template.setTemplateDataList((Object) params.get("template"));
             jsonString = template.toJSON();                                  // 将实例属性封装在JSON字符串中
         }
         // 获取token
@@ -171,8 +178,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
             String errorMsg = jsonObject.getString("errmsg");
             if (errorCode == 0) {
                 flag = true;
-                // 发送成功后保存发送的消息记录
-
+                // TODO 发送成功后保存发送的消息记录
             } else {
                 System.out.println("消息模板发送失败....errorMsg : " + errorMsg);
                 flag = false;

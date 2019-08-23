@@ -1,6 +1,7 @@
 package com.wx.gzh.api;
 
-import com.wx.gzh.service.WxAcceptMsgIService;
+import com.wx.gzh.model.WxMsgTemplate;
+import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.service.WxMsgIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,16 +37,32 @@ public class WxMsgController {
     }
 
     /**
-     *
+     * 发送目标那消息
      * @return
+     *          成功返回Success， 失败返回Failure
      */
     @ResponseBody
     @RequestMapping(value = "temp", method = RequestMethod.GET)
     public String sendWxTemplateMsg(HttpServletRequest request) {
-        /*boolean flag = wxMsgIService.sendMessage("gh_bd946e215c89", "模板测试", "aaa", "bbbb", request);
+        /**
+         * {{first.DATA}} 通知时间:{{time.DATA}} 通知内容:{{content.DATA}} {{remark.DATA}}
+         */
+        Map<String, Object> parmas = new HashMap<>();
+        parmas.put("templateId", "FEbG1tlcb0vQAEE3l4OfXuTyNXqv4fZay6nH7QnHGk4");
+        parmas.put("color", "#173177");
+        parmas.put("toUser", "o_Ag01ZEmXLI2gCkgSaCmn6FYbmI");
+        parmas.put("url", "https://www.baidu.com/");
+
+        boolean flag = wxMsgIService.sendTempMessage(parmas);
         if (flag) {
-            return "success";
-        }*/
+            return "Success";
+        }
         return "Failure";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "push", method = RequestMethod.GET)
+    public String sendPushMsg() {
+        return "";
     }
 }

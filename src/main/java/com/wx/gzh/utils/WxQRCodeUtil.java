@@ -69,7 +69,7 @@ public class WxQRCodeUtil {
      * @param ticket
      *                  微信生成的TICKET
      */
-    public static void getQrCode(String ticket) {
+    private static void getQrCode(String ticket) {
         qrcode(ticket);
     }
 
