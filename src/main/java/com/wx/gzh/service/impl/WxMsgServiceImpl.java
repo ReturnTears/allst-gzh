@@ -1,5 +1,6 @@
 package com.wx.gzh.service.impl;
 
+import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.entity.msg.*;
 import com.wx.gzh.entity.token.AccessToken;
@@ -7,8 +8,10 @@ import com.wx.gzh.mapper.*;
 import com.wx.gzh.model.WxMsgTemplate;
 import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.service.WxMsgIService;
+import com.wx.gzh.utils.CoreToolsUtil;
 import com.wx.gzh.utils.WxAccessTokenUtils;
 import com.wx.gzh.utils.WxHttpUtil;
+import com.wx.gzh.utils.WxMsgUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,25 +163,19 @@ public class WxMsgServiceImpl implements WxMsgIService {
     public boolean sendTempMessage(Map<String, Object> params) {
         boolean flag = false;
         String jsonString = null;
-        if (!params.isEmpty()) {
-            WxMsgTemplate template = new WxMsgTemplate();
-            template.setTemplate_id(params.get("template_id").toString());    // 微信公众平台消息模板ID(需要申请)：ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY
-            template.setTopcolor(params.get("topcolor").toString());          // gray
-            template.setTouser(params.get("toUser").toString());             // toUserName 消息接收openId
-            template.setUrl(params.get("url").toString());                   // 点击模板消息需要跳转的地址(根据具体业务而定)
-            //template.setTemplateDataList((Object) params.get("template"));
-            jsonString = template.toJSON();                                  // 将实例属性封装在JSON字符串中
+        if (CoreToolsUtil.isNotEmpty(params)) {
+            jsonString = WxMsgUtil.tempMsg2JSON(params);
         }
         // 获取token
         String token = WxAccessTokenUtils.getAccessToken();
         String url = Constant.WX_TEMPLATE_MSG_SEND.replace("ACCESS_TOKEN", token);
-        JSONObject jsonObject = WxHttpUtil.httpRequest(url, "POST", jsonString);
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), jsonString);
         if (jsonObject != null) {
             int errorCode = jsonObject.getInt("errcode");
             String errorMsg = jsonObject.getString("errmsg");
             if (errorCode == 0) {
                 flag = true;
-                // TODO 发送成功后保存发送的消息记录
+                System.out.println("消息模板发生成功...");
             } else {
                 System.out.println("消息模板发送失败....errorMsg : " + errorMsg);
                 flag = false;

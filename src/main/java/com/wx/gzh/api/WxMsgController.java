@@ -1,20 +1,14 @@
 package com.wx.gzh.api;
 
-import com.wx.gzh.model.WxMsgTemplate;
-import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.service.WxMsgIService;
+import com.wx.gzh.utils.WxMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,18 +37,19 @@ public class WxMsgController {
      *          成功返回Success， 失败返回Failure
      */
     @ResponseBody
-    @RequestMapping(value = "temp", method = RequestMethod.GET)
-    public String sendWxTemplateMsg(@PathVariable("touser") String touser) {
+    @RequestMapping(value = "temp", method = {RequestMethod.GET, RequestMethod.POST})
+    public String sendWxTemplateMsg(@RequestBody Map<String, Object> params) {
         /**
          * {{first.DATA}} 通知时间:{{time.DATA}} 通知内容:{{content.DATA}} {{remark.DATA}}
          */
-        Map<String, Object> parmas = new HashMap<>();
+        /*Map<String, Object> parmas = new HashMap<>();
         parmas.put("templateId", "FEbG1tlcb0vQAEE3l4OfXuTyNXqv4fZay6nH7QnHGk4");
         parmas.put("topcolor", "#173177");
-        parmas.put("toUser", touser);
+        parmas.put("toUser", params.get("touser"));
         parmas.put("url", "https://www.baidu.com/");
-
-        boolean flag = wxMsgIService.sendTempMessage(parmas);
+        parmas.put("data", "");*/
+        System.out.println("数据包的长度 : " + params.size());
+        boolean flag = wxMsgIService.sendTempMessage(params);
         if (flag) {
             return "Success";
         }

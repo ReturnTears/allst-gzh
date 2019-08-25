@@ -25,30 +25,35 @@ public interface WxMsgIService {
     /**
      * 消息记录
      * @return
+     *          成功返回1, 失败返回!1
      */
     int insertMsg(WxMsg wxMsg);
 
     /**
      * 多媒体消息存放
      * @return
+     *          成功返回1, 失败返回!1
      */
     int insertMsgMediaStore(WxMsgMedia wxMsgMedia);
 
     /**
      * 文本消息存放
      * @return
+     *          成功返回1, 失败返回!1
      */
     int insertMsgContentStore(WxMsgText wxMsgContent);
 
     /**
      * 链接信息存放
      * @return
+     *          成功返回1, 失败返回!1
      */
     int insertMsgLinkStore(WxMsgLink wxMsgLink);
 
     /**
      * 位置信息存放
      * @return
+     *          成功返回1, 失败返回!1
      */
     int insertMsgLocationStore(WxMsgLocation wxMsgLocation);
 
@@ -64,6 +69,7 @@ public interface WxMsgIService {
     /**
      * 发送模板消息
      * @return
+     *              成功返回true, 失败返回false
      */
     boolean sendTempMessage(Map<String, Object> params);
 }

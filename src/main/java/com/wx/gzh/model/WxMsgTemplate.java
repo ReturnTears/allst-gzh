@@ -1,5 +1,7 @@
 package com.wx.gzh.model;
 
+import java.util.List;
+
 /**
  * Wx模板消息类
  * @author JUNN
@@ -41,7 +43,7 @@ public class WxMsgTemplate {
     /**
      * 模板数据
      */
-    private String data;
+    private List<WxTemplateData> data;
 
     public String getTouser() {
         return touser;
@@ -99,11 +101,11 @@ public class WxMsgTemplate {
         this.topcolor = topcolor;
     }
 
-    public String getData() {
+    public List<WxTemplateData> getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(List<WxTemplateData> data) {
         this.data = data;
     }
 

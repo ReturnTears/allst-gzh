@@ -2,6 +2,7 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.WxImageMessage;
+import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.robot.TuLingRobot;
 import net.sf.json.JSONObject;
 import org.dom4j.Document;
@@ -165,20 +166,42 @@ public class WxMsgUtil {
     }
 
     /**
-     * 封装模板数据为JSON对象
+     * 封装消息模板数据为JSON对象
      * @param params
      *                  模板数据Map
+     *                  template_id: 微信公众平台消息模板ID(需要申请)：ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY
+     *                  touser: 消息接收openId
+     *                  url: 点击模板消息需要跳转的地址(根据具体业务而定)
+     *                  topcolor: 颜色
+     *                  data: 将实例属性封装在JSON字符串中
      * @return
      *                  JSON对象
      */
-    public static JSONObject tempMsg2JSON(Map<String, TemplateData> params) {
+    public static String tempMsg2JSON(Map<String, Object> params) {
         if (CoreToolsUtil.isNotEmpty(params)) {
             StringBuffer buffer = new StringBuffer();
             buffer.append("{");
-            buffer.append(String.format("\"touser\":\"%s\"", params.get("touser"))).append(",");
+            buffer.append(String.format("\"touser\":\"%s\"", params.get("toUser"))).append(",");
+            buffer.append(String.format("\"template_id\":\"%s\"", params.get("templateId"))).append(",");
+            buffer.append(String.format("\"topcolor\":\"%s\"", params.get("topColor"))).append(",");
+            buffer.append(String.format("\"url\":\"%s\"", params.get("url"))).append(",");
+            buffer.append(String.format("\"data\":{"));
+            // 拼接数据内容
+            List<WxTemplateData> list = (List<WxTemplateData>) params.get("data");
+            WxTemplateData param = null;
+            for (int i = 0; i < list.size(); i++) {
+                param = list.get(i);
+                if (i < list.size() - 1) {
+                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", param.getName(), param.getValue(), param.getColor()));
+                } else {
+                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
+                }
+            }
+            buffer.append("}").append("}");
 
+            return buffer.toString();
         }
-        return null;
+        return "";
     }
 
 }
