@@ -187,12 +187,11 @@ public class WxMsgUtil {
             buffer.append(String.format("\"url\":\"%s\"", params.get("url"))).append(",");
             buffer.append(String.format("\"data\":{"));
             // 拼接数据内容
-            List<WxTemplateData> list = (List<WxTemplateData>) params.get("data");
+            List list = (List) params.get("data");
             WxTemplateData param = null;
             for (int i = 0; i < list.size(); i++) {
-                param = list.get(i);
                 if (i < list.size() - 1) {
-                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", param.getName(), param.getValue(), param.getColor()));
+                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", list.get(i), param.getValue(), param.getColor()));
                 } else {
                     buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
                 }

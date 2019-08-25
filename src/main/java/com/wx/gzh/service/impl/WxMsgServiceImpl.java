@@ -162,14 +162,11 @@ public class WxMsgServiceImpl implements WxMsgIService {
     @Override
     public boolean sendTempMessage(Map<String, Object> params) {
         boolean flag = false;
-        String jsonString = null;
-        if (CoreToolsUtil.isNotEmpty(params)) {
-            jsonString = WxMsgUtil.tempMsg2JSON(params);
-        }
+        String jsonString = WxMsgUtil.tempMsg2JSON(params);
         // 获取token
         String token = WxAccessTokenUtils.getAccessToken();
         String url = Constant.WX_TEMPLATE_MSG_SEND.replace("ACCESS_TOKEN", token);
-        JSONObject jsonObject = WxHttpUtil.httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), jsonString);
+        JSONObject jsonObject = WxHttpUtil.httpRequest(url, "POST", jsonString);
         if (jsonObject != null) {
             int errorCode = jsonObject.getInt("errcode");
             String errorMsg = jsonObject.getString("errmsg");
@@ -177,8 +174,8 @@ public class WxMsgServiceImpl implements WxMsgIService {
                 flag = true;
                 System.out.println("消息模板发生成功...");
             } else {
-                System.out.println("消息模板发送失败....errorMsg : " + errorMsg);
                 flag = false;
+                System.out.println("消息模板发送失败....errorMsg : " + errorMsg);
             }
         }
         return flag;
