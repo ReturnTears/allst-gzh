@@ -165,6 +165,19 @@ OAuth2.0的处理流程:
 ### 项目案例页面
     跳转公司案例地址
 
+### 接口
+```
+地址域名：   
+                huwx.free.idcfengye.com
+获取用户信息：
+                http://127.0.0.1:4567/wx/user/add
+网页授权：
+                http://127.0.0.1:4567/wx/oauth/code
+
+
+
+```
+
 ### 备注
 ```
 $xslt
@@ -176,5 +189,8 @@ Navicat连接MySQL Server8.0版本时出现Client does not support authenticatio
 3、flush privileges;
 
 SQL数据类型和Java数据类型的对应关系 integer、int ---> int tinyint、smallint ---> short bigint --->long decimal、numeric ---> java.math.BigDecimal float ---> float double ---> double char、varchar ---> String boolean、bit
+
+Druid链接地址为：http://ip:port/druid/login.html
+
 ```
         

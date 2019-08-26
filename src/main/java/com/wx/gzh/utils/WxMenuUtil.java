@@ -63,20 +63,24 @@ public class WxMenuUtil {
         button23.setType("view");
         button23.setUrl("http://47.101.154.109:10100/admin/web/login");*/
 
-        /*ViewButton button24 = new ViewButton();
-        button24.setName("测试使用");
-        button24.setType("view");
-        button24.setUrl("http://huwx.free.idcfengye.com/web/conn/inde");*/
+        ViewButton button31 = new ViewButton();
+        button31.setName("测试使用");
+        button31.setType("view");
+        button31.setUrl("http://huwx.free.idcfengye.com/wx/oauth/code");
 
         Button button1 = new Button();
         button1.setName("关于公司");
         button1.setSub_button(new Button[]{button11, button12, button13});
 
+        Button button3 = new Button();
+        button3.setName("网页授权");
+        button3.setSub_button(new Button[]{button31});
+
         Button button2 = new Button();
         button2.setName("关于项目");
         button2.setSub_button(new Button[]{button21});
 
-        menu.setButton(new Button[]{button1, button2});
+        menu.setButton(new Button[]{button1, button2, button3});
 
         return menu;
     }
@@ -94,7 +98,7 @@ public class WxMenuUtil {
         int result = 0;
         String url = Constant.MENU_CREATE_URL.replace("ACCESS_TOKEN", token);
         JSONObject jsonObject = WxHttpUtil.httpRequest(url, CommEnum.RequestMode.POST请求.getValue(), menu);
-        if (jsonObject != null) {
+        if (CoreToolsUtil.isNotEmpty(jsonObject)) {
             result = jsonObject.getInt("errcode");
             System.out.println(result);
         }

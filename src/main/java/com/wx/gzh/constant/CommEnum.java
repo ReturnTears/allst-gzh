@@ -7,6 +7,27 @@ package com.wx.gzh.constant;
  */
 public class CommEnum {
     /**
+     * 结果编码
+     */
+    public enum ResultCode {
+        SUCCESS("10001"), FAILURE("10002"), ERROR("10003");
+
+        private String value;
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        ResultCode(String value) {
+            this.value = value;
+        }
+    }
+
+    /**
      * 默认常用关键词, 补充的关键词放到Redis中
      */
     public enum KeyWord {

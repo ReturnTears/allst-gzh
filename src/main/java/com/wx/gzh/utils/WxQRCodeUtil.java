@@ -116,10 +116,12 @@ public class WxQRCodeUtil {
      * 扫描二维码事件 : 获取用户信息
      *                          获取已经关注了公众号的用户信息
      *                          获取未关注公众号的用户信息
+     * @return
+     *          用户信息的JSON对象
      */
     public static JSONObject scanQRCode() {
         String ACCESS_TIKEN = WxAccessTokenUtils.getAccessToken();
-        String OPENID = "o_Ag01ZEmXLI2gCkgSaCmn6FYbmI";
+        String OPENID = "o_Ag01Zeej4vTtuvn8mEdYGEY4l0";
         String wxUserUrl = Constant.WX_USER_URL.replace("ACCESS_TOKEN", ACCESS_TIKEN).replace("OPENID", OPENID);
         StringBuffer buffer = new StringBuffer();
         try {
@@ -136,7 +138,7 @@ public class WxQRCodeUtil {
             isr.close();
             br.close();
             JSONObject jsonObject = JSONObject.fromObject(buffer.toString());
-             System.out.println("获取的JSON对象 : " + jsonObject);
+            // System.out.println("获取的JSON对象 : " + jsonObject);
             return jsonObject;
         } catch (Exception e) {
             e.printStackTrace();

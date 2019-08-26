@@ -2,62 +2,71 @@ package com.wx.gzh.api;
 
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
-import org.springframework.stereotype.Controller;
+import com.wx.gzh.oauth2.WxOauth2Index;
+import com.wx.gzh.utils.CoreToolsUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * 微信Oauth2.0授权
  * @author JUNN
  * @since 2019-07-10 下午 11:27
  */
-@Controller
+@RestController
 @RequestMapping("/wx/oauth")
 public class WxOauth2Controller {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WxOauth2Controller.class);
+
     /**
      * 第一步:用户同意授权，获取Code
+     * @param response
+     *                  HttpServletResponse
      */
     @RequestMapping("code")
-    public void oauth(HttpServletResponse response) {
-
-//        String path = Constant.URL + "/ticket";
-        String path = "http://huwx.free.idcfengye.com/web/conn/index";
-        try {
-            path = URLEncoder.encode(path, CommEnum.EncodingMode.UTF8编码.getValue());
-        } catch (UnsupportedEncodingException e) {
-            System.out.println("编码失败...");
-            e.printStackTrace();
-        }
-
-        String URL = Constant.WX_OAuth2_Code.replace("APPID",Constant.APPID)
-                                        .replace("REDIRECT_URI", path)
-                                        .replace("SCOPE", Constant.WX_SNSAPI_USERINFO)
-                                .replace("STATE", "YANGYANG");
-
-
+    public void oauth(@RequestParam String redirectUri, HttpServletResponse response) {
+        String URL = WxOauth2Index.oauth2Agree(redirectUri);
         try {
             response.sendRedirect(URL);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
+     * 第二步:
      * 如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&state=STATE。
-     * 域名 + /api/oauth/invoke
+     * 域名 + /wx/oauth/invoke
+     * 获取Code, 通过code换取网页授权access_token
+     * @param request
+     *                  HttpServletRequest
      */
-    @RequestMapping("invoke")
-    public void aouthInvoke(HttpServletRequest request) {
+    @GetMapping("invoke")
+    public void oauthInvoke(HttpServletRequest request) {
         // 获取Code
         String code = request.getParameter("code");
         String state = request.getParameter("state");
-        System.out.println("获取的CODE : " + code + " ,state = " + state);
+        Map<String, Object> access_token = WxOauth2Index.oauth2CodeExToken(code);
+        System.out.println("通过CODE获取的access_token : " + access_token.get("accessToken"));
+
+        /*String refreshToken = WxOauth2Index.oauth2RefreshToken(access_token.get("refreshToken").toString());
+        System.out.println("通过refresh_token获取access_token : " + refreshToken);*/
+
+        String at = access_token.get("accessToken").toString();
+        String id = access_token.get("openId").toString();
+        // 拉取用户信息
+        WxOauth2Index.oauth2UserInfo(at, id);
     }
+
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/wx/user")
 public class WxUserInfoController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxUserInfoController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WxUserInfoController.class);
 
     @Autowired
     private WxUserInfoIService wxUserInfoService;
@@ -30,12 +30,11 @@ public class WxUserInfoController {
     public JsonResult addWxUserInfo() {
         JSONObject object = WxQRCodeUtil.scanQRCode();
         WxUserInfo userInfo = new JsonToClass().jsonToWxUserInfo(object.toString());
-        //System.out.println("UserInfo ： " + userInfo);
         int result = wxUserInfoService.insertUserInfo(userInfo);
         if (result > 0) {
             return new JsonResult(true, "保存用户信息成功!");
         } else {
-            logger.error("保存用户信息失败!");
+            LOGGER.error("保存已关注用户信息失败!");
             return new JsonResult(false, "保存用户信息失败!");
         }
     }

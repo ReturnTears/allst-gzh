@@ -19,8 +19,8 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Http工具类
- * @Auther JUNN
- * @Date 2019-07-16 下午 10:48
+ * @author JUNN
+ * @since 2019-07-16 下午 10:48
  */
 public class WxHttpUtil {
     private static final Logger logger = LoggerFactory.getLogger(WxHttpUtil.class);
@@ -108,7 +108,7 @@ public class WxHttpUtil {
                 httpUrlConn.connect();
             }
             // 当有数据需要提交时
-            if (null != outPutStr) {
+            if (CoreToolsUtil.isNotNull(outPutStr)) {
                 OutputStream outputStream = httpUrlConn.getOutputStream();
                 // 注意编码格式，防止中文乱码
                 outputStream.write(outPutStr.getBytes(StandardCharsets.UTF_8 ));

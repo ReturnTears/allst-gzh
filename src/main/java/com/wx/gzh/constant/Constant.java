@@ -174,6 +174,10 @@ public class Constant {
      */
     public static final String WX_OAuth2_CHECK_TOKEN = "https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
     /**
+     * 拉取用户信息(需scope为 snsapi_userinfo)
+     */
+    public static final String Wx_OAuth2_USER_INFO = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+    /**
      * 以snsapi_base为scope发起的网页授权，是用来获取进入页面的用户的openid的，并且是静默授权并自动跳转到回调页的。
      */
     public static final String WX_SNSAPI_BASE = "snsapi_base";

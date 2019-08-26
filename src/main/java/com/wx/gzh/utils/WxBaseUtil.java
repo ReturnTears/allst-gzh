@@ -10,8 +10,8 @@ import java.net.URL;
 
 /**
  * 工具类中的公共方法
- * @Auther Junn
- * @Date 2019/6/27 0027下午 16:53
+ * @author JUNN
+ * @since 2019/6/27 0027下午 16:53
  */
 public class WxBaseUtil {
 

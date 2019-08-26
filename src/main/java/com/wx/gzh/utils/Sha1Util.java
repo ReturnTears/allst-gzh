@@ -5,8 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * Sha1加密工具类
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author JUNN
+ * @since 2019/6/19 0019
  */
 public class Sha1Util {
 

@@ -6,8 +6,8 @@ import java.security.cert.X509Certificate;
 
 /**
  * 证书信任管理器
- * @Auther Junn
- * @Date 2019/6/24 0024下午 14:46
+ * @author JUNN
+ * @since 2019/6/24 0024下午 14:46
  */
 public class WxX509TrustManager implements X509TrustManager {
 

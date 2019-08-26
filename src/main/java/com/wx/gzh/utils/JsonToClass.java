@@ -12,8 +12,8 @@ import java.util.Map;
 
 /**
  * 将JSON对象转换为实体类
- * @Auther Junn
- * @Date 2019/7/17 0017下午 16:04
+ * @author JUNN
+ * @since 2019/7/17 0017下午 16:04
  */
 public class JsonToClass {
     /**

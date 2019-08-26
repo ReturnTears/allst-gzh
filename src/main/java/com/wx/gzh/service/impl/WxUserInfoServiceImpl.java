@@ -12,8 +12,8 @@ import java.util.UUID;
 
 /**
  * Wx用户信息
- * @Auther JUNN
- * @Date 2019-07-08 下午 10:56
+ * @author JUNN
+ * @since 2019-07-08 下午 10:56
  */
 @Service
 @Transactional(value = "baseTransationManager")

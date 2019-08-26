@@ -42,7 +42,7 @@ public class CoreToolsUtil {
 
     // ------------------------------------------判断对象是否为空 Start-------------------------------------------------//
     public static boolean isNull(Object obj) {
-        return obj == null;
+        return obj == null || obj == "";
     }
 
     public static boolean isNotNull(Object obj) {
