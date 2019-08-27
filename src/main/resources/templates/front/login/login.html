@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../../static/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- 开发环境 -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.1.1/dist/vuex.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- 生产环境 -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+
+</head>
+<body>
+<!-- Vue container-->
+    <div id="app" class="container">
+        <h3>登陆</h3>
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+        <router-link to="/login" >没有账户?去注册</router-link>
+        <router-link to="/register" >已有账户?去登录</router-link>
+
+        <!--<login></login>
+        <register></register>-->
+    </div>
+
+<!-- template login -->
+    <template id="login">
+        <div class="login">
+            <div class="content">
+                <form method="post" action="/web/conn/index">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" class="form-control" name="username" v-model.trim="username" @change="isNotNull()" placeholder="手机号/系统账号/其他">
+                    </div>
+                    <div class="form-group">
+                        <label>密 码</label>
+                        <input type="password" class="form-control" name="password" v-model.trim="password" @change="isNotNull()" placeholder="密码">
+                    </div>
+                    <button type="submit" id="btn-log" class="btn btn-large btn-block">登 陆</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <template id="register">
+        <div class="register">
+            <div class="content">
+                <form method="post" action="/web/conn/index">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" class="form-control" name="username" placeholder="手机号/系统账号/其他">
+                    </div>
+                    <div class="form-group">
+                        <label>证件号</label>
+                        <input type="text" class="form-control" name="idcard" placeholder="证件号">
+                    </div>
+                    <div class="form-group">
+                        <label>邮 件</label>
+                        <input type="text" class="form-control" name="Email" placeholder="邮箱地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密 码</label>
+                        <input type="password" class="form-control" name="password" placeholder="密码">
+                    </div>
+                    <div class="form-group">
+                        <label>确认密码</label>
+                        <input type="password" class="form-control" name="password" placeholder="再次输入">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="wx">绑定微信
+                    </div>
+                    <button type="submit" id="btn-reg" class="register-style">注 册</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+<!-- script -->
+    <script>
+        // 登陆子组件
+        let login = {
+            template: '#login'
+        };
+        // 注册子组件
+        let register = {
+            template: '#register'
+        };
+
+        let router = new VueRouter({
+            routes:[
+                {path:'/', redirect: '/login'},
+                {path:'/login', component: login},
+                {path:'/register', component: register}
+            ]
+        });
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                password: '',
+                isShow: false
+            },
+            methods: {
+                isNotNull() {
+                    if (!this.username || !this.password) {
+                        console.log("params is null");
+                    }
+                }
+            },
+            router
+        })
+    </script>
+</body>
+</html>

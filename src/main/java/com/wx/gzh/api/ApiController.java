@@ -41,4 +41,9 @@ public class ApiController {
         }
         return "classpath:";
     }
+
+    @RequestMapping("register")
+    public String apiRegister() {
+        return "";
+    }
 }

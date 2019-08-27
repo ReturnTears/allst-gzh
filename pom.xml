@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.wx.gzh</groupId>
     <artifactId>allst-gzh</artifactId>
@@ -98,7 +98,7 @@
             <version>1.4.10</version>
         </dependency>
         <!-- 添加bootstrap依赖 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>3.4.1</version>
@@ -107,14 +107,14 @@
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
             <version>4.3.1</version>
-        </dependency>
+        </dependency>-->
 
         <!-- vue -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>vue</artifactId>
             <version>2.6.10</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.alibaba</groupId>
