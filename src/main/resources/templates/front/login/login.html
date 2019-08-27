@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@3.1.1/dist/vuex.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- 生产环境 -->
     <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
 
@@ -26,24 +27,24 @@
         <router-link to="/login" >没有账户?去注册</router-link>
         <router-link to="/register" >已有账户?去登录</router-link>
 
-        <!--<login></login>
+        <!--<login :childData="username" @func="getChildData"></login>
         <register></register>-->
     </div>
 
 <!-- template login -->
-    <template id="login">
+    <template id="login" >
         <div class="login">
             <div class="content">
                 <form method="post" action="/web/conn/index">
                     <div class="form-group">
                         <label>用户名</label>
-                        <input type="text" class="form-control" name="username" v-model.trim="username" @change="isNotNull()" placeholder="手机号/系统账号/其他">
+                        <input type="text" class="form-control" name="username" v-model.trim="username" @change="getVal" placeholder="手机号/系统账号/其他">
                     </div>
                     <div class="form-group">
                         <label>密 码</label>
-                        <input type="password" class="form-control" name="password" v-model.trim="password" @change="isNotNull()" placeholder="密码">
+                        <input type="password" class="form-control" name="password" v-model.trim="password" @change="getVal" placeholder="密码">
                     </div>
-                    <button type="submit" id="btn-log" class="btn btn-large btn-block">登 陆</button>
+                    <button type="submit" id="btn-log" class="btn btn-large btn-block" @click="submitLogin">登 陆</button>
                 </form>
             </div>
         </div>
@@ -55,28 +56,28 @@
                 <form method="post" action="/web/conn/index">
                     <div class="form-group">
                         <label>用户名</label>
-                        <input type="text" class="form-control" name="username" placeholder="手机号/系统账号/其他">
+                        <input type="text" class="form-control" name="username" v-model.trim="regUser" placeholder="手机号/系统账号/其他">
                     </div>
                     <div class="form-group">
                         <label>证件号</label>
-                        <input type="text" class="form-control" name="idcard" placeholder="证件号">
+                        <input type="text" class="form-control" name="idcard" v-model.trim="regID" placeholder="证件号">
                     </div>
                     <div class="form-group">
                         <label>邮 件</label>
-                        <input type="text" class="form-control" name="Email" placeholder="邮箱地址">
+                        <input type="text" class="form-control" name="Email" v-model.trim="regEmail" placeholder="邮箱地址">
                     </div>
                     <div class="form-group">
                         <label>密 码</label>
-                        <input type="password" class="form-control" name="password" placeholder="密码">
+                        <input type="password" class="form-control" name="password" v-model.trim="regPass" placeholder="密码">
                     </div>
                     <div class="form-group">
                         <label>确认密码</label>
-                        <input type="password" class="form-control" name="password" placeholder="再次输入">
+                        <input type="password" class="form-control" name="password" v-model.trim="regPassa" placeholder="再次输入">
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="wx">绑定微信
                     </div>
-                    <button type="submit" id="btn-reg" class="register-style">注 册</button>
+                    <button type="submit" id="btn-reg" class="btn btn-large btn-block">注 册</button>
                 </form>
             </div>
         </div>
@@ -86,13 +87,56 @@
     <script>
         // 登陆子组件
         let login = {
-            template: '#login'
-        };
-        // 注册子组件
-        let register = {
-            template: '#register'
+            template: '#login',
+            data() {
+                return {
+                    username: '',
+                    password: ''
+                }
+            },
+            methods: {
+                isNotNull(a, b) {
+                  if (a || b)
+                      return false;
+                  return true;
+                },
+                getVal() {
+                    if (this.isNotNull(this.username, this.password)) {
+                        let data = [this.username, this.password];
+                        this.$emit('func', data);
+                    } else {
+                        console.log('params is null...');
+                    }
+                },
+                // TODO 数据验证调用提供的接口
+                submitLogin() {
+                    if (this.isNotNull(this.username, this.password)) {
+                        axios.get('/user').then(function (data) {
+                            console.log(data)
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
+            },
+            props: ['childData']
         };
 
+        // 注册子组件
+        let register = {
+            template: '#register',
+            data() {
+                return {
+                    regUser: '',
+                    regPass: '',
+                    regPassa: '',
+                    regID: '',
+                    regEmail: ''
+                }
+            }
+        };
+
+        // 路由
         let router = new VueRouter({
             routes:[
                 {path:'/', redirect: '/login'},
@@ -101,20 +145,25 @@
             ]
         });
 
+        // VM实例
         let vm = new Vue({
             el: '#app',
             data: {
-                username: '',
-                password: '',
-                isShow: false
+                username: ''
             },
             methods: {
-                isNotNull() {
-                    if (!this.username || !this.password) {
-                        console.log("params is null");
-                    }
+                /*submit: function () {
+                    let params = this.$refs[''].getVal()
+                    console.log(params);
+                }*/
+                getChildData(data) {
+                    this.username = data;
+                    console.log('父组件获取到子组件的值: ' + this.username.length);
                 }
             },
+            /*components: {
+                login, register
+            }*/
             router
         })
     </script>
