@@ -86,6 +86,10 @@ public class Constant {
      * ------------------------------------------------获取用户基本信息---------------------------------------------------
      */
     public static final String WX_USER_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+    /**
+     *  批量获取用户基本信息, http请求方式: POST
+     */
+    public static final String WX_BATCH_USER_URL = "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=ACCESS_TOKEN";
 
     /**
      * ------------------------------------------------主动推送信息接口---------------------------------------------------
