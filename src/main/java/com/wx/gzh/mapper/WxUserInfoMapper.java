@@ -16,4 +16,7 @@ public interface WxUserInfoMapper extends Mapper<WxUserInfo> {
     @Select("select * from wx_user_info userInfo where userInfo.nickname = #{nickname}")
     Map<String, Object> selectUserInfo(Map<String, Object> params);
 
+    @Select("select * from wx_user_info userInfo where userInfo.nickname = #{username}")
+    int isUserInfo(String username, String password);
+
 }

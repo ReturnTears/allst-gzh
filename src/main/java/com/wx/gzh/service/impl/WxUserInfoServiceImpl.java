@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -44,6 +45,25 @@ public class WxUserInfoServiceImpl implements WxUserInfoIService {
         String uuid = UUID.randomUUID().toString();
         userInfo.setUid(uuid);
         return userInfoMapper.insertSelective(userInfo);
+    }
+
+    /**
+     * 判断是否已存在用户
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return 存在返回true， 不存在返回false
+     */
+    @Override
+    public boolean isUserInfo(String username, String password) {
+        WxUserInfo userInfo = new WxUserInfo();
+        userInfo.setNickname(username);
+        int result = userInfoMapper.selectCount(userInfo);
+        //System.out.println("result : " + result);
+        if (result == 1) {
+            return true;
+        }
+        return false;
     }
 
 

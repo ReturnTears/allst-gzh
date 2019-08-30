@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
+import java.util.*;
 
 import static com.wx.gzh.constant.Constant.*;
 import static com.wx.gzh.utils.WxMenuUtil.deleteMenu;
@@ -95,5 +95,82 @@ public class AllstGzhApplicationTests {
         String file = "C:\\Users\\Administrator\\Pictures\\111.PNG";
         JSONObject result = WxMatterUtil.uploadTempMaterial();
         System.out.println("upload matter : " + result);
+    }
+
+    /**
+     * 测试Map对象数据
+     * {
+     *     "touser":"o_Ag01ZEmXLI2gCkgSaCmn6FYbmI",
+     *     "template_id":"FEbG1tlcb0vQAEE3l4OfXuTyNXqv4fZay6nH7QnHGk4",
+     * 	   "url":"https://www.baidu.com/",
+     *     "topcolor":"red",
+     *     "data":{
+     * 	    "first": {
+     * 	        "value":"黄先生",
+     * 	        "color":"#173177"
+     *                },
+     * 	    "time":{
+     * 	        "value":"06月07日 19时24分",
+     * 	        "color":"#173177"
+     *        },
+     * 	    "content": {
+     * 	        "value":"0426",
+     * 	        "color":"#173177"
+     *        },
+     * 	    "remark":{
+     * 	        "value":"点击查看详情...",
+     * 	        "color":"#173177"
+     *        }
+     *     }
+     * }
+     */
+    @Test
+    public void testMapObj() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("touser", "o_Ag01ZEmXLI2gCkgSaCmn6FYbmI");
+        map.put("template_id", "FEbG1tlcb0vQAEE3l4OfXuTyNXqv4fZay6nH7QnHGk4");
+        map.put("url", "https://www.baidu.com/");
+        map.put("topcolor", "#FF0000");
+
+        Map<String, Object> childMap = new HashMap<>();
+        String[] params = {"first", "time", "content", "remark"};
+
+        Map<String, Object> firstMap = new HashMap<>();
+        firstMap.put("name", "first");
+        firstMap.put("value", "JUNN");
+        firstMap.put("color", "#173177");
+        childMap.put(params[0], firstMap);
+
+        Map<String, Object> timeMap = new HashMap<>();
+        timeMap.put("name", "time");
+        timeMap.put("value", "2019-08-30 12:12:12");
+        timeMap.put("color", "#171717");
+        childMap.put(params[1], timeMap);
+
+        Map<String, Object> contentMap = new HashMap<>();
+        contentMap.put("name", "content");
+        contentMap.put("value", "这是一条消息通知测试数据...");
+        contentMap.put("color", "#214577");
+        childMap.put(params[2], contentMap);
+
+        Map<String, Object> remarkMap = new HashMap<>();
+        remarkMap.put("name", "remark");
+        remarkMap.put("value", "JUNN");
+        remarkMap.put("color", "#173177");
+        childMap.put(params[3], remarkMap);
+
+        List<Object> list = new ArrayList<>();
+        list.add(0, firstMap);
+        list.add(1, timeMap);
+        list.add(2, contentMap);
+        list.add(3, remarkMap);
+
+        map.put("data", list);
+
+        System.out.println("Map : " + map);
+
+        String result = WxMsgUtil.tempMsg2JSON(map);
+        System.out.println("result : " + result);
+
     }
 }

@@ -172,7 +172,7 @@ public class WxMsgServiceImpl implements WxMsgIService {
             String errorMsg = jsonObject.getString("errmsg");
             if (errorCode == 0) {
                 flag = true;
-                System.out.println("消息模板发生成功...");
+                System.out.println("消息模板发送成功...");
             } else {
                 flag = false;
                 System.out.println("消息模板发送失败....errorMsg : " + errorMsg);

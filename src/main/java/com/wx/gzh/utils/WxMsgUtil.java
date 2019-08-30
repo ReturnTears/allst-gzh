@@ -190,23 +190,22 @@ public class WxMsgUtil {
         if (CoreToolsUtil.isNotEmpty(params)) {
             StringBuffer buffer = new StringBuffer();
             buffer.append("{");
-            buffer.append(String.format("\"touser\":\"%s\"", params.get("toUser"))).append(",");
-            buffer.append(String.format("\"template_id\":\"%s\"", params.get("templateId"))).append(",");
-            buffer.append(String.format("\"topcolor\":\"%s\"", params.get("topColor"))).append(",");
+            buffer.append(String.format("\"touser\":\"%s\"", params.get("touser"))).append(",");
+            buffer.append(String.format("\"template_id\":\"%s\"", params.get("template_id"))).append(",");
+            buffer.append(String.format("\"topcolor\":\"%s\"", params.get("topcolor"))).append(",");
             buffer.append(String.format("\"url\":\"%s\"", params.get("url"))).append(",");
             buffer.append(String.format("\"data\":{"));
             // 拼接数据内容
-            List list = (List) params.get("data");
-            WxTemplateData param = null;
+            List<Map<String, Object>> list = (List<Map<String, Object>>) params.get("data");
             for (int i = 0; i < list.size(); i++) {
                 if (i < list.size() - 1) {
-                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", list.get(i), param.getValue(), param.getColor()));
+                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"},", list.get(i).get("name"), list.get(i).get("value"), list.get(i).get("color")));
                 } else {
-                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", param.getName(), param.getValue(), param.getColor()));
+                    buffer.append(String.format("\"%s\":{\"value\":\"%s\",\"color\":\"%s\"}", list.get(i).get("name"), list.get(i).get("value"), list.get(i).get("color")));
                 }
             }
             buffer.append("}").append("}");
-
+            System.out.println("转换的JSON串为：" + buffer.toString());
             return buffer.toString();
         }
         return "";

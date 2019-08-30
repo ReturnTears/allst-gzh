@@ -27,4 +27,14 @@ public interface WxUserInfoIService {
      */
     int insertUserInfo(WxUserInfo userInfo);
 
+    /**
+     * 判断是否已存在用户
+     * @param username
+     *                      用户名
+     * @param password
+     *                      密码
+     * @return
+     *                      存在返回true， 不存在返回false
+     */
+    boolean isUserInfo(String username, String password);
 }

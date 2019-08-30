@@ -39,8 +39,11 @@ public class WxMsgController {
 
     /**
      * 发送模板消息
+     *
+     * @param params
+     *              参数
      * @return
-     *          成功返回Success， 失败返回Failure
+     *         成功返回Success， 失败返回Failure
      */
     @ResponseBody
     @RequestMapping(value = "temp", method = {RequestMethod.GET, RequestMethod.POST})

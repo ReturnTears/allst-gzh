@@ -30,7 +30,7 @@ public class WxMenuUtil {
         ViewButton button11 = new ViewButton();
         button11.setName("公司简介");
         button11.setType("view");
-        button11.setUrl("http://huwx.free.idcfengye.com/web/front/comp");
+        button11.setUrl("http://home.58iim.com:10086/index.php/index.html");
 
         ViewButton button12 = new ViewButton();
         button12.setName("项目案例");

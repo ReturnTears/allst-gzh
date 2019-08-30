@@ -1,10 +1,11 @@
 package com.wx.gzh.api;
 
+import com.wx.gzh.service.WxUserInfoIService;
+import com.wx.gzh.utils.JsonResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 
@@ -17,6 +18,9 @@ import java.io.*;
 //@Controller
 @RequestMapping("/api/conn")
 public class ApiController {
+
+    @Autowired
+    private WxUserInfoIService wxUserInfoIService;
 
     @RequestMapping("data")
     @ResponseBody
@@ -42,8 +46,13 @@ public class ApiController {
         return "classpath:";
     }
 
-    @RequestMapping("register")
-    public String apiRegister() {
-        return "";
+    @RequestMapping("user")
+    public String apiUserInfo(@RequestParam("username") String username, @RequestParam("password") String password) {
+        boolean result = wxUserInfoIService.isUserInfo(username, password);
+        System.out.println("result = " + result);
+        if (result) {
+            return "10001";
+        }
+        return "10002";
     }
 }
