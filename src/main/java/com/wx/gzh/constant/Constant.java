@@ -11,23 +11,32 @@ public class Constant {
      */
      /**
      * TOKEN
+      * hyj
      */
-    public static final String TOKEN = "hyj";
+    public static final String TOKEN = "puskeR";
     /**
      * URL
+     * http://huwx.free.idcfengye.com/api/join
+     * http://psk.free.idcfengye.com/api/join
      */
-    public static final String URL = "http://huwx.free.idcfengye.com/api/join";
+    public static final String URL = "http://psk.free.idcfengye.com/api/join";
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
     /**
+     * wxd8dc984917fefba0
      *  APPID
+     *  wx8299f35093a90fae
      */
-    public static final String APPID = "wxd8dc984917fefba0";
+    public static final String APPID = "wx8299f35093a90fae";
     /**
+     * 3950c17dacd4db2dbfc7bc7c06957cae
      * APPSECRET
+     *  2e2bff396759fcb534a5fee8e72622f8
+     *  EncodingAESKey: 正式
+     *  IwfiVcUUeZdnbtaDrT2EvKSNKu69F6kXa6Z704h3G53
      */
-    public static final String APPSECRET = "3950c17dacd4db2dbfc7bc7c06957cae";
+    public static final String APPSECRET = "2e2bff396759fcb534a5fee8e72622f8";
     /**
      * ----------------------------------------------ACCESS_TOKEN-------------------------------------------------------
      *

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-     <title>人才招聘</title>
-     <meta charset="utf-8">
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/webjars/vue/2.6.10/dist/vue.min.js}"></script>
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>人才招聘</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <style>
         html, body {
             width: 100%;
@@ -17,50 +16,53 @@
             padding: 0;
         }
         body {
-            background-color: #b9bbbe;
+            background-color: white;
         }
         .comp-header {
             width: 100%;
             height: 100px;
-            background-color: #d4edda;
-            border: 1px solid fuchsia;
+            background-color: white;
         }
         .comp-header-conetent {
             width: 100%;
             margin: 0 auto;
             height: 30px;
             font-size: 20px;
+            position: relative;
+            left: 10px;
+            top: 5px;
         }
-        .comp-header-conetent-span, .comp-content-topa, .comp-content-topb, .comp-footer-content-span {
-            font-size: 40px;
+        .comp-header-conetent-span {
+            position: relative;
+            top: 30px;
+            font-size: 30px;
             font-family: "微软雅黑";
         }
         .comp-content {
             width: 100%;
             height: 1520px;
-            border: 1px solid #e4606d;
+            font-size: 26px;
+            font-family: sans-serif;
+            /*border: 1px solid #e4606d;*/
         }
-        .comp-content-top {
-            width: 100%;
-            height: 200px;
-            border: 1px solid #d39e00;
+        h3, h4 {
+            font-size: 30px;
+            color: red;
         }
-        .comp-content-bottom {
-            width: 100%;
-            height: 800px;
-            border: 1px solid #d39e00;
+        .tab-content {
+            width: 90%;
+            position: relative;
+            left: 50px;
+            top: 40px;
+            right: 50px;
         }
-        .comp-footer {
-            width: 100%;
-            height: 136px;
-            border: 1px solid #fd7e14;
+        .intro-content {
+            text-indent: 32px;
         }
-        .comp-footer-content {
-            width: 100%;
-
-        }
-        #jobList {
-            width: 100%;
+        .atten {
+            color: red;
+            font-weight: bold;
+            font-size: 30px;
         }
     </style>
 </head>
@@ -72,7 +74,6 @@
         <div class="comp-header">
             <div class="comp-header-conetent">
                 <span class="comp-header-conetent-span">重庆普斯克科技有限公司招聘信息</span>
-                <span>有效期: {{ indate }}</span>
             </div>
         </div>
     </header>
@@ -80,132 +81,111 @@
     <!--============================content================================-->
 
         <div class="comp-content">
-            <!-- =====================招聘详情列表模板======================= -->
-            <template id="jobList">
-                <el-table :data="tableData" tyle="width: 100%;height: 40px;">
-                    <el-table-column label="有效日期" width="400" height="32px" tyle="font-size: 30px">
-                        <template slot-scope="scope">
-                            <i class="el-icon-time"></i>
-                            <span style="margin-left: 10px">{{ scope.row.date }}</span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column label="招聘职位" width="500" height="30px">
-                        <template slot-scope="scope">
-                            <el-popover trigger="hover" placement="top">
-                                <div slot="reference" class="name-wrapper">
-                                    <el-tag size="medium">{{ scope.row.name }}</el-tag>
-                                </div>
-                            </el-popover>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </template> <!-- 招聘详情列表end -->
-
-            <el-tabs type="border-card" style="font-size: 30px">
-                <el-tab-pane label="职位描述" style="font-size: 30px">
-                    <div>
-                        岗位职责
-                        1、负责公司JAVA培训项目库管理与更新；
-
-                        2、负责带领实习学员完成既定的JAVA项目开发；
-
-                        3、参加公司组织的学术交流和技术讲座；
-
-                        4、支持其他部门的相关工作，完成上级交办的其他工作；
-
-                        5、参与公司组织的其他项目研发工作；
-
-                        补充说明
-                        1、5年以上JAVA方向开发工作经验；
-
-                        2、熟悉完整的软件开发流程，有丰富项目开发经验；
-
-                        3、精通JAVA SE核心编程和面向对象思想；
-
-                        4、精通IAVA Web相关技能（JSP、Servlet、JDBC）；
-
-                        5、精通数据库使用，会使用工具（如power designer）进行数据库建模；
-
-                        6、精通Web相关技术（HTML、CSS、javascript、JQuery、Dom编程、Ajax等）；
-
-                        7、熟练掌握通用技能（解析Xml、日志、测试等）；
-
-                        8、精通JAVA常用开源框架（Mybatis、Hibernate、Spring等）；
-
-                        9、精通MVC三层架构，熟悉UML及设计模式。
-
-                        公司福利：
-
-                        1、薪酬福利：为员工提供富有竞争力的薪酬体系。
-
-                        2、社会保险：五险
-
-                        3、晋升机制：公司设立良好的晋升机制并提供内部招聘、职位轮换机会。
-
-                        4、不加班，朝9晚6，工作规律性强；
-
-                        面试地址：重庆市江北区观音桥北城天街15号富力海洋广场（重庆网商产业园）6栋1楼40号
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="公司简介" style="font-size: 30px">
-                    <div>
-                        公司简介
-                        重庆汇博优才科技有限公司是重庆最大的招聘网站——汇博网旗下企业，（汇博网其前身重庆人才网创立于2002年，成立于2005年，是重庆招聘行业的领军企业，也是一家人力资源领域互联网 的典型企业。
-                        十二年来为360多万像您这样的求职者提供求职服务，为30多万企业提供了人才输送服务，目前是西南地区规模大、成立早、访问量高、服务客户品质好的专业人才招聘网站）。
-                        汇博优才依托汇博网海量的人才资源及企业资源，为IT、互联网、大数据等行业内企业提供其急需的专业技术人才解决方案，为高校提供从专业建设、技能培训到优质就业为一体的人力资源合作基地。
-
-                        期待您的加入，未来，我们一起扬帆起航！
-                    </div>
-                </el-tab-pane>
-            </el-tabs>
-            <div class="comp-content-top">
-                <span class="comp-content-topa">
-
-                </span>
-            </div>
-            <div class="comp-content-bottom">
-                <span class="comp-content-topb">
-                    人才招聘页面(Body部分-bottom)
-                    <br>
-                    打电话前先投个简历，获得面试的成功率增加30%
-                </span>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#develop" aria-controls="home" data-toggle="tab" role="tab">{{ positionOne }}</a></li>
+                <li role="presentation" ><a class="nav-link" data-toggle="tab" href="#implement">{{ positionTwo }}</a></li>
+                <li role="presentation" ><a class="nav-link" data-toggle="tab" href="#intro">{{ introduction }}</a></li>
+            </ul>
+            <div class="tab-content">
+                <span v-show="isValid">{{ hint }}</span>
+                <div role="tabpanel" class="tab-pane active" id="develop" v-show="isShow">
+                    <h3>岗位职责</h3><br>
+                    <span>1.专科及以上学历，计算机相关专业，1年以上相关工作经验</span><br><br>
+                    <span>2.精通J2EE相关开发技术，熟练使用eclipse、idea等开发平台</span><br><br>
+                    <span>3.熟练掌握Spring/SpringMVC/Hibernate/MyBatis等常用框架的使用和优化</span><br><br>
+                    <span>4.熟悉Sql server,MySQL数据库的设计开发，能熟练书写健壮的SQL语句</span><br><br>
+                    <span>5.熟悉Web前端技术，熟悉JavaScript、HTML、XML、CSS、AJAX等开发技术，对Vue或React或Angular有一定的了解</span><br><br>
+                    <span>6.思路清晰，具备良好的沟通能力和理解能力，较强的学习能力以及快速解决问题的能力</span><br><br>
+                    <span>7.能适应短期出差工作，能独立完成领导交代的工作</span><br><br>
+                    <h4>补充说明</h4><br>
+                    <span>工作性质: 全职</span><br><br>
+                    <span>月薪范围: 6k~8k</span><br><br>
+                    <span>最低学历: 大专</span><br><br>
+                    <span>工作年限: 1~3</span><br><br>
+                    <span>工作时间：1、按国家规定假日及双休 2、朝九晚六</span><br><br>
+                    <span>招聘人数: 3</span><br><br>
+                    <span>投递邮箱：11566754@qq.com (Hr-胡)</span><br><br>
+                    <span>面试地址：重庆市渝北区五红路</span><br><br>
+                    <h4>公司福利</h4><br>
+                    <span>1、薪酬福利：为员工提供富有竞争力的薪酬体系</span><br><br>
+                    <span>2、社会保险：五险一金、交通补助</span><br><br>
+                    <span>3、晋升机制：</span><br><br>
+                    <span></span>
+                    <p><span class="atten">注意: </span><span>招聘信息将于{{effectiveDate}}失效</span></p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="implement" v-show="isShow">
+                    <span v-show="isValid">{{ hint }}</span>
+                    <h3>岗位职责</h3><br>
+                    <span>负责隧道安全系统组装工作</span><br><br>
+                    <span>负责软件的安装与培训工作</span><br><br>
+                    <h4>任职要求</h4><br>
+                    <span>1、熟悉Windows电脑操作系统安装维护</span><br><br>
+                    <span>2、适应短期出差工作，能独立完成领导交代的工作</span><br><br>
+                    <span>2、有弱电工程施工及管理经验者优先(如：监控系统、户外LED显示屏、停车场道闸、门禁一卡通系统)</span><br><br>
+                    <span>3、有行业管理软件实施经验者优先</span><br><br>
+                    <span>4、为人真诚,性格开朗、能迅速接受新事物，有较强的学习、动手和沟通能力</span><br><br>
+                    <span>5、大专及以上学历</span><br><br>
+                    <span>6、有C1驾照优先</span><br><br>
+                    <h4>补充说明</h4><br>
+                    <span>工作性质: 全职</span><br><br>
+                    <span>月薪范围: 6k~8k</span><br><br>
+                    <span>最低学历: 大专</span><br><br>
+                    <span>工作年限: 1~3</span><br><br>
+                    <span>工作时间：1、按国家规定假日及双休 2、朝九晚六</span><br><br>
+                    <span>招聘人数: 1</span><br><br>
+                    <span>投递邮箱：11566754@qq.com (Hr-胡)</span><br><br>
+                    <span>面试地址：重庆市渝北区五红路</span><br><br>
+                    <span></span>
+                    <p><span class="atten">注意: </span><span>招聘信息将于{{effectiveDate}}失效</span></p>
+                </div>
+                <div role="tabpanel" class="tab-pane intro-content" id="intro">
+                    重庆普斯克是一家从事计算机软硬件开发、销售；计算机系统集成服务；计算机网络设备开发、销售；智能监控系统开发及技术服务；销售智能监控设备；电子设备（不含电子出版物）、仪器仪表的研发及技术服务；工程项目管理咨询服务；弱电工程开发及技术服务；机电设备、安防设备的安装、租赁及销售；土地测绘服务（依法须经审批的经营项目，取得审批后方可从事经营）；综合布线；数据处理。
+                </div>
             </div>
         </div>
-
-    <!--==============================footer=================================-->
-    <footer>
-        <div class="comp-footer">
-            <div class="comp-footer-content">
-                <span class="comp-footer-content-span">重庆普斯克 &copy; 2019 | Privacy Policy | Website  designed by <a href="javascript;" rel="nofollow" target="_blank">www.pusker.com</a></span>
-            </div>
-        </div>
-    </footer>
 </div>
-    <script>
+
+<script>
+    (function () {
         let vm = new Vue({
             el: '#jobContent',
             data() {
                 return {
-                    msg: '人才招聘',
-                    indate: '2019-08-20 ~ 2019-09-15',
-                    tableData: [
-                        {
-                            date: '2019-08-20',
-                            name: '实施工程师',
-                            address: ''
-                        },
-                        {
-                            date: '2019-09-10',
-                            name: 'Java开发工程师',
-                            address: ''
-                        }
-                    ]
+                    isShow: true,
+                    isValid: false,
+                    positionOne: 'Java开发',
+                    positionTwo: '软件实施',
+                    introduction: '公司简介',
+                    effectiveDate: '2019-09-20',
+                    hint: '该职位招聘已失效'
                 }
             },
             methods: {
-
+                // 获取当前日期
+                currDate() {
+                    let date = new Date();
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    let dateStr = '';
+                    if (month < 10) {
+                        dateStr += year + '-0' + month;
+                    }
+                    if (day < 10) {
+                        dateStr += '-0' + day;
+                    }
+                    return dateStr;
+                }
+            },
+            mounted() {
+                let cdate = this.currDate();
+                if (cdate === this.effectiveDate) {
+                    this.isValid = true;
+                    this.isShow = false
+                }
             }
         })
-    </script>
+    }());
+</script>
 </body>
 </html>

@@ -42,7 +42,7 @@ public class WxJointController {
      * @return
      *              返回接入信息
      */
-    @RequestMapping(value = "wx", method = RequestMethod.GET)
+    @RequestMapping(value = "wx", method = {RequestMethod.POST})
     //@GetMapping
     public JsonResult joinWxInterface(@RequestParam("signature") String signature,
                                     @RequestParam("timestamp") String timestamp,
