@@ -35,12 +35,12 @@ public class WxMenuUtil {
         ViewButton button12 = new ViewButton();
         button12.setName("项目案例");
         button12.setType("view");
-        button12.setUrl("http://huwx.free.idcfengye.com/web/front/proj");
+        button12.setUrl("http://psk.free.idcfengye.com/web/front/proj");
 
         ViewButton button13 = new ViewButton();
         button13.setName("人才招聘");
         button13.setType("view");
-        button13.setUrl("http://huwx.free.idcfengye.com/web/front/jobs");
+        button13.setUrl("http://psk.free.idcfengye.com/web/front/jobs");
 
         /*ClickButton button14 = new ClickButton();
         button13.setName("其他");
@@ -66,21 +66,21 @@ public class WxMenuUtil {
         ViewButton button31 = new ViewButton();
         button31.setName("测试使用");
         button31.setType("view");
-        button31.setUrl("http://huwx.free.idcfengye.com/wx/oauth/code");
+        button31.setUrl("http://psk.free.idcfengye.com/wx/oauth/code");
 
         Button button1 = new Button();
         button1.setName("关于公司");
         button1.setSub_button(new Button[]{button11, button12, button13});
 
-        Button button3 = new Button();
+        /*Button button3 = new Button();
         button3.setName("网页授权");
-        button3.setSub_button(new Button[]{button31});
+        button3.setSub_button(new Button[]{button31});*/
 
         Button button2 = new Button();
         button2.setName("关于项目");
         button2.setSub_button(new Button[]{button21});
 
-        menu.setButton(new Button[]{button1, button2, button3});
+        menu.setButton(new Button[]{button1, button2});
 
         return menu;
     }

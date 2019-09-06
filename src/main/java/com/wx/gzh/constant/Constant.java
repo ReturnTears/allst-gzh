@@ -18,21 +18,22 @@ public class Constant {
      * URL
      * http://huwx.free.idcfengye.com/api/join
      * http://psk.free.idcfengye.com/api/join
+     * http://psk.free.idcfengye.com/wx/api
      */
-    public static final String URL = "http://psk.free.idcfengye.com/api/join";
+    public static final String URL = "http://psk.free.idcfengye.com/wx/api/join";
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
     /**
      * wxd8dc984917fefba0
      *  APPID
-     *  wx8299f35093a90fae
+     *  wx8299f35093a90fae  正式  /   wx68c1e110faa97e7b 测试
      */
     public static final String APPID = "wx8299f35093a90fae";
     /**
      * 3950c17dacd4db2dbfc7bc7c06957cae
      * APPSECRET
-     *  2e2bff396759fcb534a5fee8e72622f8
+     *  2e2bff396759fcb534a5fee8e72622f8  正式  /   747eb4b85b9371695cef0ae96a6559f0  测试
      *  EncodingAESKey: 正式
      *  IwfiVcUUeZdnbtaDrT2EvKSNKu69F6kXa6Z704h3G53
      */

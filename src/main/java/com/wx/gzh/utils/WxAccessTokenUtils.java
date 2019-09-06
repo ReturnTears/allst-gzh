@@ -113,6 +113,7 @@ public class WxAccessTokenUtils {
             while ((len = is.read(b)) != -1) {
                 builder.append(new String(b, 0, len));
             }
+            System.out.println("--------------" + builder.toString());
             return builder.toString();
         } catch (MalformedURLException e) {
             e.printStackTrace();

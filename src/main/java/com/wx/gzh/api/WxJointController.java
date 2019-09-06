@@ -12,18 +12,25 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
- * 微信公众号的接入入口
+ * 微信公众号的接入入口   /api/join
  * @author Junn
  * @since 2019/6/19 0019
  */
 @RestController
-@RequestMapping("/api/join")
+@RequestMapping("/wx/api")
 public class WxJointController {
 
     private static final Logger logger = LoggerFactory.getLogger(WxJointController.class);
+
+    private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
     @Autowired
     private WxJointIService wxJoinService;
@@ -42,8 +49,8 @@ public class WxJointController {
      * @return
      *              返回接入信息
      */
-    @RequestMapping(value = "wx", method = {RequestMethod.POST})
-    //@GetMapping
+    //@RequestMapping(value = "/join", method = {RequestMethod.GET, RequestMethod.POST})
+    @GetMapping("wx")
     public JsonResult joinWxInterface(@RequestParam("signature") String signature,
                                     @RequestParam("timestamp") String timestamp,
                                     @RequestParam("nonce") String nonce,
@@ -56,6 +63,63 @@ public class WxJointController {
             logger.error("WeiXin接入失败");
             return new JsonResult(false, "WeiXin接入失败");
         }
+    }
+
+   /* @RequestMapping(value="join",method=RequestMethod.GET)
+    @ResponseBody*/
+    public void getWeiXinMethod(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        boolean validate = validate(request);
+        if (validate) {
+            response.getWriter().write(request.getParameter("echostr"));
+            response.getWriter().close();
+        }
+    }
+
+    private boolean validate(HttpServletRequest req) throws IOException {
+        String signature = req.getParameter("signature");//微信加密签名
+        String timestamp = req.getParameter("timestamp");//时间戳
+        String nonce = req.getParameter("nonce");//随机数
+        System.out.println(String.format("Wx接入参数:signature=%s,timestamp=%s,nonce=%s", signature, timestamp, nonce));
+        List<String> list = new ArrayList<>();
+        list.add("puskeR");
+        list.add(timestamp);
+        list.add(nonce);
+        Collections.sort(list);//字典排序
+        String s = "";
+        for (int i = 0; i < list.size(); i++) {
+            s += (String) list.get(i);
+        }
+        if (encode("SHA1", s).equalsIgnoreCase(signature)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String encode(String algorithm, String str) {
+        if (str == null) {
+            return null;
+        }
+        try {
+            //Java自带的加密类
+            MessageDigest messageDigest = MessageDigest.getInstance(algorithm);
+            //转为byte
+            messageDigest.update(str.getBytes());
+            return getFormattedText(messageDigest.digest());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static String getFormattedText(byte[] bytes) {
+        int len = bytes.length;
+        StringBuilder buf = new StringBuilder(len * 2);
+        // 把密文转换成十六进制的字符串形式
+        for (int j = 0; j < len; j++) {
+            buf.append(HEX_DIGITS[(bytes[j] >> 4) & 0x0f]);
+            buf.append(HEX_DIGITS[bytes[j] & 0x0f]);
+        }
+        return buf.toString();
     }
 
     /**
@@ -78,7 +142,7 @@ public class WxJointController {
         return textXml;
     }
 
-    @PostMapping("reply")
+    /*@PostMapping("reply")
     public String replyPushMsg() {
         String textXml = wxHandlerMsgService.pushMsg();
         System.out.println("textXml : " + textXml);
@@ -90,5 +154,5 @@ public class WxJointController {
 
         String ticket = WxQRCodeUtil.getQrCodeTempTicket();
         return ticket;
-    }
+    }*/
 }
