@@ -2,14 +2,12 @@ package com.wx.gzh.utils;
 
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.model.WxImageMessage;
-import com.wx.gzh.model.WxTemplateData;
 import com.wx.gzh.robot.TuLingRobot;
 import net.sf.json.JSONObject;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.thymeleaf.engine.TemplateData;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;

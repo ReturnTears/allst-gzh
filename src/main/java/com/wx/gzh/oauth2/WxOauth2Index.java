@@ -37,7 +37,7 @@ public class WxOauth2Index {
             path = "http://huwx.free.idcfengye.com/wx/oauth/invoke";
         }
         try {
-            path = URLEncoder.encode(path, CommEnum.EncodingMode.UTF8编码.getValue());
+            path = URLEncoder.encode(path, CommEnum.EncodingMode.UTF8.getValue());
         } catch (UnsupportedEncodingException e) {
             LOGGER.error("网页授权编码失败, 失败原因(" + e.getMessage() + ")");
             e.printStackTrace();

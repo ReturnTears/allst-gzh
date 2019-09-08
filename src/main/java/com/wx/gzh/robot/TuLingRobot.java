@@ -6,8 +6,6 @@ import net.sf.json.JSONObject;
 import java.io.*;
 import java.net.*;
 import java.util.List;
-import java.util.Scanner;
-
 /**
  * 图灵机器人
  * @author JUNN

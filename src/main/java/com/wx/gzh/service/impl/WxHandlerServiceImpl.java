@@ -10,6 +10,8 @@ import com.wx.gzh.utils.DateTimeUtil;
 import com.wx.gzh.utils.Message2Xml;
 import com.wx.gzh.utils.WxMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.wx.gzh.utils.CoreToolsUtil.isNotEmpty;
 import static com.wx.gzh.utils.WxMsgUtil.*;
+import static org.apache.logging.log4j.ThreadContext.isEmpty;
 
 /**
  * 服务端处理所有的事件,消息回复以及消息推送
@@ -30,6 +34,18 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
 
     @Autowired
     private WxMsgIService wxMsgIService;
+
+    @Autowired
+    RedisTemplate<String,String> redisTemplate;
+
+    private String hasKey(String param) {
+        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+        String result = opsForValue.get(param);
+        if (isNotEmpty(result)) {
+            return opsForValue.get(param);
+        }
+        return "";
+    }
 
     /**
      * 消息回复
@@ -52,10 +68,9 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
             // 处理文本消息
             case Constant.RESP_MESSAGE_TYPE_TEXT:
                 String content = params.get("Content");
-                // TODO 这里可以增加根据关键字回复功能
-                if ("" == content) {
-                    System.out.println("关键字处理逻辑");
-                    // TODO 关键字处理逻辑
+                String redisVal = hasKey(content);
+                if (isNotEmpty(redisVal)) {
+                    System.out.println("关键字为 : " + redisVal);
                 }
                 Integer time = DateTimeUtil.Date2Timestamp();
                 WxMsg wxMsg = new WxMsg();

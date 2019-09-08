@@ -1,9 +1,6 @@
 package com.wx.gzh.api;
 
-import com.wx.gzh.constant.CommEnum;
-import com.wx.gzh.constant.Constant;
 import com.wx.gzh.oauth2.WxOauth2Index;
-import com.wx.gzh.utils.CoreToolsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Map;
 
 /**

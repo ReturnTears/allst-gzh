@@ -24,7 +24,7 @@ public class CoreToolsUtil {
      *                  编码后的URL
      */
     public static String encodeUTF8Url(String url) throws UnsupportedEncodingException {
-        return URLEncoder.encode(url, CommEnum.EncodingMode.UTF8编码.getValue());
+        return URLEncoder.encode(url, CommEnum.EncodingMode.UTF8.getValue());
     }
 
     /**
@@ -35,7 +35,7 @@ public class CoreToolsUtil {
      *                  解码后的URL
      */
     public static String decodeUTF8Url(String url) throws UnsupportedEncodingException {
-        return URLDecoder.decode(url, CommEnum.EncodingMode.UTF8编码.getValue());
+        return URLDecoder.decode(url, CommEnum.EncodingMode.UTF8.getValue());
     }
 
     // -----------------------------------------------编码 end---------------------------------------------------------//

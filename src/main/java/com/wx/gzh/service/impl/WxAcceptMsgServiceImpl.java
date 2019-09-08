@@ -48,9 +48,9 @@ public class WxAcceptMsgServiceImpl implements WxAcceptMsgIService {
     public Map<String, String> joinWxMsg(HttpServletRequest request, HttpServletResponse response) {
         try {
             // 微信服务器POST消息时用的是UTF-8编码，在接收时也要用同样的编码，否则中文会乱码；
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(CommEnum.EncodingMode.UTF8.getValue());
             // 在响应消息（回复消息给用户）时，也将编码方式设置为UTF-8
-            response.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding(CommEnum.EncodingMode.UTF8.getValue());
 
             // 解析xml消息格式为map
             Map<String, String> map = xmlParseMap(request);

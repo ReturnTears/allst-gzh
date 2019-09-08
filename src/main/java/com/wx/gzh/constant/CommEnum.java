@@ -164,7 +164,7 @@ public class CommEnum {
      * 编码方式
      */
     public enum EncodingMode {
-        UTF8编码("UTF-8"), GBK编码("GBK");
+        UTF8("UTF-8"), GBK("GBK");
 
         private String value;
 

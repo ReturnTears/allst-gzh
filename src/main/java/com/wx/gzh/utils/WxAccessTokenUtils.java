@@ -23,11 +23,11 @@ import static com.wx.gzh.constant.Constant.APPSECRET;
  */
 public class WxAccessTokenUtils {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         getToken();
-    }
+    }*/
 
-    private static Logger log = LoggerFactory.getLogger(WxAccessTokenUtils.class);
+    private static final Logger LOGGER  = LoggerFactory.getLogger(WxAccessTokenUtils.class);
     /**
      * 声明一个token对象
      */
@@ -43,10 +43,8 @@ public class WxAccessTokenUtils {
      */
     public static AccessToken getAccessToken(String appid, String appsecret) {
         AccessToken accessToken = null;
-
         String requestUrl = Constant.ACCESS_TOKEN_URL.replace("APPID", appid).replace("APPSECRET", appsecret);
         JSONObject jsonObject = WxHttpUtil.httpRequest(requestUrl, "GET", null);
-        System.out.println("-------------------------" + jsonObject.toString());
         // 如果请求成功
         if (null != jsonObject) {
             try {
@@ -56,14 +54,11 @@ public class WxAccessTokenUtils {
             } catch (JSONException e) {
                 accessToken = null;
                 // 获取token失败
-                log.error("获取token失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+                LOGGER.error("获取token失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
             }
         }
         return accessToken;
     }
-
-
-
 
     /**
      * 获取
@@ -92,7 +87,6 @@ public class WxAccessTokenUtils {
         String expiresIn = jsonObject.getString("expires_in");
         // 创建token对象，并存起来
         token = new AccessToken(accessToken, expiresIn);
-        System.out.println(token);
     }
 
     /**

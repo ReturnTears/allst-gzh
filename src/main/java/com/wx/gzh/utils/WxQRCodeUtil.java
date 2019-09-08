@@ -14,9 +14,9 @@ import java.net.URL;
  * @since 2019/6/25 0025下午 17:28
  */
 public class WxQRCodeUtil {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         getQrCodeTempTicket();
-    }
+    }*/
 
     /**
      * 获取带参数的临时二维码TICKET

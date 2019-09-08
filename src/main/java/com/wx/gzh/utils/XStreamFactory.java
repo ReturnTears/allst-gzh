@@ -19,7 +19,9 @@ import java.lang.reflect.Field;
  * @since 2019/6/20 0020上午 10:29
  */
 public class XStreamFactory {
+
     private static final String CDATA_PREFIX = "<![CDATA[";
+
     private static final String CDATA_SUFFIX = "]]>";
 
     public static XStream getXStream() {

@@ -9,11 +9,9 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ConnectException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -23,7 +21,8 @@ import java.nio.charset.StandardCharsets;
  * @since 2019-07-16 下午 10:48
  */
 public class WxHttpUtil {
-    private static final Logger logger = LoggerFactory.getLogger(WxHttpUtil.class);
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WxHttpUtil.class);
     /**
      * 方式1，推荐使用方式2--> httpRequest
      * 发送POST请求返回JSON对象结果
@@ -31,7 +30,7 @@ public class WxHttpUtil {
      *                      微信公众号菜单创建HTTPS接口
      * @param outPutStr
      *                      返回结果
-     * @return
+     * @return              JSON对象
      */
     public static JSONObject doPostStr(String requestURL, String outPutStr) {
         JSONObject jsonObject = null;
@@ -83,7 +82,6 @@ public class WxHttpUtil {
      * @return
      */
     public static JSONObject httpRequest(String requestURL, String requestMethod, String outPutStr) {
-        JSONObject jsonObject = null;
         StringBuffer buffer = new StringBuffer();
         try {
             // 创建SSLContext对象，并使用我们指定的信任管理器初始化
@@ -128,15 +126,93 @@ public class WxHttpUtil {
             inputStreamReader.close();
             // 释放资源
             inputStream.close();
-            inputStream = null;
             httpUrlConn.disconnect();
-            jsonObject = JSONObject.fromObject(buffer.toString());
-            System.out.println("返回结果 : " + jsonObject);
+            return JSONObject.fromObject(buffer.toString());
         } catch (ConnectException ce) {
-            logger.error("Weixin server connection timed out.");
+            LOGGER.error("Weixin server connection timed out.");
         } catch (Exception e) {
-            logger.error("https request error:{}", e);
+            LOGGER.error("https request error:{}", e);
         }
-        return jsonObject;
+        return null;
+    }
+
+    /**
+     * 微信上传素材的请求方法
+     * @param requestUrl
+     *                      微信上传临时素材的接口URL
+     * @param file
+     *                      要上传的文件
+     * @return
+     *                      上传成功后，微信服务器返回的消息
+     */
+    public static String httpRequest(String requestUrl, File file) {
+        StringBuffer buffer = new StringBuffer();
+        try {
+            // 1、建立连接
+            URL url = new URL(requestUrl);
+            HttpURLConnection httpURLConn = (HttpURLConnection) url.openConnection();
+            // 输入输出设置
+            httpURLConn.setDoInput(true);
+            httpURLConn.setDoOutput(true);
+            // POST方式不能使用缓存
+            httpURLConn.setUseCaches(false);
+            // 设置请求头消息
+            httpURLConn.setRequestProperty("Connection", "Keep-Alive");
+            httpURLConn.setRequestProperty("Charset", CommEnum.EncodingMode.UTF8.getValue());
+            // 设置边界
+            String BOUNDARY = "----------" + System.currentTimeMillis();
+            httpURLConn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + BOUNDARY);
+
+            // 2、请求正文信息， 将文件头输出到微信服务器
+            StringBuilder sb = new StringBuilder();
+            sb.append("--");
+            sb.append(BOUNDARY);
+            sb.append("\r\n");
+            sb.append("Content-Disposition:form-data;name=\"media\";filelength=\""+file.length()
+                    + "\";filename=\"" + file.getName() + "\"\r\n");
+            sb.append("Content-Type:application/octet-stream\r\n\r\n");
+            byte[] head = sb.toString().getBytes(CommEnum.EncodingMode.UTF8.getValue());
+
+            // 获得输出流
+            OutputStream outputStream = new DataOutputStream(httpURLConn.getOutputStream());
+            // 将表头写入输出流中， 输出表头
+            outputStream.write(head);
+
+            // 3、将文件正文部分输出到微信服务器
+            // 把文件以流文件的方式写入微信服务器
+            DataInputStream in = new DataInputStream(new FileInputStream(file));
+            int bytes = 0;
+            byte[] bufferOut = new byte[1024];
+            while ((bytes = in.read(bufferOut)) != -1) {
+                outputStream.write(bufferOut, 0, bytes);
+            }
+            in.close();
+            // 4、将结尾部分输出到微信服务器
+            // 定义最后数据分割线
+            byte[] foot = ("\r\n--" + BOUNDARY + "--\r\n").getBytes(CommEnum.EncodingMode.UTF8.getValue());
+            outputStream.write(foot);
+            outputStream.flush();
+            outputStream.close();
+
+            // 5、将微信服务器返回的输入流转换成字符串
+            InputStream inputStream = httpURLConn.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, CommEnum.EncodingMode.UTF8.getValue());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            String str = null;
+            while ((str = bufferedReader.readLine()) != null) {
+                buffer.append(str);
+            }
+            bufferedReader.close();
+            inputStreamReader.close();
+
+            // 释放资源
+            inputStream.close();
+            httpURLConn.disconnect();
+        } catch (Exception e) {
+            LOGGER.error("发送POST请求出现异常!" + e);
+            e.printStackTrace();
+        }
+        return buffer.toString();
     }
 }

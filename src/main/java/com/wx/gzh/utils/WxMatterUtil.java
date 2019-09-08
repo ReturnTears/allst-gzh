@@ -3,19 +3,17 @@ package com.wx.gzh.utils;
 import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 import net.sf.json.JSONObject;
-import org.apache.tomcat.jni.SSL;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
 import java.io.*;
 import java.net.URL;
 
+import static com.wx.gzh.utils.WxHttpUtil.httpRequest;
+
 /**
  * 素材管理工具类
- * @Auther JUNN
- * @Date 2019-06-26 下午 11:20
+ * @author JUNN
+ * @since 2019-06-26 下午 11:20
  */
 public class WxMatterUtil {
     /**
@@ -52,7 +50,7 @@ public class WxMatterUtil {
             conn.setRequestMethod(CommEnum.RequestMode.POST请求.getValue());
             // 设置请求头信息
             conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Charset", CommEnum.EncodingMode.UTF8编码.getValue());
+            conn.setRequestProperty("Charset", CommEnum.EncodingMode.UTF8.getValue());
             // 设置边界
             String boundary = "----------" + System.currentTimeMillis();
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
@@ -67,7 +65,7 @@ public class WxMatterUtil {
             builder.append("\r\n");
             builder.append("Content-Disposition:form-data;name=\"media\";filename=\"" + file.getName() + "\";filelength=\"" + file.length() + "\"\r\n\r\n");
             builder.append("Content-Type:application/octet-stream\r\n\r\n");
-            out.write(builder.toString().getBytes(CommEnum.EncodingMode.UTF8编码.getValue()));
+            out.write(builder.toString().getBytes(CommEnum.EncodingMode.UTF8.getValue()));
             // 2、文件内容
             byte[] b = new byte[1024 * 1024 * 10];
             int len;
@@ -76,7 +74,7 @@ public class WxMatterUtil {
             }
             in.close();
             // 3、尾部信息
-            byte[] footer = ("\r\n--" + boundary + "--\r\n").getBytes(CommEnum.EncodingMode.UTF8编码.getValue());
+            byte[] footer = ("\r\n--" + boundary + "--\r\n").getBytes(CommEnum.EncodingMode.UTF8.getValue());
             out.write(footer);
             out.flush();
             out.close();
@@ -116,7 +114,7 @@ public class WxMatterUtil {
         // 2、拼接请求URL
         String URL = Constant.MATTER_ADD_TEMP.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
         // 3、调用接口，发送请求，上传文件到微信服务器
-        String result = WxBaseUtil.httpRequest(URL, file);
+        String result = httpRequest(URL, file);
         // 4、json字符串转对象，解析返回值，json反序列化
         result = result.replaceAll("[\\\\]]", "");
         System.out.println("result : " + result);

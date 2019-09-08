@@ -12,15 +12,16 @@ public class Constant {
      /**
      * TOKEN
       * hyj
+      * puskeR
      */
     public static final String TOKEN = "puskeR";
     /**
      * URL
      * http://huwx.free.idcfengye.com/api/join
      * http://psk.free.idcfengye.com/api/join
-     * http://psk.free.idcfengye.com/wx/api
+     * http://psk.free.idcfengye.com/wx/api/join
      */
-    public static final String URL = "http://psk.free.idcfengye.com/wx/api/join";
+    public static final String URL = "http://huwx.free.idcfengye.com/join/wx";
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
@@ -29,7 +30,7 @@ public class Constant {
      *  APPID
      *  wx8299f35093a90fae  正式  /   wx68c1e110faa97e7b 测试
      */
-    public static final String APPID = "wx8299f35093a90fae";
+    public static final String APPID = "wx5afdca70cc4f5c3d";
     /**
      * 3950c17dacd4db2dbfc7bc7c06957cae
      * APPSECRET
@@ -37,7 +38,7 @@ public class Constant {
      *  EncodingAESKey: 正式
      *  IwfiVcUUeZdnbtaDrT2EvKSNKu69F6kXa6Z704h3G53
      */
-    public static final String APPSECRET = "2e2bff396759fcb534a5fee8e72622f8";
+    public static final String APPSECRET = "19d1ee0279364f90b3d271b9f531f878";
     /**
      * ----------------------------------------------ACCESS_TOKEN-------------------------------------------------------
      *
