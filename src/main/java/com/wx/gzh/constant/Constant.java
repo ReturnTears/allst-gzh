@@ -11,34 +11,23 @@ public class Constant {
      */
      /**
      * TOKEN
-      * hyj
-      * puskeR
      */
-    public static final String TOKEN = "puskeR";
+    public static final String TOKEN = "your toekn";
     /**
      * URL
-     * http://huwx.free.idcfengye.com/api/join
-     * http://psk.free.idcfengye.com/api/join
-     * http://psk.free.idcfengye.com/wx/api/join
      */
-    public static final String URL = "http://huwx.free.idcfengye.com/join/wx";
+    public static final String URL = "your url";
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
     /**
-     * wxd8dc984917fefba0
      *  APPID
-     *  wx8299f35093a90fae  正式  /   wx68c1e110faa97e7b 测试
      */
-    public static final String APPID = "wx5afdca70cc4f5c3d";
+    public static final String APPID = "your appid";
     /**
-     * 3950c17dacd4db2dbfc7bc7c06957cae
      * APPSECRET
-     *  2e2bff396759fcb534a5fee8e72622f8  正式  /   747eb4b85b9371695cef0ae96a6559f0  测试
-     *  EncodingAESKey: 正式
-     *  IwfiVcUUeZdnbtaDrT2EvKSNKu69F6kXa6Z704h3G53
      */
-    public static final String APPSECRET = "19d1ee0279364f90b3d271b9f531f878";
+    public static final String APPSECRET = "your appsecret";
     /**
      * ----------------------------------------------ACCESS_TOKEN-------------------------------------------------------
      *
@@ -243,15 +232,15 @@ public class Constant {
     /**
      * 配置您申请的KEY
      */
-    public static final String APIKEY = "6ad46dd0a00a400282a8d70b2b0faba9";
+    public static final String APIKEY = "your apikey";
     /**
      * 接口地址
      */
-    public static final String APIURL = "http://openapi.tuling123.com/openapi/api/v2";
+    public static final String APIURL = "";
     /**
      * 用户id
      */
-    public static final String USERID = "469240";
+    public static final String USERID = "your userid";
 
     /**
      * --------------------------------------------------聚合数据机器人---------------------------------------------------
