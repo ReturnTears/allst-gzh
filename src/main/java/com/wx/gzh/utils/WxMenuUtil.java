@@ -4,6 +4,7 @@ import com.wx.gzh.constant.CommEnum;
 import com.wx.gzh.constant.Constant;
 import com.wx.gzh.entity.button.Button;
 import com.wx.gzh.entity.Menu;
+import com.wx.gzh.entity.button.ClickButton;
 import com.wx.gzh.entity.button.ViewButton;
 import com.wx.gzh.model.WxCommonButton;
 import com.wx.gzh.model.WxComplexButton;
@@ -42,10 +43,10 @@ public class WxMenuUtil {
         button13.setType("view");
         button13.setUrl("http://psk.free.idcfengye.com/web/front/jobs");
 
-        /*ClickButton button14 = new ClickButton();
+        ClickButton button14 = new ClickButton();
         button13.setName("其他");
         button13.setType("click");
-        button13.setUrl("14");*/
+        button13.setUrl("14");
 
         ViewButton button21 = new ViewButton();
         button21.setName("成宜高速测试");
@@ -148,50 +149,50 @@ public class WxMenuUtil {
     }
 
     /**
-     * 组装菜单数据
+     * 组装自己公众号的菜单数据
      * @return
      */
-    public static Menu getMenu() {
+    public static Menu initSelfMenu() {
         WxCommonButton button11 = new WxCommonButton();
-        button11.setName("公司简介1");
+        button11.setName("美文分享");
         button11.setType("click");
         button11.setKey("11");
 
         WxCommonButton button12 = new WxCommonButton();
-        button12.setName("公司简介2");
+        button12.setName("图文赏析");
         button12.setType("click");
         button12.setKey("12");
 
         WxCommonButton button21 = new WxCommonButton();
-        button21.setName("项目案例1");
+        button21.setName("图文分享");
         button21.setType("click");
         button21.setKey("21");
 
         WxCommonButton button22 = new WxCommonButton();
-        button22.setName("项目案例2");
+        button22.setName("PS技术分享");
         button22.setType("click");
         button22.setKey("22");
 
         WxCommonButton button31 = new WxCommonButton();
-        button31.setName("后台应用1");
+        button31.setName("编程语言");
         button31.setType("click");
         button31.setKey("31");
 
         WxCommonButton button32 = new WxCommonButton();
-        button32.setName("后台应用2");
+        button32.setName("Github地址");
         button32.setType("click");
         button32.setKey("32");
 
         WxComplexButton mainButton1 = new WxComplexButton();
-        mainButton1.setName("公司简介");
+        mainButton1.setName("软文介绍");
         mainButton1.setSubButton(new WxCommonButton[]{button11, button12});
 
         WxComplexButton mainButton2 = new WxComplexButton();
-        mainButton2.setName("项目案例");
+        mainButton2.setName("图文介绍");
         mainButton2.setSubButton(new WxCommonButton[]{button21, button22});
 
         WxComplexButton mainButton3 = new WxComplexButton();
-        mainButton3.setName("后台应用");
+        mainButton3.setName("技术介绍");
         mainButton3.setSubButton(new WxCommonButton[]{button31, button32});
 
         Menu menu = new Menu();

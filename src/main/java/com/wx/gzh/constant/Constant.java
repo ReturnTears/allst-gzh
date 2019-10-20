@@ -12,22 +12,22 @@ public class Constant {
      /**
      * TOKEN
      */
-    public static final String TOKEN = "your toekn";
+    public static final String TOKEN = "yiya";
     /**
      * URL
      */
-    public static final String URL = "your url";
+    public static final String URL = "http://huwx.free.idcfengye.com/join/wx";
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
     /**
      *  APPID
      */
-    public static final String APPID = "your appid";
+    public static final String APPID = "wx5afdca70cc4f5c3d";
     /**
      * APPSECRET
      */
-    public static final String APPSECRET = "your appsecret";
+    public static final String APPSECRET = "7bcabb32bc0c69129924bc6b83711b5d";
     /**
      * ----------------------------------------------ACCESS_TOKEN-------------------------------------------------------
      *
@@ -232,15 +232,15 @@ public class Constant {
     /**
      * 配置您申请的KEY
      */
-    public static final String APIKEY = "your apikey";
+    public static final String APIKEY = "6ad46dd0a00a400282a8d70b2b0faba9";
     /**
      * 接口地址
      */
-    public static final String APIURL = "";
+    public static final String APIURL = "http://openapi.tuling123.com/openapi/api/v2";
     /**
      * 用户id
      */
-    public static final String USERID = "your userid";
+    public static final String USERID = "469240";
 
     /**
      * --------------------------------------------------聚合数据机器人---------------------------------------------------

@@ -36,7 +36,7 @@ public class AllstGzhApplicationTests {
     public void testMenu() {
         AccessToken token = WxAccessTokenUtils.getAccessToken(APPID, APPSECRET);
         if (token != null) {
-            int result = WxMenuUtil.createMenus(WxMenuUtil.getMenu(), token.getAccess_token());
+            int result = WxMenuUtil.createMenus(WxMenuUtil.initSelfMenu(), token.getAccess_token());
             // 判断菜单创建结果
             if (0 == result)
                 System.out.println("菜单创建成功！");
@@ -49,6 +49,19 @@ public class AllstGzhApplicationTests {
     public void testCreateMenu() {
         String token = WxAccessTokenUtils.getAccessToken();
         String menu = JSONObject.fromObject(WxMenuUtil.initMenu()).toString();
+        System.out.println("menu : " + menu);
+        int result = WxMenuUtil.createMenu(token, menu);
+        if (result == 0) {
+            System.out.println("菜单创建成功");
+        } else {
+            System.out.println("菜单创建失败");
+        }
+    }
+
+    @Test
+    public void testCreateSelfMenu() {
+        String token = WxAccessTokenUtils.getAccessToken();
+        String menu = JSONObject.fromObject(WxMenuUtil.initSelfMenu()).toString();
         System.out.println("menu : " + menu);
         int result = WxMenuUtil.createMenu(token, menu);
         if (result == 0) {
