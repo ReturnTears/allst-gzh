@@ -1,7 +1,5 @@
 package com.wx.gzh.utils;
 
-import com.wx.gzh.constant.Constant;
-
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.util.ArrayList;
