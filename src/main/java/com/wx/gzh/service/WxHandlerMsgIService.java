@@ -15,14 +15,14 @@ public interface WxHandlerMsgIService {
      * @return
      *                  消息XML格式数据
      */
-    String replayMsgs(Map<String, String> params);
+    String handlerMsgs(Map<String, String> params);
 
     /**
      * 回复消息
      * replyMsg
      * @return
      */
-    String handlerEvent();
+    String handlerEvent(String msgType);
 
     /**
      * 推送消息

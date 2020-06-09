@@ -19,9 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.wx.gzh.constant.Constant.*;
 import static com.wx.gzh.utils.CoreToolsUtil.isNotEmpty;
 import static com.wx.gzh.utils.WxMsgUtil.*;
-import static org.apache.logging.log4j.ThreadContext.isEmpty;
 
 /**
  * 服务端处理所有的事件,消息回复以及消息推送
@@ -38,6 +38,13 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
     @Autowired
     RedisTemplate<String,String> redisTemplate;
 
+    /**
+     * 判断是否存在Key键
+     * @param param
+     *                  关键字
+     * @return
+     *                  存在返回Value， 不存在返回""
+     */
     private String hasKey(String param) {
         ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
         String result = opsForValue.get(param);
@@ -55,7 +62,7 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
      *                  消息XML格式数据
      */
     @Override
-    public String replayMsgs(Map<String, String> params) {
+    public String handlerMsgs(Map<String, String> params) {
         String uuid = UUID.randomUUID().toString();
         String currentTime = String.valueOf(System.currentTimeMillis());
         // 消息接收者
@@ -125,7 +132,42 @@ public class WxHandlerServiceImpl implements WxHandlerMsgIService {
      * @return
      */
     @Override
-    public String handlerEvent() {
+    public String handlerEvent(String msgType) {
+        switch (msgType) {
+            // 订阅事件
+            case EVENT_TYPE_SUBSCRIBE:
+                return "";
+            // 取消订阅事件
+            case EVENT_TYPE_UNSUBSCRIBE:
+                return "";
+            // 扫描事件
+            case EVENT_TYPE_SCAN:
+                return "";
+            // 上报位置信息事件
+            case EVENT_TYPE_LOCATION:
+                return "";
+            // 点击事件
+            case EVENT_TYPE_CLICK:
+                return "";
+            // 模板消息送达事件
+            case EVENT_TYPE_TEMPLATESENDJOBFINISH:
+                return "";
+        }
+        return null;
+    }
+
+    /**
+     * 封装对象
+     * @param params
+     *                  多参数
+     * @return          封装后对象
+     */
+    private Object encapsulation(String ...params) {
+        if (isNotEmpty(params)) {
+
+            //WxMsg wxMsg = (WxMsg) params;
+
+        }
         return null;
     }
 

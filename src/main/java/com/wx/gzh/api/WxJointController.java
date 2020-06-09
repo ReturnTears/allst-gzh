@@ -65,6 +65,6 @@ public class WxJointController {
     public String getWxAcceptMsg(HttpServletRequest request, HttpServletResponse response) {
         Map<String, String> res = wxAcceptMsgIService.joinWxMsg(request, response);
         // 消息的统一处理, 需要将回复的消息封装为上述格式的xml内容
-        return wxHandlerMsgService.replayMsgs(res);
+        return wxHandlerMsgService.handlerMsgs(res);
     }
 }

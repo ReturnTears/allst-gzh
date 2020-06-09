@@ -7,6 +7,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 项目核心工具方法
@@ -63,4 +64,10 @@ public class CoreToolsUtil {
         return !isEmpty(obj);
     }
     // ------------------------------------------判断对象是否为空 end---------------------------------------------------//
+
+    // ----------------------------------------生成整个项目全局统一的UUID start------------------------------------------//
+    public static String uuidVal() {
+        return UUID.randomUUID().toString();
+    }
+    // ----------------------------------------生成整个项目全局统一的UUID end--------------------------------------------//
 }

@@ -1,5 +1,7 @@
 package com.wx.gzh.utils;
 
+import com.wx.gzh.constant.Constant;
+
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class WxJointUtil {
         String timestamp = req.getParameter("timestamp");// 时间戳
         String nonce = req.getParameter("nonce");// 随机数
         List<String> list = new ArrayList<>();
-        list.add("pusker");// 同令牌token一致
+        list.add(TOKEN);// 同令牌token一致
         list.add(timestamp);
         list.add(nonce);
         Collections.sort(list);//字典排序

@@ -106,6 +106,20 @@ public class WxMsg {
         this.release2 = release2;
     }
 
+    public WxMsg() {
+    }
+
+    public WxMsg(String uid, String toUserName, String fromUserName, String createTime, String msgId, String msgType, Integer msgSource, String msgKey) {
+        this.uid = uid;
+        ToUserName = toUserName;
+        FromUserName = fromUserName;
+        CreateTime = createTime;
+        MsgId = msgId;
+        MsgType = msgType;
+        MsgSource = msgSource;
+        this.msgKey = msgKey;
+    }
+
     @Override
     public String toString() {
         return "WxMsg{" +
