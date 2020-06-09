@@ -12,26 +12,26 @@ public class Constant {
      /**
      * TOKEN
      */
-    public static final String TOKEN = "puskeR";
-    // public static final String TOKEN = "yiya"; // MySelf
+    // public static final String TOKEN = "puskeR";
+    public static final String TOKEN = "yiya"; // MySelf
     /**
      * URL
      */
-    public static final String URL = "http://psk.free.idcfengye.com/join/wx";
-    // public static final String URL = "http://huwx.free.idcfengye.com/join/wx"; // MySelf
+    // public static final String URL = "http://psk.free.idcfengye.com/join/wx";
+    public static final String URL = "http://huwx.free.idcfengye.com/join/wx"; // MySelf
     /**
      * --------------------------------------------------公众号信息------------------------------------------------------
      */
     /**
      *  APPID
      */
-    public static final String APPID = "wx8299f35093a90fae";
-    // public static final String APPID = "wx5afdca70cc4f5c3d"; // MySelf
+    // public static final String APPID = "";
+    public static final String APPID = "wx5afdca70cc4f5c3d"; // MySelf
     /**
      * APPSECRET
      */
-    public static final String APPSECRET = "2e2bff396759fcb534a5fee8e72622f8";
-    // public static final String APPSECRET = "7bcabb32bc0c69129924bc6b83711b5d";   // MySelf
+    // public static final String APPSECRET = "";
+    public static final String APPSECRET = "7bcabb32bc0c69129924bc6b83711b5d";   // MySelf
     /**
      * ----------------------------------------------ACCESS_TOKEN-------------------------------------------------------
      *
