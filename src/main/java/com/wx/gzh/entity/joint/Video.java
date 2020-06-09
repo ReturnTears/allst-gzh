@@ -2,12 +2,14 @@ package com.wx.gzh.entity.joint;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.annotation.XStreamCDATA;
+import lombok.Data;
 
 /**
  * Video Model类型
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author  Junn
+ * @since  2019/6/19 0019
  */
+@Data
 public class Video {
     /**
      * 通过素材管理中的接口上传多媒体文件，得到的id
@@ -31,36 +33,4 @@ public class Video {
     @XStreamAlias("ThumbMediaId")
     @XStreamCDATA
     private String ThumbMediaId;
-
-    public String getThumbMediaId() {
-        return ThumbMediaId;
-    }
-
-    public void setThumbMediaId(String thumbMediaId) {
-        ThumbMediaId = thumbMediaId;
-    }
-
-    public String getMediaId() {
-        return MediaId;
-    }
-
-    public void setMediaId(String mediaId) {
-        MediaId = mediaId;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
 }

@@ -2,12 +2,14 @@ package com.wx.gzh.entity.joint;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wx.gzh.annotation.XStreamCDATA;
+import lombok.Data;
 
 /**
  * Articles
- * @Auther Junn
- * @Date 2019/6/19 0019
+ * @author  Junn
+ * @since  2019/6/19 0019
  */
+@Data
 @XStreamAlias("item")
 public class Articles {
     /**
@@ -35,35 +37,4 @@ public class Articles {
     @XStreamCDATA
     private String Url;
 
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getPicUrl() {
-        return PicUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
-    }
-
-    public String getUrl() {
-        return Url;
-    }
-
-    public void setUrl(String url) {
-        Url = url;
-    }
 }

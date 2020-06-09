@@ -2,8 +2,8 @@ package com.wx.gzh.entity.button;
 
 /**
  * Button的基类
- * @Auther Junn
- * @Date 2019/6/25 0025下午 14:06
+ * @author  Junn
+ * @since 2019/6/25 0025下午 14:06
  */
 public abstract class AbstractButton {
     /**
